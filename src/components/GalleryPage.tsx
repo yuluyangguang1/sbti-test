@@ -1,0 +1,288 @@
+import { useState } from 'react';
+import { personalities, dimensionDefs, modelDescriptions, type PersonalityType } from '../data';
+import { PersonalityAvatar } from './PersonalityAvatar';
+import { MbtiComparison } from './MbtiComparison';
+
+interface GalleryPageProps {
+  onBackHome: () => void;
+  onViewPersonality: (personalityId: string) => void;
+}
+
+// 维度落点小条
+function DimensionBar({ personality }: { personality: PersonalityType }) {
+  return (
+    <div className="flex gap-[2px] mt-2">
+      {Object.entries(personality.dimensions).map(([key, level]) => {
+        const color = level === 'H' ? '#34d399' : level === 'M' ? '#fbbf24' : '#fb7185';
+        return (
+          <div key={key} title={`${key}: ${level}`} className="flex-1 h-1.5 rounded-full" style={{ backgroundColor: color, opacity: 0.7 }} />
+        );
+      })}
+    </div>
+  );
+}
+
+export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps) {
+  const [selectedPersonality, setSelectedPersonality] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
+
+  // 按模型筛选
+  const filters = [
+    { key: null, label: '全部' },
+    ...Object.entries(modelDescriptions).map(([key, model]) => ({
+      key,
+      label: model.name.replace('模型', ''),
+    })),
+  ];
+
+  const filteredPersonalities = personalities.filter(p => {
+    const matchSearch = !searchTerm ||
+      p.name.includes(searchTerm) ||
+      p.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.traits.some(t => t.includes(searchTerm));
+
+    const matchFilter = !activeFilter || Object.entries(p.dimensions).some(([dimKey]) => {
+      const dim = dimensionDefs.find(d => d.key === dimKey);
+      return dim?.modelKey === activeFilter;
+    });
+
+    return matchSearch && matchFilter;
+  });
+
+  const displayPersonality = selectedPersonality
+    ? personalities.find(p => p.id === selectedPersonality)
+    : null;
+
+  return (
+    <div className="min-h-screen px-8 sm:px-12 py-16 sm:py-24 relative">
+      {/* 液态背景装饰 */}
+      <div className="liquid-bg">
+        <div className="liquid-blob" />
+        <div className="liquid-blob" />
+        <div className="liquid-blob" />
+      </div>
+
+      <div className="max-w-4xl mx-auto relative z-10">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-10 sm:mb-14">
+          <button
+            onClick={onBackHome}
+            className="text-black/30 hover:text-black/60 transition-colors text-sm sm:text-base flex items-center gap-1" style={{ letterSpacing: '0.01em' }}
+          >
+            ← 返回首页
+          </button>
+          <h2 className="text-xl sm:text-2xl font-bold gradient-text" style={{ letterSpacing: '-0.03em' }}>SBTI 人格图鉴</h2>
+          <div className="w-16 sm:w-20" />
+        </div>
+
+        {/* Search — 液态玻璃输入框 */}
+        <div className="mb-6 sm:mb-8">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="搜索人格名称、代号或特征..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="glass-input w-full px-6 py-4 sm:py-4.5 text-black/60 text-base sm:text-lg placeholder-black/20" style={{ letterSpacing: '0.01em', borderRadius: 'var(--radius-xl)' }}
+            />
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm('')}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-black/25 hover:text-black/50"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Filters — 液态玻璃按钮 */}
+        <div className="flex gap-3 overflow-x-auto pb-2 mb-8 sm:mb-10 scrollbar-hide">
+          {filters.map(f => (
+            <button
+              key={f.key ?? 'all'}
+              onClick={() => setActiveFilter(f.key)}
+              className={`shrink-0 px-5 py-2.5 text-sm sm:text-base font-medium transition-all duration-200 ${
+                activeFilter === f.key
+                  ? 'glass-filter-active text-purple-600'
+                  : 'glass-filter text-black/45 hover:text-black/65'
+              }`}
+              style={{ borderRadius: 'var(--radius-lg)', letterSpacing: '0.01em' }}
+            >
+              {f.label}
+          </button>
+          ))}
+        </div>
+
+        {/* Count */}
+        <p className="text-sm text-black/20 mb-6" style={{ letterSpacing: '0.04em' }}>{filteredPersonalities.length} 种人格</p>
+
+        {/* Personality Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+          {filteredPersonalities.map((p, i) => (
+            <div
+              key={p.id}
+              onClick={() => setSelectedPersonality(p.id)}
+              className={`glass-card glass-card-hover !p-8 sm:!p-10 cursor-pointer animate-card-enter ${
+                selectedPersonality === p.id ? 'ring-1 ring-purple-400/50' : ''
+              }`}
+              style={{
+                animationDelay: `${i * 0.04}s`,
+                animationFillMode: 'both',
+              }}
+            >
+              <div className="relative z-10">
+                <div className="flex items-start gap-4 sm:gap-5">
+                  <PersonalityAvatar
+                    emoji={p.emoji}
+                    name={p.name}
+                    color={p.color}
+                    avatar={p.avatar}
+                    size="sm"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="font-bold text-base sm:text-lg text-black/75 truncate" style={{ letterSpacing: '-0.01em' }}>{p.name}</span>
+                      <span className="text-xs sm:text-sm font-mono text-black/20 shrink-0" style={{ letterSpacing: '0.04em' }}>{p.code}</span>
+                    </div>
+                    <p className="text-sm sm:text-base text-black/30 italic truncate" style={{ letterSpacing: '0.01em' }}>
+                      "{p.slogan}"
+                    </p>
+                    <DimensionBar personality={p} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {filteredPersonalities.length === 0 && (
+          <div className="text-center py-16 text-black/25">
+            <div className="text-4xl mb-4">🔍</div>
+            <p style={{ letterSpacing: '0.01em' }}>没有找到匹配的人格类型</p>
+          </div>
+        )}
+
+        {/* Personality Detail Modal — 液态玻璃弹窗 */}
+        {displayPersonality && (
+          <div
+            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-6"
+            onClick={() => setSelectedPersonality(null)}
+          >
+            <div className="absolute inset-0 bg-black/30 backdrop-blur-md" />
+
+            {/* 外层容器：不裁剪，让光晕自由溢出 */}
+            <div
+              className="relative w-full sm:max-w-lg max-h-[92vh] sm:max-h-[90vh] flex flex-col animate-slide-up"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setSelectedPersonality(null)}
+                className="absolute top-2 right-4 sm:top-3 sm:right-5 z-30 w-9 h-9 rounded-full flex items-center justify-center text-black/25 hover:text-black/55 text-sm transition-colors"
+                style={{
+                  background: 'rgba(255,255,255,0.45)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
+                }}
+              >
+                ✕
+              </button>
+
+              {/* 头像区 — 浮在框外，无背景裁剪 */}
+              <div className="shrink-0 overflow-visible text-center pt-6 pb-4 sm:pt-8 sm:pb-5">
+                <PersonalityAvatar
+                  emoji={displayPersonality.emoji}
+                  name={displayPersonality.name}
+                  color={displayPersonality.color}
+                  avatar={displayPersonality.avatar}
+                  size="lg"
+                />
+                <div className="text-sm font-mono text-black/20 mt-4 mb-2" style={{ letterSpacing: '0.08em' }}>{displayPersonality.code}</div>
+                <h3 className="text-3xl sm:text-4xl font-black text-black/75 mb-3" style={{ letterSpacing: '-0.03em' }}>{displayPersonality.name}</h3>
+                <p className="text-base sm:text-lg text-black/40 italic" style={{ letterSpacing: '0.01em' }}>"{displayPersonality.slogan}"</p>
+              </div>
+
+              {/* 文字内容区 — 玻璃框只包住这里 */}
+              <div
+                className="flex-1 overflow-y-auto min-h-0 rounded-t-3xl sm:rounded-t-3xl"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.60)',
+                  backdropFilter: 'blur(40px) saturate(180%)',
+                  WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.06), 0 -1px 0 rgba(255,255,255,0.40) inset, 0 1px 0 rgba(255,255,255,0.50) inset',
+                  borderTop: `1px solid ${displayPersonality.color}30`,
+                }}
+              >
+                <div className="p-10 sm:p-14 space-y-12">
+                  {/* Description */}
+                  <p className="text-base sm:text-lg text-black/45 leading-[1.85] indent" style={{ letterSpacing: '0.01em' }}>
+                    {displayPersonality.description}
+                  </p>
+
+                  {/* Traits — 液态玻璃标签 */}
+                  <div className="flex flex-wrap gap-3">
+                    {displayPersonality.traits.map((trait, i) => (
+                      <span
+                        key={i}
+                        className="glass-tag px-4 py-2 text-sm sm:text-base font-medium"
+                        style={{ color: displayPersonality.color, borderRadius: 'var(--radius-md)', letterSpacing: '0.02em' }}
+                      >
+                        {trait}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Dimension bar in modal */}
+                  <div>
+                    <p className="text-xs text-black/25 mb-3" style={{ letterSpacing: '0.04em' }}>维度落点总览</p>
+                    <div className="flex gap-1.5">
+                      {Object.entries(displayPersonality.dimensions).map(([key, level]) => {
+                        const color = level === 'H' ? '#34d399' : level === 'M' ? '#fbbf24' : '#fb7185';
+                        const dim = dimensionDefs.find(d => d.key === key);
+                        return (
+                          <div key={key} className="flex flex-col items-center flex-1" title={`${dim?.label}: ${level}`}>
+                            <div className="w-full h-2 rounded-full" style={{ backgroundColor: color, opacity: 0.75 }} />
+                            <span className="text-[9px] text-black/20 mt-1.5" style={{ letterSpacing: '0.04em' }}>{key}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* MBTI */}
+                  {displayPersonality.mbti && (
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs text-black/25" style={{ letterSpacing: '0.04em' }}>MBTI:</span>
+                      {displayPersonality.mbti.map(t => (
+                        <span
+                          key={t}
+                          className="glass-tag px-3.5 py-1.5 text-sm font-bold"
+                          style={{ color: displayPersonality.color, borderRadius: 'var(--radius-md)', letterSpacing: '0.04em' }}
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Action button */}
+                  <button
+                    onClick={() => {
+                      onViewPersonality(displayPersonality.id);
+                      setSelectedPersonality(null);
+                    }}
+                    className="btn-primary w-full py-4 text-base"
+                  >
+                    查看完整报告
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
