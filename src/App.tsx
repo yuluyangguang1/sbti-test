@@ -128,6 +128,11 @@ function App() {
       {currentPage === 'rankings' && (
         <RankingsPage onBackHome={handleBackHome} onStartQuiz={handleStartQuiz} />
       )}
+      {!hideNav && (
+        <footer className="text-center py-8 text-xs text-gray-400 select-none">
+          by yuluyangguang
+        </footer>
+      )}
     </div>
   );
 }
