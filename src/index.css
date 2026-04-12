@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Tailwind v4 fix: mx-auto 在 v4 中不生成 margin:auto */
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 @theme {
   --color-sb-black: #0a0a0a;
   --color-sb-dark: #1a1a2e;

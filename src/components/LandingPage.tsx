@@ -40,7 +40,7 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
 
       {/* Hero Section — liquid-glass.org 超大留白 */}
       <div className="flex-1 flex flex-col items-center justify-center px-8 sm:px-12 md:px-16 py-36 sm:py-48 md:py-56 relative z-10">
-        <div className="text-center max-w-2xl mx-auto">
+        <div className="text-center max-w-2xl mx-auto w-full">
           <h1 className="text-8xl sm:text-9xl md:text-[11rem] font-black gradient-text tracking-tighter animate-gentle-float mb-8 sm:mb-10 md:mb-12">
             SBTI
           </h1>
