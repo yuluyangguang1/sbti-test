@@ -39,19 +39,19 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
       </div>
 
       {/* Hero Section — 宽松，无框 */}
-      <div className="flex-1 flex flex-col items-center justify-center px-8 sm:px-12 py-28 sm:py-40 relative z-10">
-        <div className="text-center max-w-xl mx-auto">
-          <h1 className="text-7xl sm:text-9xl md:text-[10rem] font-black gradient-text tracking-tighter animate-gentle-float mb-6 sm:mb-8">
+      <div className="flex-1 flex flex-col items-center justify-center px-8 sm:px-12 md:px-16 py-28 sm:py-40 md:py-48 relative z-10">
+        <div className="text-center max-w-2xl mx-auto">
+          <h1 className="text-7xl sm:text-9xl md:text-[11rem] font-black gradient-text tracking-tighter animate-gentle-float mb-6 sm:mb-8 md:mb-10">
             SBTI
           </h1>
-          <p className="text-xl sm:text-2xl text-gray-800/60 font-light tracking-wide mb-1">
+          <p className="text-xl sm:text-2xl md:text-3xl text-gray-800/60 font-light tracking-wide mb-1">
             Silly Big Personality Test
           </p>
-          <p className="text-base sm:text-lg text-gray-700/30 mb-14 sm:mb-16 tracking-wider">
+          <p className="text-base sm:text-lg md:text-xl text-gray-700/30 mb-14 sm:mb-16 md:mb-20 tracking-wider">
             傻乎乎的大人格测试
           </p>
 
-          <p className="text-lg sm:text-xl text-gray-700/50 leading-[2.0] mb-16 sm:mb-20" style={{ letterSpacing: '0.01em' }}>
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-700/50 leading-[2.0] mb-16 sm:mb-20 md:mb-24" style={{ letterSpacing: '0.01em' }}>
             MBTI 已经过时了，<span className="text-purple-500 font-semibold">SBTI</span> 来了。
             <br />
             <span className="text-base">测出你真实的<span className="text-pink-500">精神状态</span></span>
@@ -73,18 +73,18 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
           </div>
 
           {/* 数字指标 — 液态玻璃胶囊 */}
-          <div className="mt-16 sm:mt-20 flex justify-center gap-5 sm:gap-8">
-            <div className="px-8 py-5 sm:px-10 sm:py-6 text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-purple-500" style={{ letterSpacing: '-0.03em' }}>27</div>
-              <div className="text-xs sm:text-sm text-gray-700/30 mt-1" style={{ letterSpacing: '0.04em' }}>种人格</div>
+          <div className="mt-16 sm:mt-20 md:mt-24 flex justify-center gap-5 sm:gap-8 md:gap-12">
+            <div className="px-8 py-5 sm:px-10 md:px-14 sm:py-6 md:py-8 text-center">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-500" style={{ letterSpacing: '-0.03em' }}>27</div>
+              <div className="text-xs sm:text-sm md:text-base text-gray-700/30 mt-1" style={{ letterSpacing: '0.04em' }}>种人格</div>
             </div>
-            <div className="px-8 py-5 sm:px-10 sm:py-6 text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-pink-500" style={{ letterSpacing: '-0.03em' }}>31</div>
-              <div className="text-xs sm:text-sm text-gray-700/30 mt-1" style={{ letterSpacing: '0.04em' }}>道题目</div>
+            <div className="px-8 py-5 sm:px-10 md:px-14 sm:py-6 md:py-8 text-center">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-500" style={{ letterSpacing: '-0.03em' }}>31</div>
+              <div className="text-xs sm:text-sm md:text-base text-gray-700/30 mt-1" style={{ letterSpacing: '0.04em' }}>道题目</div>
             </div>
-            <div className="px-8 py-5 sm:px-10 sm:py-6 text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-blue-500" style={{ letterSpacing: '-0.03em' }}>15</div>
-              <div className="text-xs sm:text-sm text-gray-700/30 mt-1" style={{ letterSpacing: '0.04em' }}>个维度</div>
+            <div className="px-8 py-5 sm:px-10 md:px-14 sm:py-6 md:py-8 text-center">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-500" style={{ letterSpacing: '-0.03em' }}>15</div>
+              <div className="text-xs sm:text-sm md:text-base text-gray-700/30 mt-1" style={{ letterSpacing: '0.04em' }}>个维度</div>
             </div>
           </div>
 
@@ -98,9 +98,9 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
       </div>
 
       {/* 特殊人格展示区 — 彩蛋 */}
-      <div className="px-8 sm:px-12 pb-28 sm:pb-36 relative z-10">
-        <div className="max-w-2xl mx-auto">
-          <h3 className="text-center text-2xl sm:text-3xl font-bold text-gray-800 mb-3" style={{ letterSpacing: '-0.03em' }}>隐藏人格</h3>
+      <div className="px-8 sm:px-12 md:px-16 pb-28 sm:pb-36 md:pb-44 relative z-10">
+        <div className="max-w-3xl mx-auto">
+          <h3 className="text-center text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3" style={{ letterSpacing: '-0.03em' }}>隐藏人格</h3>
           <p className="text-center text-base text-gray-700/30 mb-12 sm:mb-14" style={{ letterSpacing: '0.01em' }}>有些人格，不是你想当就能当的</p>
 
           <div className="grid grid-cols-3 gap-5 sm:gap-6">
@@ -126,8 +126,8 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
       </div>
 
       {/* 五套模型 — 轻量展示 */}
-      <div className="px-8 sm:px-12 pb-24 sm:pb-32 relative z-10">
-        <div className="max-w-2xl mx-auto">
+      <div className="px-8 sm:px-12 md:px-16 pb-24 sm:pb-32 md:pb-40 relative z-10">
+        <div className="max-w-3xl mx-auto">
           <h3 className="text-center text-xl sm:text-2xl font-bold text-gray-800 mb-3" style={{ letterSpacing: '-0.03em' }}>五套人格模型</h3>
           <p className="text-center text-sm sm:text-base text-gray-700/30 mb-10 sm:mb-14" style={{ letterSpacing: '0.01em' }}>3 维度 × 3 落点，画出你的十五维人格指纹</p>
 
@@ -160,8 +160,8 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
       </div>
 
       {/* 人格预览 — 单张大卡片 */}
-      <div className="px-8 sm:px-12 pb-28 sm:pb-36 relative z-10">
-        <div className="max-w-2xl mx-auto">
+      <div className="px-8 sm:px-12 md:px-16 pb-28 sm:pb-36 md:pb-44 relative z-10">
+        <div className="max-w-3xl mx-auto">
           <h3 className="text-center text-sm text-gray-700/25 mb-10 sm:mb-12 tracking-widest" style={{ letterSpacing: '0.08em' }}>
             你可能是什么人格？
           </h3>
@@ -187,9 +187,9 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
       </div>
 
       {/* CTA — 液态玻璃号召 */}
-      <div className="px-8 sm:px-12 py-28 sm:py-40 text-center relative z-10">
-        <h3 className="text-3xl sm:text-4xl font-bold gradient-text animate-shimmer mb-6" style={{ letterSpacing: '-0.03em' }}>准备好了吗？</h3>
-        <p className="text-base sm:text-lg text-gray-700/30 mb-14" style={{ letterSpacing: '0.01em' }}>只需 2 分钟，测出你真实的互联网精神状态</p>
+      <div className="px-8 sm:px-12 md:px-16 py-28 sm:py-40 md:py-48 text-center relative z-10">
+        <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text animate-shimmer mb-6 md:mb-8" style={{ letterSpacing: '-0.03em' }}>准备好了吗？</h3>
+        <p className="text-base sm:text-lg md:text-xl text-gray-700/30 mb-14 md:mb-18" style={{ letterSpacing: '0.01em' }}>只需 2 分钟，测出你真实的互联网精神状态</p>
         <button
           onClick={onStartQuiz}
           className="btn-primary text-lg sm:text-xl px-14 py-5 sm:py-6 animate-pulse-glow"

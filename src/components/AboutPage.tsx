@@ -27,14 +27,14 @@ const mbtiCompare = [
 
 export function AboutPage({ onBackHome }: AboutPageProps) {
   return (
-    <div className="min-h-screen px-8 sm:px-12 py-16 sm:py-24 relative">
+    <div className="min-h-screen px-8 sm:px-12 md:px-16 py-16 sm:py-24 relative">
       <div className="liquid-bg">
         <div className="liquid-blob" />
         <div className="liquid-blob" />
         <div className="liquid-blob" />
       </div>
 
-      <div className="max-w-2xl mx-auto relative z-10">
+      <div className="max-w-3xl mx-auto relative z-10">
         <h1 className="text-3xl sm:text-4xl font-bold gradient-text animate-shimmer text-center mb-4" style={{ letterSpacing: '-0.03em' }}>
           SBTI 是什么？
         </h1>

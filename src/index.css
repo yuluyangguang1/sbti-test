@@ -61,6 +61,7 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   letter-spacing: var(--text-tracking-normal);
+  line-height: 1.9;
 }
 
 /* ========== 移动端全局优化 ========== */
@@ -562,7 +563,15 @@ body {
   .quiz-option {
     border-radius: var(--radius-xl);
     padding-left: 52px !important;
-    padding-right: 20px !important;
+    padding-right: 36px !important;
+  }
+}
+
+/* ========== 桌面端答题选项更宽敞 ========== */
+@media (min-width: 768px) {
+  .quiz-option {
+    padding-left: 72px !important;
+    padding-right: 48px !important;
   }
 }
 

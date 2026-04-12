@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
-import { questions, personalities } from '../data';
+import { questions, personalities, dimensionDefs } from '../data';
 
 interface QuizPageProps {
   onFinish: (personalityId: string, scores: Record<string, number>) => void;
@@ -8,6 +8,9 @@ interface QuizPageProps {
 
 // 每次测试从题库抽取的题目数量
 const QUIZ_LENGTH = 31;
+
+// 选项字母前缀
+const optionLetters = ['A', 'B', 'C', 'D', 'E', 'F'];
 
 // 每题的趣味提示语
 const funHints = [
@@ -66,6 +69,29 @@ function shuffleArray<T>(arr: T[]): T[] {
   return shuffled;
 }
 
+// 从题目的 scores key 推断维度标签
+function getDimensionLabel(question: typeof questions[0]): string | null {
+  const scoreKeys = new Set<string>();
+  for (const opt of question.options) {
+    for (const key of Object.keys(opt.scores)) {
+      scoreKeys.add(key.replace(/\s/g, ''));
+    }
+  }
+  // 找到匹配的维度定义
+  const matchedDim = dimensionDefs.find(d => scoreKeys.has(d.key));
+  if (matchedDim) {
+    return `${matchedDim.model} ${matchedDim.label}`;
+  }
+  return null;
+}
+
+// 存储每题的答案历史，支持回退
+interface AnswerRecord {
+  questionIndex: number;
+  optionIndex: number;
+  scoresBefore: Record<string, number>;
+}
+
 export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [scores, setScores] = useState<Record<string, number>>({});
@@ -74,11 +100,15 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
   const [showLoading, setShowLoading] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
   const [shuffleKey, setShuffleKey] = useState(0);
+  const [answerHistory, setAnswerHistory] = useState<AnswerRecord[]>([]);
 
-  // 从题库随机抽取指定数量的题目
+  // 从题库随机抽取指定数量的题目（最后一题固定放末尾）
   const shuffledQuestions = useMemo(() => {
-    const shuffled = shuffleArray(questions);
-    return shuffled.slice(0, QUIZ_LENGTH);
+    const lastQ = questions.find(q => q.id === 31);
+    const rest = questions.filter(q => q.id !== 31);
+    const shuffled = shuffleArray(rest).slice(0, QUIZ_LENGTH - 1);
+    if (lastQ) shuffled.push(lastQ);
+    return shuffled;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shuffleKey]);
 
@@ -89,6 +119,7 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
     setScores({});
     setSelectedOption(null);
     setIsTransitioning(false);
+    setAnswerHistory([]);
   }, []);
 
   // 加载动画文案轮播
@@ -111,13 +142,21 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
     }
   }, [loadingStep, showLoading, scores, onFinish]);
 
+  // 选择选项（自动跳转下一题）
   const handleSelectOption = useCallback((optionIndex: number) => {
     if (isTransitioning) return;
-
     setSelectedOption(optionIndex);
     setIsTransitioning(true);
 
-    // Accumulate scores
+    // 记录答案历史
+    const record: AnswerRecord = {
+      questionIndex: currentQuestion,
+      optionIndex,
+      scoresBefore: { ...scores },
+    };
+    setAnswerHistory(prev => [...prev, record]);
+
+    // 累计分数
     const question = shuffledQuestions[currentQuestion];
     const option = question.options[optionIndex];
     const newScores = { ...scores };
@@ -127,7 +166,7 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
     }
     setScores(newScores);
 
-    // Transition to next question or finish
+    // 跳转到下一题或结束
     setTimeout(() => {
       if (currentQuestion < shuffledQuestions.length - 1) {
         setCurrentQuestion(prev => prev + 1);
@@ -137,20 +176,25 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
         setShowLoading(true);
         setLoadingStep(0);
       }
-    }, 500);
-  }, [currentQuestion, isTransitioning, scores, onFinish, shuffledQuestions]);
+    }, 400);
+  }, [currentQuestion, isTransitioning, scores, shuffledQuestions]);
 
-  // 上一题
+  // 上一题（恢复分数）
   const handlePrevious = useCallback(() => {
-    if (currentQuestion > 0 && !isTransitioning) {
-      setCurrentQuestion(prev => prev - 1);
-      setSelectedOption(null);
+    if (currentQuestion === 0 || isTransitioning) return;
+    const lastAnswer = answerHistory[answerHistory.length - 1];
+    if (lastAnswer && lastAnswer.questionIndex === currentQuestion - 1) {
+      setScores(lastAnswer.scoresBefore);
+      setAnswerHistory(prev => prev.slice(0, -1));
     }
-  }, [currentQuestion, isTransitioning]);
+    setCurrentQuestion(prev => prev - 1);
+    setSelectedOption(null);
+  }, [currentQuestion, isTransitioning, answerHistory]);
 
   const progress = ((currentQuestion + 1) / shuffledQuestions.length) * 100;
   const question = shuffledQuestions[currentQuestion];
   const hint = funHints[currentQuestion % funHints.length];
+  const dimLabel = getDimensionLabel(question);
 
   if (showLoading) {
     return (
@@ -187,7 +231,7 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col px-8 sm:px-12 py-16 sm:py-24 relative">
+    <div className="min-h-screen flex flex-col px-8 sm:px-12 py-12 sm:py-20 relative">
       {/* 液态背景 */}
       <div className="liquid-bg">
         <div className="liquid-blob" />
@@ -196,30 +240,30 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
       </div>
 
       {/* 顶部导航：返回首页 + 重新随机 */}
-      <div className="max-w-xl mx-auto w-full mb-10 relative z-10 flex justify-between items-center">
+      <div className="max-w-2xl mx-auto w-full mb-8 relative z-10 flex justify-between items-center">
         <button
           onClick={onBackHome}
           className="text-sm text-gray-700/30 hover:text-gray-700/60 transition-colors"
           style={{ letterSpacing: '0.01em' }}
         >
-          ← 返回首页
+          返回首页
         </button>
         <button
           onClick={handleReshuffle}
           className="text-sm text-gray-700/30 hover:text-purple-500 transition-colors"
           style={{ letterSpacing: '0.01em' }}
         >
-          🎲 重新随机题序
+          重新随机题序
         </button>
       </div>
 
       {/* Progress */}
-      <div className="max-w-xl mx-auto w-full mb-16 sm:mb-24 relative z-10">
-        <div className="flex justify-between items-center mb-4">
-          <span className="text-sm sm:text-base text-gray-700/40" style={{ letterSpacing: '0.01em' }}>
+      <div className="max-w-2xl mx-auto w-full mb-12 sm:mb-16 relative z-10">
+        <div className="flex justify-between items-center mb-3">
+          <span className="text-sm text-gray-700/40" style={{ letterSpacing: '0.01em' }}>
             第 {currentQuestion + 1} / {shuffledQuestions.length} 题
           </span>
-          <span className="text-sm sm:text-base text-gray-700/40 font-medium" style={{ letterSpacing: '0.04em' }}>
+          <span className="text-sm text-gray-700/40 font-medium" style={{ letterSpacing: '0.04em' }}>
             {Math.round(progress)}%
           </span>
         </div>
@@ -231,33 +275,47 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
       {/* Question */}
       <div className="flex-1 flex items-center justify-center relative z-10">
         <div
-          className={`max-w-xl mx-auto w-full transition-all duration-500 ${
+          className={`max-w-2xl mx-auto w-full transition-all duration-400 ${
             isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
           }`}
         >
-          {/* 题号装饰 — 液态玻璃标签 */}
-          <div className="text-center mb-10 sm:mb-12">
-            <span className="glass-tag inline-flex items-center justify-center px-5 py-2 text-sm sm:text-base font-bold text-purple-600" style={{ letterSpacing: '0.04em', borderRadius: 'var(--radius-md)' }}>
-              Q{currentQuestion + 1}
-            </span>
-          </div>
+          {/* 维度标签 */}
+          {dimLabel && (
+            <div className="text-center mb-6">
+              <span className="glass-tag inline-flex items-center justify-center px-4 py-1.5 text-xs sm:text-sm font-medium text-purple-600/70" style={{ borderRadius: 'var(--radius-md)', letterSpacing: '0.04em' }}>
+                {dimLabel}
+              </span>
+            </div>
+          )}
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-14 sm:mb-18 text-center leading-[1.5] px-2" style={{ letterSpacing: '-0.02em' }}>
+          {/* 题目 */}
+          <h2 className="text-xl sm:text-2xl md:text-[28px] md:leading-[2.2] font-bold text-gray-800 mb-12 sm:mb-16 text-center leading-[2] px-2" style={{ letterSpacing: '-0.01em' }}>
             {question.text}
           </h2>
 
-          <div className="space-y-7 sm:space-y-8">
+          {/* 选项列表 */}
+          <div className="space-y-4 sm:space-y-5 md:space-y-6">
             {question.options.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleSelectOption(index)}
-                className={`quiz-option w-full text-left py-7 sm:py-8 active:scale-[0.99] ${
-                  selectedOption === index ? 'selected scale-[1.01]' : ''
+                className={`quiz-option w-full text-left py-5 sm:py-6 md:py-7 active:scale-[0.99] transition-all duration-200 ${
+                  selectedOption === index ? 'selected' : ''
                 }`}
                 disabled={isTransitioning}
               >
-                <span className="text-lg sm:text-xl text-gray-800 leading-[1.85] relative z-10" style={{ letterSpacing: '0.01em' }}>
-                  {option.label}
+                {/* A/B/C 字母前缀 + 选项文字 */}
+                <span className="flex items-start gap-4 relative z-10">
+                  <span className={`flex-shrink-0 w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center text-sm md:text-base font-bold transition-all duration-200 ${
+                    selectedOption === index
+                      ? 'bg-purple-500 text-white shadow-md'
+                      : 'bg-gray-100 text-gray-500'
+                  }`}>
+                    {optionLetters[index]}
+                  </span>
+                  <span className="text-lg sm:text-xl md:text-[22px] md:leading-[2.2] text-gray-800 leading-[2] pt-0.5" style={{ letterSpacing: '0.01em' }}>
+                    {option.label}
+                  </span>
                 </span>
               </button>
             ))}
@@ -265,23 +323,28 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
         </div>
       </div>
 
-      {/* Bottom nav: previous + hint */}
-      <div className="max-w-xl mx-auto w-full mt-16 sm:mt-20 relative z-10 flex justify-between items-end">
-        <button
-          onClick={handlePrevious}
-          disabled={currentQuestion === 0 || isTransitioning}
-          className={`text-sm transition-colors ${
-            currentQuestion === 0 || isTransitioning
-              ? 'text-gray-700/10 cursor-not-allowed'
-              : 'text-gray-700/30 hover:text-gray-700/60'
-          }`}
-          style={{ letterSpacing: '0.01em' }}
-        >
-          ← 上一题
-        </button>
-        <p className="text-sm sm:text-base text-gray-700/25 animate-fade-in" key={currentQuestion} style={{ letterSpacing: '0.01em' }}>
-          💡 {hint}
+      {/* 底部导航：上一题 / 提示 */}
+      <div className="max-w-2xl mx-auto w-full mt-12 sm:mt-16 relative z-10">
+        {/* 提示语 */}
+        <p className="text-center text-sm text-gray-700/25 mb-6 animate-fade-in" key={currentQuestion} style={{ letterSpacing: '0.01em' }}>
+          {hint}
         </p>
+
+        <div className="flex justify-center">
+          {/* 上一题 */}
+          <button
+            onClick={handlePrevious}
+            disabled={currentQuestion === 0 || isTransitioning}
+            className={`text-sm transition-colors px-4 py-2.5 rounded-xl ${
+              currentQuestion === 0 || isTransitioning
+                ? 'text-gray-700/10 cursor-not-allowed'
+                : 'text-gray-700/40 hover:text-gray-700/70 hover:bg-white/40'
+            }`}
+            style={{ letterSpacing: '0.01em' }}
+          >
+            ← 上一题
+          </button>
+        </div>
       </div>
     </div>
   );
