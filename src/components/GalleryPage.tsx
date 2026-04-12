@@ -106,7 +106,7 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
             <div
               key={p.id}
               onClick={() => setSelectedPersonality(p.id)}
-              className={`glass-card glass-card-hover !p-9 sm:!p-10 lg:!p-12 cursor-pointer animate-card-enter ${
+              className={`glass-card glass-card-hover cursor-pointer animate-card-enter ${
                 selectedPersonality === p.id ? 'ring-1 ring-purple-400/50' : ''
               }`}
               style={{

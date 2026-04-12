@@ -17,7 +17,7 @@ export function SimilarPersonalities({ personality, onViewPersonality }: Similar
   if (similarTypes.length === 0) return null;
 
   return (
-    <div className="glass-card !p-8 sm:!p-10">
+    <div className="glass-card" style={{ padding: '48px 44px' }}>
       <div className="relative z-10">
         <h3 className="text-base sm:text-lg font-bold text-black/80 mb-1">和你很像的人</h3>
         <p className="text-xs sm:text-sm text-black/40 mb-4 sm:mb-5">

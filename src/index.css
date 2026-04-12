@@ -25,8 +25,8 @@
   /* 间距体系 — Apple liquid-glass.org 级呼吸感 */
   --space-section: 120px;    /* 模块/section 间距 */
   --space-section-sm: 80px;  /* 紧凑 section 间距 */
-  --space-card-p: 32px;      /* 卡片内边距(移动端) */
-  --space-card-p-lg: 56px;   /* 卡片内边距(桌面端) */
+  --space-card-p: 44px;      /* 卡片内边距(移动端) */
+  --space-card-p-lg: 64px;   /* 卡片内边距(桌面端) */
   --space-gap: 28px;         /* 卡片/元素间距 */
   --space-page-x: 24px;      /* 页面左右基础留白(移动端) */
   --space-page-x-lg: 40px;   /* 页面左右基础留白(桌面端) */
@@ -79,7 +79,7 @@ body {
     padding-bottom: env(safe-area-inset-bottom, 0);
   }
   .glass-card {
-    padding: 40px !important;
+    padding: 44px !important;
     border-radius: var(--radius-xl) !important;
   }
   .result-section {
@@ -566,6 +566,20 @@ body {
     padding-right: 40px !important;
     padding-top: 24px !important;
     padding-bottom: 24px !important;
+  }
+}
+
+/* ========== 桌面端卡片加大内边距 ========== */
+@media (min-width: 768px) {
+  .glass-card {
+    padding: 64px !important;
+  }
+}
+
+/* ========== 大屏卡片更宽敞 ========== */
+@media (min-width: 1024px) {
+  .glass-card {
+    padding: 72px !important;
   }
 }
 

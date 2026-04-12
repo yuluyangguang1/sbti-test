@@ -82,7 +82,7 @@ export function DimensionFingerprint({ personality }: DimensionFingerprintProps)
 
       {/* 每个模型一个卡片 */}
       {groupedDimensions.map((group) => (
-        <div key={group.modelKey} className="glass-card !p-7 sm:!p-10">
+        <div key={group.modelKey} className="glass-card" style={{ padding: '44px 40px' }}>
           <div className="relative z-10">
           {/* 模型头部 */}
           <div className="mb-5">
@@ -131,7 +131,7 @@ export function DimensionFingerprint({ personality }: DimensionFingerprintProps)
       ))}
 
       {/* 总览条 */}
-      <div className="glass-card !p-7 sm:!p-10">
+      <div className="glass-card" style={{ padding: '44px 40px' }}>
         <div className="relative z-10">
         <div className="text-center mb-3">
           <span className="text-xs text-black/35">维度落点总览</span>

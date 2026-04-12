@@ -52,7 +52,7 @@ export function MbtiComparison({ personality }: MbtiComparisonProps) {
   const whyText = generateWhyText(personality);
 
   return (
-    <div className="glass-card !p-8 sm:!p-10">
+    <div className="glass-card" style={{ padding: '48px 44px' }}>
       <div className="relative z-10">
       {/* Title */}
       <h3 className="text-base sm:text-lg font-bold text-black/80 mb-1">
