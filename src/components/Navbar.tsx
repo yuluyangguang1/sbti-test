@@ -26,8 +26,6 @@ export function Navbar({ currentPage, onNavigate, onStartQuiz }: NavbarProps) {
         background: 'rgba(238, 240, 247, 0.68)',
         backdropFilter: 'blur(40px) saturate(180%)',
         WebkitBackdropFilter: 'blur(40px) saturate(180%)',
-        borderBottom: '0.5px solid rgba(255,255,255,0.60)',
-        boxShadow: '0 1px 16px rgba(0,0,0,0.04), 0 -0.5px 0 rgba(0,0,0,0.02) inset',
       }}>
         <div className="max-w-5xl mx-auto px-5 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
           {/* Logo */}
