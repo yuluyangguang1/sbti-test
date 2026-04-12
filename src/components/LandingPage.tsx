@@ -98,10 +98,10 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
       </div>
 
       {/* 特殊人格展示区 — 彩蛋 */}
-      <div className="px-8 sm:px-12 md:px-16 pb-36 sm:pb-44 md:pb-52 relative z-10 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h3 className="text-center text-3xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4" style={{ letterSpacing: '-0.03em' }}>隐藏人格</h3>
-          <p className="text-center text-base sm:text-base text-gray-700/30 mb-14 sm:mb-16" style={{ letterSpacing: '0.01em' }}>有些人格，不是你想当就能当的</p>
+      <div className="px-8 sm:px-12 md:px-16 pb-36 sm:pb-44 md:pb-52 relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
+          <h3 className="text-3xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4" style={{ letterSpacing: '-0.03em' }}>隐藏人格</h3>
+          <p className="text-base sm:text-base text-gray-700/30 mb-14 sm:mb-16" style={{ letterSpacing: '0.01em' }}>有些人格，不是你想当就能当的</p>
 
           <div className="grid grid-cols-3 gap-6 sm:gap-8">
             {specialPersonalities.map((sp, idx) => (
@@ -126,8 +126,8 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
       </div>
 
       {/* 人格预览 — 单张大卡片 */}
-      <div className="px-8 sm:px-12 md:px-16 pb-36 sm:pb-44 md:pb-52 relative z-10 text-center">
-        <div className="max-w-3xl mx-auto">
+      <div className="px-8 sm:px-12 md:px-16 pb-36 sm:pb-44 md:pb-52 relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
           <h3 className="text-center text-sm text-gray-700/25 mb-12 sm:mb-14 tracking-widest" style={{ letterSpacing: '0.08em' }}>
             你可能是什么人格？
           </h3>
