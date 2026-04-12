@@ -40,19 +40,22 @@ export function Navbar({ currentPage, onNavigate, onStartQuiz }: NavbarProps) {
         </button>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-5">
           {navItems.map(item => (
             <button
               key={item.key}
               onClick={() => onNavigate(item.key)}
-              className={`px-3 py-1.5 rounded-lg text-sm transition-all duration-200 ${
+              className={`relative text-sm transition-all duration-200 ${
                 currentPage === item.key
-                  ? 'text-purple-600 font-semibold bg-purple-500/10'
-                  : 'text-gray-700/50 hover:text-gray-800 hover:bg-white/40'
+                  ? 'text-purple-600 font-semibold'
+                  : 'text-gray-700/45 hover:text-gray-800'
               }`}
               style={{ letterSpacing: '0.01em' }}
             >
               {item.label}
+              {currentPage === item.key && (
+                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-purple-500" />
+              )}
             </button>
           ))}
         </div>

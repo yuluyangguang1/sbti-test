@@ -428,12 +428,12 @@ export const questions: Question[] = [
   },
   {
     id: 5,
-    text: "你觉得自己在朋友圈里是什么角色？",
+    text: "群聊突然安静了三秒，你？",
     options: [
-      { label: "气氛担当，没有我不热闹", scores: { hhhh: 3, joker: 2, sexy: 1 } },
-      { label: "操心担当，什么都管", scores: { mum: 3, ctrl: 2, atmer: 1 } },
-      { label: "存在感担当...虽然没人发现", scores: { solo: 3, dead: 2, imfw: 1 } },
-      { label: "摇钱树担当，请我吃饭", scores: { atmer: 3, diors: 2, poor: 1 } },
+      { label: "立刻甩个表情包救场，冷场是不可能冷场的", scores: { hhhh: 3, joker: 2, sexy: 1 } },
+      { label: "趁机发条消息通知大家明天的事，终于轮到我说话了", scores: { mum: 3, ctrl: 2, atmer: 1 } },
+      { label: "安静挺好的，反正我一直在潜水", scores: { solo: 3, dead: 2, imfw: 1 } },
+      { label: "发个红包！看看谁还活着", scores: { atmer: 3, diors: 2, poor: 1 } },
     ]
   },
   {
@@ -458,12 +458,12 @@ export const questions: Question[] = [
   },
   {
     id: 8,
-    text: "买东西时的你？",
+    text: "深夜刷到一件超想买的东西，你？",
     options: [
-      { label: "大手大脚，先买了再说", scores: { atmer: 3, gogo: 1, woc: 1 } },
-      { label: "疯狂比价，研究三天才下单", scores: { poor: 3, think: 2, ctrl: 1 } },
-      { label: "需要吗？不需要。买不买？买！", scores: { imfw: 2, imsb: 2, atmer: 1 } },
-      { label: "逛了半天，最后什么都没买", scores: { diors: 2, poor: 2, imfw: 1 } },
+      { label: "秒下单！手速比我脑子快", scores: { atmer: 3, gogo: 1, woc: 1 } },
+      { label: "截图放进购物车，比价三天等打折再入手", scores: { poor: 3, think: 2, ctrl: 1 } },
+      { label: "不需要。买不买？买！然后第二天退货", scores: { imfw: 2, imsb: 2, atmer: 1 } },
+      { label: "加收藏夹吃灰，下次想起来已经是半年后", scores: { diors: 2, poor: 2, imfw: 1 } },
     ]
   },
   {
@@ -488,12 +488,12 @@ export const questions: Question[] = [
   },
   {
     id: 11,
-    text: "有人当众夸你，你会？",
+    text: "年会上被领导当众点名夸奖，你？",
     options: [
-      { label: "从容接受，保持微笑", scores: { ctrl: 3, sexy: 2, boss: 1 } },
-      { label: "不好意思到脸红", scores: { imfw: 3, imsb: 2, lover: 1 } },
-      { label: "立刻回夸对方", scores: { joker: 2, mum: 2, atmer: 1 } },
-      { label: "心里美滋滋但嘴上说没有没有", scores: { imsb: 3, fake: 2, ojbk: 1 } },
+      { label: "淡定站起来：谢谢，应该的", scores: { ctrl: 3, sexy: 2, boss: 1 } },
+      { label: "脸红到脖子根，恨不得钻到桌子底下", scores: { imfw: 3, imsb: 2, lover: 1 } },
+      { label: "立刻反向输出：领导更厉害！全靠团队！", scores: { joker: 2, mum: 2, atmer: 1 } },
+      { label: "内心狂喜但表面：哎呀没有没有（嘴角已经飞到太阳系）", scores: { imsb: 3, fake: 2, ojbk: 1 } },
     ]
   },
   {
@@ -538,22 +538,22 @@ export const questions: Question[] = [
   },
   {
     id: 16,
-    text: "你在团队中通常扮演什么角色？",
+    text: "团建活动需要分组PK，你？",
     options: [
-      { label: "决策者，说了算", scores: { boss: 3, ctrl: 2, diors: 1 } },
-      { label: "执行者，让我来", scores: { mum: 3, malo: 2, atmer: 1 } },
-      { label: "军师，我来分析", scores: { think: 3, ctrl: 2, fake: 1 } },
-      { label: "气氛组，我负责加油", scores: { hhhh: 3, joker: 2, woc: 1 } },
+      { label: "我来带！听我指挥保赢", scores: { boss: 3, ctrl: 2, diors: 1 } },
+      { label: "我来干！体力活技术活都行，别让我说话就好", scores: { mum: 3, malo: 2, atmer: 1 } },
+      { label: "我来分析规则找漏洞，合法开挂", scores: { think: 3, ctrl: 2, fake: 1 } },
+      { label: "我在旁边喊加油！拍手！递水！专业啦啦队", scores: { hhhh: 3, joker: 2, woc: 1 } },
     ]
   },
   {
     id: 17,
-    text: "面对一个完全不会的任务，你会？",
+    text: "老板突然丢给你一个你完全没接触过的项目，你？",
     options: [
-      { label: "硬上，不会就学", scores: { gogo: 3, boss: 2, diors: 1 } },
-      { label: "找人帮忙", scores: { atmer: 2, mum: 2, lover: 1 } },
-      { label: "先拖延再说", scores: { dead: 3, zzzz: 2, malo: 1 } },
-      { label: "查资料研究到天亮", scores: { think: 3, imfw: 2, ctrl: 1 } },
+      { label: "干！不会就学，谁还不是从零开始的", scores: { gogo: 3, boss: 2, diors: 1 } },
+      { label: "赶紧拉人入坑，找懂的人一起搞", scores: { atmer: 2, mum: 2, lover: 1 } },
+      { label: "先放着...万一是老板随口说的呢...对吧", scores: { dead: 3, zzzz: 2, malo: 1 } },
+      { label: "搜教程翻文档肝到凌晨三点，搞不定不睡觉", scores: { think: 3, imfw: 2, ctrl: 1 } },
     ]
   },
   {
@@ -568,42 +568,42 @@ export const questions: Question[] = [
   },
   {
     id: 19,
-    text: "你最想对说的一句话是？",
+    text: "给你一个能对全世界喊话的喇叭，你想说什么？",
     options: [
-      { label: "对自己：辛苦了", scores: { imfw: 3, solo: 2, joker: 1 } },
-      { label: "对朋友：谢谢你们", scores: { thank: 3, lover: 2, mum: 1 } },
-      { label: "对老板：我不干了", scores: { malo: 3, dead: 2, fuck: 2 } },
-      { label: "对世界：你欠我的", scores: { shit: 3, drunk: 2, diors: 1 } },
+      { label: "大家都辛苦了，抱抱你们", scores: { imfw: 3, solo: 2, joker: 1 } },
+      { label: "谢谢每一个对我好过的人！！！", scores: { thank: 3, lover: 2, mum: 1 } },
+      { label: "我不想上班！！！！！！", scores: { malo: 3, dead: 2, fuck: 2 } },
+      { label: "这个世界欠我一个道歉", scores: { shit: 3, drunk: 2, diors: 1 } },
     ]
   },
   {
     id: 20,
-    text: "恋爱中的你是什么样的？",
+    text: "喜欢的人发了一条暧昧消息，你？",
     options: [
-      { label: "全身心投入，爱得很满", scores: { lover: 3, atmer: 2, mum: 1 } },
-      { label: "佛系，有就好好谈，没有也行", scores: { ojbk: 3, monk: 2, solo: 1 } },
-      { label: "嘴上不在意，心里想很多", scores: { fake: 3, think: 2, imsb: 1 } },
-      { label: "恋爱？什么是恋爱？", scores: { dead: 3, malo: 2, solo: 1 } },
+      { label: "秒回！而且字数比对方多三倍！", scores: { lover: 3, atmer: 2, mum: 1 } },
+      { label: "哦，还行吧（内心已经在放烟花）", scores: { ojbk: 3, monk: 2, solo: 1 } },
+      { label: "斟酌半小时措辞，最后回了个嗯", scores: { fake: 3, think: 2, imsb: 1 } },
+      { label: "恋爱？消息？我的手机只有工作通知", scores: { dead: 3, malo: 2, solo: 1 } },
     ]
   },
   {
     id: 21,
-    text: "以下哪句话最能代表你？",
+    text: `面试官问"你最大的缺点是什么"，你？`,
     options: [
-      { label: "我很强，我知道", scores: { boss: 3, sexy: 2, ctrl: 1 } },
-      { label: "我很菜，我也知道", scores: { imfw: 3, imsb: 2, ohno: 1 } },
-      { label: "我不知道我强不强", scores: { think: 2, fake: 2, ojbk: 1 } },
-      { label: "强不强有什么关系", scores: { monk: 3, malo: 2, hhhh: 1 } },
+      { label: "太追求完美（标准答案我背过）", scores: { boss: 3, sexy: 2, ctrl: 1 } },
+      { label: "我缺点太多了，你要从哪个开始听", scores: { imfw: 3, imsb: 2, ohno: 1 } },
+      { label: "嗯...让我想想...（思考五分钟还没说话）", scores: { think: 2, fake: 2, ojbk: 1 } },
+      { label: "缺点？我不觉得我有缺点，这算吗", scores: { monk: 3, malo: 2, hhhh: 1 } },
     ]
   },
   {
     id: 22,
-    text: "你觉得自己最大的优点是？",
+    text: "朋友婚礼上让你上台说两句，你？",
     options: [
-      { label: "真诚善良", scores: { atmer: 2, mum: 2, thank: 1 } },
-      { label: "聪明有脑子", scores: { ctrl: 2, think: 2, boss: 1 } },
-      { label: "好相处不记仇", scores: { hhhh: 2, ojbk: 2, mum: 1 } },
-      { label: "我...有优点吗？", scores: { imfw: 3, ohno: 2, imsb: 1 } },
+      { label: "拿起话筒就是一顿输出，感动全场", scores: { atmer: 2, mum: 2, thank: 1 } },
+      { label: "冷幽默开场，全场笑翻然后新郎新娘也笑了", scores: { ctrl: 2, think: 2, boss: 1 } },
+      { label: "说得磕磕巴巴但是很真诚，底下人全哭了", scores: { hhhh: 2, ojbk: 2, mum: 1 } },
+      { label: "我？？？为什么是我？？？我紧张到失语", scores: { imfw: 3, ohno: 2, imsb: 1 } },
     ]
   },
   {
@@ -628,12 +628,12 @@ export const questions: Question[] = [
   },
   {
     id: 25,
-    text: "如果用一个词形容你的人生？",
+    text: "用一句话总结你目前的人生进度条？",
     options: [
-      { label: "还行", scores: { ojbk: 3, monk: 2, fake: 1 } },
-      { label: "太难了", scores: { shit: 2, dead: 2, drunk: 1 } },
-      { label: "刺激", scores: { woc: 3, gogo: 2, sexy: 1 } },
-      { label: "哈哈哈哈哈", scores: { hhhh: 3, joker: 2, imsb: 1 } },
+      { label: "缓冲中...一直在缓冲...", scores: { ojbk: 3, monk: 2, fake: 1 } },
+      { label: "报错了！报错了！全是bug！", scores: { shit: 2, dead: 2, drunk: 1 } },
+      { label: "进度条卡在99%就是不走，急死个人", scores: { woc: 3, gogo: 2, sexy: 1 } },
+      { label: "什么进度条？我连游戏都没开始", scores: { hhhh: 3, joker: 2, imsb: 1 } },
     ]
   },
   {
@@ -648,12 +648,12 @@ export const questions: Question[] = [
   },
   {
     id: 27,
-    text: "你觉得自己是MBTI中的什么类型？（蒙的也算）",
+    text: "有人跟你说「我给你测个MBTI」，你？",
     options: [
-      { label: "E人，社交悍匪", scores: { sexy: 2, gogo: 2, hhhh: 1 } },
-      { label: "I人，社恐天花板", scores: { solo: 3, dead: 1, zzzz: 1 } },
-      { label: "T人，理性怪物", scores: { ctrl: 3, think: 2, shit: 1 } },
-      { label: "F人，情感泛滥", scores: { lover: 3, mum: 2, joker: 1 } },
+      { label: "来来来！我是E人我骄傲！", scores: { sexy: 2, gogo: 2, hhhh: 1 } },
+      { label: "测就测吧，反正每次都不一样", scores: { solo: 3, dead: 1, zzzz: 1 } },
+      { label: "MBTI不够精确，你应该用大五人格", scores: { ctrl: 3, think: 2, shit: 1 } },
+      { label: "别测了，我已经自洽到不需要标签了", scores: { lover: 3, mum: 2, joker: 1 } },
     ]
   },
   {
@@ -701,187 +701,187 @@ export const questions: Question[] = [
     id: 32,
     text: "外卖小哥把你的黄焖鸡送成了隔壁老王的螺蛳粉，你？",
     options: [
-      { label: "螺蛳粉就螺蛳粉吧，命运的安排", scores: { ojbk: 3, zzzz: 2, fake: 1 } },
-      { label: "打电话让小哥给我换回来！黄焖鸡在召唤我！", scores: { ctrl: 2, boss: 2, poor: 1 } },
-      { label: "拍照发朋友圈：今天被命运调包了", scores: { woc: 3, joker: 2, shit: 1 } },
-      { label: "小哥风里来雨里去的...算了算了，螺蛳粉也香", scores: { atmer: 2, thank: 2, mum: 1 } },
+      { label: "螺蛳粉就螺蛳粉吧，命运的安排不接受反驳", scores: { ojbk: 3, zzzz: 2, fake: 1 } },
+      { label: "立刻打电话！黄焖鸡在召唤我！必须换回来！", scores: { ctrl: 2, boss: 2, poor: 1 } },
+      { label: "拍照发朋友圈：今日被命运调包，黄焖鸡变螺蛳粉", scores: { woc: 3, joker: 2, shit: 1 } },
+      { label: "小哥风里来雨里去的...算了算了，谁都不容易", scores: { atmer: 2, thank: 2, mum: 1 } },
     ]
   },
   {
     id: 33,
-    text: "KTV局你通常在干嘛？",
+    text: "KTV局话筒到你手里了，你？",
     options: [
-      { label: "话筒焊手上，这首我来！", scores: { sexy: 3, boss: 2, hhhh: 1 } },
-      { label: "缩在角落刷手机等有人叫我才动", scores: { solo: 3, dead: 2, fake: 1 } },
-      { label: "点歌切歌递话筒端茶倒水...我好像服务员", scores: { mum: 3, atmer: 2, thank: 1 } },
-      { label: "坐在暗处喝着酒，看着他们疯，想起些有的没的", scores: { drunk: 3, lover: 2, think: 1 } },
+      { label: "话筒焊死！这首《死了都要爱》就是我的主场！", scores: { sexy: 3, boss: 2, hhhh: 1 } },
+      { label: "赶紧递给旁边的人，我我就负责鼓掌", scores: { solo: 3, dead: 2, fake: 1 } },
+      { label: "先帮大家点歌倒水递纸巾...我好像来当服务员的", scores: { mum: 3, atmer: 2, thank: 1 } },
+      { label: "坐角落喝着酒看他们疯，突然想起一些有的没的", scores: { drunk: 3, lover: 2, think: 1 } },
     ]
   },
   {
     id: 34,
     text: "群聊冷场王发了个冻死人的冷笑话，你？",
     options: [
-      { label: "哈哈哈哈笑到肚子疼！我是真觉得好笑", scores: { hhhh: 3, woc: 2, imsb: 1 } },
-      { label: "反手接一个更冷的，看谁先冻死", scores: { joker: 3, malo: 2, fuck: 1 } },
-      { label: "已读，就当没看见", scores: { monk: 3, solo: 2, dead: 1 } },
-      { label: "发个表情包假装我笑了", scores: { fake: 2, ojbk: 2, thank: 1 } },
+      { label: "哈哈哈哈笑到肚子疼！我是真觉得好笑啊", scores: { hhhh: 3, woc: 2, imsb: 1 } },
+      { label: "反手接一个更冷的，看谁先冻死谁", scores: { joker: 3, malo: 2, fuck: 1 } },
+      { label: "已读不回，就当没看见这个世界", scores: { monk: 3, solo: 2, dead: 1 } },
+      { label: "发个表情包假装我笑了，社交礼仪懂不懂", scores: { fake: 2, ojbk: 2, thank: 1 } },
     ]
   },
   {
     id: 35,
-    text: "你电脑突然蓝屏了，此刻你的灵魂在？",
+    text: "电脑突然蓝屏了，此刻你的灵魂在干嘛？",
     options: [
-      { label: "啊啊啊啊我写了一下午的PPT啊啊啊啊！！！", scores: { ohno: 3, woc: 2, imfw: 1 } },
-      { label: "嗯...冷静，重启大法好", scores: { ctrl: 3, think: 2, monk: 1 } },
-      { label: "太好了，这是宇宙在告诉我今天不用干活", scores: { malo: 3, zzzz: 2, dead: 1 } },
-      { label: "疯狂回忆上次备份是哪辈子的事了", scores: { poor: 2, think: 2, mum: 1 } },
+      { label: "啊啊啊啊我写了一下午的PPT啊啊啊！！！", scores: { ohno: 3, woc: 2, imfw: 1 } },
+      { label: "深呼吸...冷静...重启大法好，心态不能崩", scores: { ctrl: 3, think: 2, monk: 1 } },
+      { label: "太好了！这是宇宙在告诉我今天不用干活！", scores: { malo: 3, zzzz: 2, dead: 1 } },
+      { label: "疯狂回忆上次备份是哪辈子的事了...", scores: { poor: 2, think: 2, mum: 1 } },
     ]
   },
   {
     id: 36,
-    text: "你跟人聊天更想用哪种姿势？",
+    text: "朋友给你连发了5条60秒语音，你？",
     options: [
-      { label: "语音连发！打字太慢了跟不上我嘴", scores: { gogo: 3, sexy: 2, boss: 1 } },
-      { label: "打字，每个字都能斟酌三遍再发", scores: { think: 3, fake: 2, solo: 1 } },
-      { label: "表情包才是我的母语", scores: { hhhh: 3, joker: 2, imsb: 1 } },
-      { label: "能不聊就不聊，求你别找我", scores: { monk: 3, solo: 2, dead: 1 } },
+      { label: "秒点开听！打字太慢了跟不上我的热情", scores: { gogo: 3, sexy: 2, boss: 1 } },
+      { label: "转文字！每句话斟酌三遍再回", scores: { think: 3, fake: 2, solo: 1 } },
+      { label: "回一串表情包，表情包才是我的母语", scores: { hhhh: 3, joker: 2, imsb: 1 } },
+      { label: "假装没看到...求你别找我...", scores: { monk: 3, solo: 2, dead: 1 } },
     ]
   },
   {
     id: 37,
-    text: "有人说你变了，你的内心戏是？",
+    text: "好久不见的亲戚一见面就说「你变了」，你？",
     options: [
-      { label: "啊？哪里变了？我改我改还不行吗", scores: { imfw: 3, thank: 2, ohno: 1 } },
-      { label: "废话，人不变还是人吗", scores: { ctrl: 2, monk: 2, ojbk: 1 } },
-      { label: "等等，我变好了还是变坏了？这个很关键", scores: { think: 3, lover: 2, fake: 1 } },
+      { label: "啊？哪里变了？我改我改还不行吗呜呜", scores: { imfw: 3, thank: 2, ohno: 1 } },
+      { label: "废话，人不变还是人吗？你才没变呢", scores: { ctrl: 2, monk: 2, ojbk: 1 } },
+      { label: "等等...变好了还是变坏了？这个很关键", scores: { think: 3, lover: 2, fake: 1 } },
       { label: "关你啥事？你管得着吗？", scores: { fuck: 3, shit: 2, sexy: 1 } },
     ]
   },
   {
     id: 38,
-    text: "路过一面玻璃墙，你会？",
+    text: "路过商场一面大玻璃墙，你？",
     options: [
-      { label: "停下来欣赏一下这个走路的艺术品", scores: { sexy: 3, hhhh: 2, gogo: 1 } },
-      { label: "低头走过去，别让我看见自己", scores: { imfw: 3, dead: 2, solo: 1 } },
-      { label: "照一下确认发型没乱，打工人的体面", scores: { fake: 2, ctrl: 2, mum: 1 } },
-      { label: "对着自己做个鬼脸然后笑出声", scores: { imsb: 3, joker: 2, malo: 1 } },
+      { label: "停下来欣赏一下这个走路的艺术品（就是我）", scores: { sexy: 3, hhhh: 2, gogo: 1 } },
+      { label: "低头快走过去，别让我看见自己", scores: { imfw: 3, dead: 2, solo: 1 } },
+      { label: "照一下确认发型没乱，打工人的体面不能丢", scores: { fake: 2, ctrl: 2, mum: 1 } },
+      { label: "对着自己做个鬼脸然后笑出声来", scores: { imsb: 3, joker: 2, malo: 1 } },
     ]
   },
   {
     id: 39,
-    text: "突然下暴雨你没带伞，你的选择是？",
+    text: "出门没带伞突然下暴雨，你？",
     options: [
-      { label: "冲！！！跑起来感觉自己就是电影主角", scores: { gogo: 3, diors: 2, imsb: 1 } },
-      { label: "找个屋檐蹲着，跟其他落难人类一起等", scores: { think: 2, ojbk: 2, monk: 1 } },
-      { label: "淋就淋呗，反正也不差这一场", scores: { dead: 3, malo: 2, monk: 1 } },
-      { label: "立刻掏手机打车/叫跑腿送伞，钱能解决的事都不叫事", scores: { ctrl: 2, poor: 2, boss: 1 } },
+      { label: "冲！！！跑起来！我就是电影里那个淋雨的主角！", scores: { gogo: 3, diors: 2, imsb: 1 } },
+      { label: "找个屋檐蹲着，跟其他落难人类一起等雨停", scores: { think: 2, ojbk: 2, monk: 1 } },
+      { label: "淋就淋呗，反正今天已经够倒霉了不差这一场", scores: { dead: 3, malo: 2, monk: 1 } },
+      { label: "立刻掏手机打车！钱能解决的事都不叫事", scores: { ctrl: 2, poor: 2, boss: 1 } },
     ]
   },
   {
     id: 40,
-    text: "手机只剩5%电了，你的求生欲？",
+    text: "手机只剩5%电量你还在外面，你？",
     options: [
       { label: "疯狂找充电器！谁有充电器！！借我！！", scores: { ohno: 3, woc: 2, imfw: 1 } },
-      { label: "冷静关掉所有后台，低电量模式开启，精确计算到家还剩多少", scores: { ctrl: 3, think: 2, poor: 1 } },
-      { label: "没电就没电吧，正好戒手机", scores: { monk: 3, ojbk: 2, dead: 1 } },
-      { label: "趁还有电赶紧发条朋友圈：5%的告白", scores: { sexy: 2, hhhh: 2, woc: 1 } },
+      { label: "冷静关掉所有后台，低电量模式开启，精确算到家还剩多少电", scores: { ctrl: 3, think: 2, poor: 1 } },
+      { label: "没电就没电吧，正好戒手机了", scores: { monk: 3, ojbk: 2, dead: 1 } },
+      { label: "趁还有电赶紧发条朋友圈：5%的告白，我爱你们", scores: { sexy: 2, hhhh: 2, woc: 1 } },
     ]
   },
   {
     id: 41,
-    text: "你打工的节奏更像？",
+    text: "周五下午老板说有个紧急任务周末要交，你？",
     options: [
-      { label: "打仗一样，效率拉满，我完事别人还在热身", scores: { boss: 3, gogo: 2, ctrl: 1 } },
-      { label: "磨刀不误砍柴工，慢工出细活懂不懂", scores: { think: 3, monk: 2, poor: 1 } },
-      { label: "看心情，今天精神好就多干点", scores: { malo: 3, ojbk: 2, fake: 1 } },
-      { label: "deadline才是我的真正老板，不到最后关头我是废物", scores: { zzzz: 3, dead: 2, joker: 1 } },
+      { label: "开干！速战速决，我完事别人还在热身", scores: { boss: 3, gogo: 2, ctrl: 1 } },
+      { label: "磨刀不误砍柴工，先理清思路再动手", scores: { think: 3, monk: 2, poor: 1 } },
+      { label: "看心情，今天精神好就干点，不好就周一再说", scores: { malo: 3, ojbk: 2, fake: 1 } },
+      { label: "deadline才是我亲爹，不到最后关头我是废物", scores: { zzzz: 3, dead: 2, joker: 1 } },
     ]
   },
   {
     id: 42,
-    text: "好朋友生日你送啥？",
+    text: "好闺蜜/铁哥们生日下周就到了，你？",
     options: [
-      { label: "提前一个月开始挑，包装必须仪式感拉满", scores: { mum: 3, thank: 2, lover: 1 } },
-      { label: "红包最实在，感情到了就行", scores: { ctrl: 2, poor: 2, ojbk: 1 } },
-      { label: "转账加句生日快乐，完事", scores: { fake: 2, solo: 2, dead: 1 } },
-      { label: "整一场他们猜不到的惊喜局！", scores: { hhhh: 3, atmer: 2, gogo: 1 } },
+      { label: "提前一个月开始挑！包装必须仪式感拉满", scores: { mum: 3, thank: 2, lover: 1 } },
+      { label: "红包最实在，感情到了就行别整虚的", scores: { ctrl: 2, poor: 2, ojbk: 1 } },
+      { label: "当天转账加句生日快乐，完事", scores: { fake: 2, solo: 2, dead: 1 } },
+      { label: "偷偷策划一场他们绝对猜不到的惊喜局！", scores: { hhhh: 3, atmer: 2, gogo: 1 } },
     ]
   },
   {
     id: 43,
-    text: "深夜emo发了条伤感朋友圈，第二天醒来你？",
+    text: "凌晨三点emo发了条伤感朋友圈，第二天醒来你？",
     options: [
       { label: "秒删！！！社死现场！！！当什么都没发生", scores: { ohno: 3, imfw: 2, fake: 1 } },
       { label: "发都发了，删什么删，我说的就是真话", scores: { fuck: 3, shit: 2, monk: 1 } },
-      { label: "赶紧设成仅自己可见，留个深夜的自己看", scores: { solo: 3, think: 2, lover: 1 } },
+      { label: "赶紧设成仅自己可见，留个深夜的自己偷偷看", scores: { solo: 3, think: 2, lover: 1 } },
       { label: "我从来不发伤感动态，丢不起那个人", scores: { ctrl: 2, hhhh: 2, monk: 1 } },
     ]
   },
   {
     id: 44,
-    text: "如果必须投胎成一种动物？",
+    text: "老天爷说可以投胎成一种动物，你选？",
     options: [
-      { label: "猫，独居大佬，想撸人时才赏脸", scores: { solo: 3, sexy: 2, monk: 1 } },
-      { label: "狗，快乐傻白甜，有主人就行", scores: { lover: 3, atmer: 2, mum: 1 } },
-      { label: "树懒，人生信条就是不动", scores: { dead: 3, zzzz: 2, malo: 1 } },
-      { label: "狐狸，聪明绝顶还能骗人", scores: { ctrl: 3, think: 2, joker: 1 } },
+      { label: "猫！独居大佬，想撸人时才赏脸，别来烦我", scores: { solo: 3, sexy: 2, monk: 1 } },
+      { label: "狗！快乐傻白甜，有人摸头就摇尾巴", scores: { lover: 3, atmer: 2, mum: 1 } },
+      { label: "树懒！人生信条就是不动，挂在树上到天荒地老", scores: { dead: 3, zzzz: 2, malo: 1 } },
+      { label: "狐狸！聪明绝顶还好看，骗到猎物还能全身而退", scores: { ctrl: 3, think: 2, joker: 1 } },
     ]
   },
   {
     id: 45,
     text: "工资卡突然多了一笔来路不明的钱，你？",
     options: [
-      { label: "先存起来！万一是要还的", scores: { poor: 3, think: 2, ctrl: 1 } },
-      { label: "请客！家人们走起！", scores: { atmer: 3, hhhh: 2, thank: 1 } },
-      { label: "那个我想了很久的东西终于可以买了", scores: { gogo: 2, sexy: 2, diors: 1 } },
-      { label: "先查清楚这钱哪来的，天上不会掉馅饼", scores: { ctrl: 2, fake: 2, think: 1 } },
+      { label: "先存起来！万一是要还的，别到时候还得借钱", scores: { poor: 3, think: 2, ctrl: 1 } },
+      { label: "请客！家人们走起！今晚全场由本公子买单", scores: { atmer: 3, hhhh: 2, thank: 1 } },
+      { label: "那个我想了很久的东西终于可以下单了！", scores: { gogo: 2, sexy: 2, diors: 1 } },
+      { label: "先查清楚这钱哪来的，天上不会掉馅饼只会掉陷阱", scores: { ctrl: 2, fake: 2, think: 1 } },
     ]
   },
   {
     id: 46,
-    text: "聚会有人开了个黄腔，你的反应？",
+    text: "饭局上有人开了个黄腔全场爆笑，你？",
     options: [
-      { label: "笑得最大声那个就是我", scores: { hhhh: 3, woc: 2, joker: 1 } },
-      { label: "接一个更猛的，看看谁先脸红", scores: { fuck: 3, joker: 2, malo: 1 } },
-      { label: "假装听不懂...我在哪我是谁", scores: { fake: 3, imfw: 2, ohno: 1 } },
+      { label: "笑得最大声那个就是我，眼泪都笑出来了", scores: { hhhh: 3, woc: 2, joker: 1 } },
+      { label: "接一个更猛的！看谁先脸红", scores: { fuck: 3, joker: 2, malo: 1 } },
+      { label: "假装听不懂...我在哪我是谁今天天气真好", scores: { fake: 3, imfw: 2, ohno: 1 } },
       { label: "尴尬地笑笑然后假装在看手机", scores: { mum: 2, thank: 2, solo: 1 } },
     ]
   },
   {
     id: 47,
-    text: "你在路上摔了个狗吃屎，第一反应？",
+    text: "大马路上摔了个狗吃屎，你的第一反应？",
     options: [
-      { label: "先环顾四周确认没人看到", scores: { fake: 3, sexy: 2, ohno: 1 } },
-      { label: "弹射起步，假装在跑步", scores: { ctrl: 3, boss: 2, gogo: 1 } },
-      { label: "趴在地上思考三秒人生再起来", scores: { dead: 3, malo: 2, drunk: 1 } },
-      { label: "笑出声来哈哈哈哈我也太搞了", scores: { hhhh: 3, imsb: 2, joker: 1 } },
+      { label: "先环顾四周确认没人看到！安全再起来", scores: { fake: 3, sexy: 2, ohno: 1 } },
+      { label: "弹射起步！假装我在跑步，无缝衔接", scores: { ctrl: 3, boss: 2, gogo: 1 } },
+      { label: "趴在地上思考三秒人生再起来，反正已经丢人了", scores: { dead: 3, malo: 2, drunk: 1 } },
+      { label: "笑出声来哈哈哈哈我也太搞了吧", scores: { hhhh: 3, imsb: 2, joker: 1 } },
     ]
   },
   {
     id: 48,
-    text: "你最怕被什么？",
+    text: "你在深夜翻来覆去的时候最怕什么突然涌上来？",
     options: [
-      { label: "被误解——我说的是A你听成B然后全世界都以为我是那个意思", scores: { lover: 3, fake: 2, solo: 1 } },
-      { label: "被忽视——我在群里说了个笑话没人理", scores: { joker: 3, ohno: 2, imfw: 1 } },
+      { label: "被误解——我说的是A全世界都听成B", scores: { lover: 3, fake: 2, solo: 1 } },
+      { label: "被忽视——我在群里说了个笑话没人理我", scores: { joker: 3, ohno: 2, imfw: 1 } },
       { label: "被控制——别安排我！我自己来！", scores: { fuck: 3, solo: 2, gogo: 1 } },
-      { label: "被看穿——万一别人发现我其实啥也不是", scores: { fake: 3, ctrl: 2, drunk: 1 } },
+      { label: "被看穿——万一别人发现我其实啥也不是呢", scores: { fake: 3, ctrl: 2, drunk: 1 } },
     ]
   },
   {
     id: 49,
-    text: "给你贴个社交标签你选哪个？",
+    text: "同学聚会上你被点名自我介绍，你？",
     options: [
-      { label: "社牛本牛，走到哪嗨到哪", scores: { sexy: 3, hhhh: 2, gogo: 1 } },
-      { label: "社恐天花板，能不见人就不见人", scores: { solo: 3, dead: 2, imfw: 1 } },
-      { label: "社杂选手，看人下菜碟", scores: { fake: 3, think: 2, ojbk: 1 } },
-      { label: "社交刺客——看着安静一开口吓死人", scores: { joker: 3, malo: 2, woc: 1 } },
+      { label: "站起来就是一通输出！大家好我是XX！来干杯！", scores: { sexy: 3, hhhh: 2, gogo: 1 } },
+      { label: "能躲就躲，实在躲不掉就小声说个名字赶紧坐下来", scores: { solo: 3, dead: 2, imfw: 1 } },
+      { label: "按部就班说点场面话，不多不少刚刚好", scores: { fake: 3, think: 2, ojbk: 1 } },
+      { label: "看似安静一开口就是段子，全场笑翻", scores: { joker: 3, malo: 2, woc: 1 } },
     ]
   },
   {
     id: 50,
-    text: "哪种同事让你想掀桌？",
+    text: "组里新来了个同事，哪种人让你想原地辞职？",
     options: [
-      { label: "甩锅侠——出了事第一个缩头", scores: { fuck: 3, ctrl: 2, shit: 1 } },
+      { label: "甩锅侠——出了事第一个缩头，功劳倒抢得快", scores: { fuck: 3, ctrl: 2, shit: 1 } },
       { label: "马屁精——老板放个屁他能说成交响乐", scores: { shit: 3, diors: 2, think: 1 } },
       { label: "卷王——你下班他加班，搞得全组不得不陪", scores: { malo: 3, dead: 2, zzzz: 1 } },
       { label: "话痨——能不能闭嘴让我安静待五分钟", scores: { solo: 3, monk: 2, zzzz: 1 } },
@@ -889,379 +889,379 @@ export const questions: Question[] = [
   },
   {
     id: 51,
-    text: "你周末的真实打开方式？",
+    text: "周六早上醒来你睁开眼第一个念头是？",
     options: [
-      { label: "出门浪，一周七天不够我安排的", scores: { gogo: 3, sexy: 2, hhhh: 1 } },
-      { label: "躺在床上手机举过头顶，外卖是唯一的访客", scores: { dead: 3, malo: 2, zzzz: 1 } },
-      { label: "处理周一到周五拖下来的各种破事", scores: { fake: 3, poor: 2, mum: 1 } },
-      { label: "追剧发呆喝茶，享受与世隔绝", scores: { solo: 3, think: 2, monk: 1 } },
+      { label: "今天去哪浪！一周七天不够我安排的！", scores: { gogo: 3, sexy: 2, hhhh: 1 } },
+      { label: "继续睡...外卖是今天唯一的访客", scores: { dead: 3, malo: 2, zzzz: 1 } },
+      { label: "先处理周一到周五拖下来的各种破事吧", scores: { fake: 3, poor: 2, mum: 1 } },
+      { label: "追剧发呆喝茶，享受与世隔绝的宁静", scores: { solo: 3, think: 2, monk: 1 } },
     ]
   },
   {
     id: 52,
-    text: "有人在群里@你但你完全不认识他，你？",
+    text: "有人在200人大群里@你但你完全不知道他是谁，你？",
     options: [
-      { label: "直接回：怎么了兄弟？", scores: { gogo: 3, atmer: 2, hhhh: 1 } },
+      { label: "直接回：怎么了兄弟？认识一下呗", scores: { gogo: 3, atmer: 2, hhhh: 1 } },
       { label: "假装没看见，我已遁入虚空", scores: { solo: 3, dead: 2, fake: 1 } },
-      { label: "先翻翻他朋友圈侦探一下这人是谁", scores: { think: 3, ctrl: 2, joker: 1 } },
-      { label: "回个？表情，让子弹先飞", scores: { fake: 2, ojbk: 2, ohno: 1 } },
+      { label: "先翻翻他朋友圈侦探一下这人到底是谁", scores: { think: 3, ctrl: 2, joker: 1 } },
+      { label: "回个？表情，让子弹先飞一会儿", scores: { fake: 2, ojbk: 2, ohno: 1 } },
     ]
   },
   {
     id: 53,
-    text: "你的社交面具厚度？",
+    text: "同事说「你今天看起来不太一样」，你的内心戏？",
     options: [
-      { label: "面具？什么面具？我这是真面目", scores: { fuck: 3, imsb: 2, sexy: 1 } },
-      { label: "厚到我自己都忘了底下长什么样", scores: { fake: 3, drunk: 2, joker: 1 } },
-      { label: "看场合随时切换，我有个面具库", scores: { think: 3, ctrl: 2, ojbk: 1 } },
-      { label: "没多厚，但别人都以为我过得很开心", scores: { lover: 3, ohno: 2, imfw: 1 } },
+      { label: "什么意思？我变丑了还是变好看了？你说清楚！", scores: { imfw: 3, ohno: 2, fake: 1 } },
+      { label: "这是我新买的衣服/新做的发型，好看吧？", scores: { sexy: 3, hhhh: 2, gogo: 1 } },
+      { label: "我就这样，从来都这样，你话里有话啊", scores: { ctrl: 3, monk: 2, fuck: 1 } },
+      { label: "完了是不是黑眼圈又出来了，我得照照镜子", scores: { fake: 3, think: 2, joker: 1 } },
     ]
   },
   {
     id: 54,
-    text: "你做决定靠什么？",
+    text: "菜单上有三道菜都想吃但只能点一道，你？",
     options: [
-      { label: "直觉！感觉对了就干，想多了反而怂", scores: { gogo: 3, imsb: 2, lover: 1 } },
-      { label: "数据！表格！对比图！不分析不能活", scores: { ctrl: 3, think: 2, poor: 1 } },
-      { label: "先问一圈朋友再说", scores: { atmer: 2, mum: 2, ohno: 1 } },
-      { label: "不做决定，让命运替我选", scores: { ojbk: 3, dead: 2, monk: 1 } },
+      { label: "第一眼看中的！直觉！感觉对了就干！", scores: { gogo: 3, imsb: 2, lover: 1 } },
+      { label: "掏手机搜点评看评分，做对比表再决定", scores: { ctrl: 3, think: 2, poor: 1 } },
+      { label: "问服务员推荐哪个，听专业意见", scores: { atmer: 2, mum: 2, ohno: 1 } },
+      { label: "算了随便点一个吧，反正都不错", scores: { ojbk: 3, dead: 2, monk: 1 } },
     ]
   },
   {
     id: 55,
-    text: "你出门穿衣服的哲学？",
+    text: "今天要见一个重要的人，你出门前？",
     options: [
-      { label: "必须精心搭配！下楼丢垃圾都要有造型", scores: { sexy: 3, ctrl: 2, boss: 1 } },
-      { label: "舒服就行，卫衣运动裤是本体", scores: { malo: 3, zzzz: 2, dead: 1 } },
+      { label: "精心搭配！下楼丢垃圾都要有造型何况见人", scores: { sexy: 3, ctrl: 2, boss: 1 } },
+      { label: "卫衣运动裤走起，舒服才是正经事", scores: { malo: 3, zzzz: 2, dead: 1 } },
       { label: "看今天心情走什么路线，可能是潮人可能是流浪汉", scores: { woc: 2, hhhh: 2, lover: 1 } },
-      { label: "闻一闻哪个没味穿哪个", scores: { fake: 2, ojbk: 2, monk: 1 } },
+      { label: "闻一闻哪件没味穿哪件，能穿就行", scores: { fake: 2, ojbk: 2, monk: 1 } },
     ]
   },
   {
     id: 56,
-    text: "你收到一条「在吗？」，你的反应？",
+    text: "微信弹出一条「在吗？」，你？",
     options: [
       { label: "回：说，什么事？别磨叽", scores: { ctrl: 3, gogo: 2, boss: 1 } },
       { label: "已读不回，在也不在", scores: { solo: 3, dead: 2, fake: 1 } },
-      { label: "回个在啊，然后紧张地等对方说", scores: { atmer: 2, thank: 2, ohno: 1 } },
-      { label: "开始脑补：完了是不是要借钱", scores: { ohno: 3, think: 2, poor: 1 } },
+      { label: "回个在啊，然后紧张地等对方说什么", scores: { atmer: 2, thank: 2, ohno: 1 } },
+      { label: "开始脑补：完了完了是不是要借钱", scores: { ohno: 3, think: 2, poor: 1 } },
     ]
   },
   {
     id: 57,
-    text: "最能代表你的一句话？",
+    text: "你走在路上不小心哼起了歌，发现有人在看你，你？",
     options: [
-      { label: "来都来了！不做白不做", scores: { gogo: 3, diors: 2, imsb: 1 } },
-      { label: "算了", scores: { ojbk: 3, dead: 2, monk: 1 } },
-      { label: "凭什么？", scores: { fuck: 3, shit: 2, diors: 1 } },
-      { label: "没关系~", scores: { thank: 3, atmer: 2, imfw: 1 } },
+      { label: "继续唱！来都来了，给我一个舞台我还能跳", scores: { gogo: 3, diors: 2, imsb: 1 } },
+      { label: "立刻闭嘴，假装刚才什么都没发生", scores: { ojbk: 3, dead: 2, fake: 1 } },
+      { label: "瞪回去！看什么看没听过唱歌啊", scores: { fuck: 3, shit: 2, sexy: 1 } },
+      { label: "笑一下，没关系没关系", scores: { thank: 3, atmer: 2, imfw: 1 } },
     ]
   },
   {
     id: 58,
-    text: "你更擅长记住什么？",
+    text: "你最擅长记住什么？",
     options: [
-      { label: "谁对我好过，记得一清二楚", scores: { thank: 3, lover: 2, mum: 1 } },
-      { label: "谁得罪过我，这辈子忘不了", scores: { shit: 3, joker: 2, fuck: 1 } },
-      { label: "各种没用的冷知识和八卦", scores: { think: 3, malo: 2, woc: 1 } },
-      { label: "记性？什么记性？", scores: { zzzz: 3, dead: 2, imsb: 1 } },
+      { label: "谁对我好过，每一份温暖记得一清二楚", scores: { thank: 3, lover: 2, mum: 1 } },
+      { label: "谁得罪过我，这辈子都忘不了！记仇本上都有", scores: { shit: 3, joker: 2, fuck: 1 } },
+      { label: "各种没用的冷知识、八卦和影视剧情节", scores: { think: 3, malo: 2, woc: 1 } },
+      { label: "记性？什么记性？我连昨天吃了啥都不记得", scores: { zzzz: 3, dead: 2, imsb: 1 } },
     ]
   },
   {
     id: 59,
-    text: "团队项目里你什么时候最活跃？",
+    text: "项目推进到一半突然卡住了，你？",
     options: [
-      { label: "分工的时候——方向我来定", scores: { boss: 3, ctrl: 2, fuck: 1 } },
-      { label: "干活的时候——给我活干就行", scores: { mum: 3, gogo: 2, atmer: 1 } },
-      { label: "出事的时候——别慌让我来救场", scores: { think: 3, ctrl: 2, diors: 1 } },
-      { label: "全程潜水，快结束了冒个泡", scores: { zzzz: 3, dead: 2, solo: 1 } },
+      { label: "我来拍板！方向调整，大家听我的继续干", scores: { boss: 3, ctrl: 2, fuck: 1 } },
+      { label: "我来干活！给我活干就行，方向你们定", scores: { mum: 3, gogo: 2, atmer: 1 } },
+      { label: "我来分析！别慌让我找找问题出在哪", scores: { think: 3, ctrl: 2, diors: 1 } },
+      { label: "全程潜水的我终于可以继续潜了", scores: { zzzz: 3, dead: 2, solo: 1 } },
     ]
   },
   {
     id: 60,
-    text: "被夸了你什么反应？",
+    text: "领导当着全组夸你「做得好」，你？",
     options: [
-      { label: "内心飘了但表面：嗯还行吧", scores: { ctrl: 3, sexy: 2, fake: 1 } },
-      { label: "开心到原地转圈圈！", scores: { hhhh: 3, lover: 2, imsb: 1 } },
-      { label: "不自在，觉得配不上这夸", scores: { imfw: 3, ohno: 2, solo: 1 } },
-      { label: "互夸！你也很棒！这才是社交精髓", scores: { joker: 2, mum: 2, atmer: 1 } },
+      { label: "淡定点头：嗯还行吧（内心飘了）", scores: { ctrl: 3, sexy: 2, fake: 1 } },
+      { label: "开心到原地转圈圈！谢谢领导！！", scores: { hhhh: 3, lover: 2, imsb: 1 } },
+      { label: "不自在...觉得配不上这个夸，应该给XX", scores: { imfw: 3, ohno: 2, solo: 1 } },
+      { label: "互夸！领导更厉害！团队更厉害！这才是社交精髓", scores: { joker: 2, mum: 2, atmer: 1 } },
     ]
   },
   {
     id: 61,
-    text: "吵架之后谁先道歉？",
+    text: "刚跟对象/朋友吵完架，谁先发消息？",
     options: [
-      { label: "谁错谁先，很公平", scores: { ctrl: 3, think: 2, poor: 1 } },
       { label: "我先吧...冷战比道歉难受一万倍", scores: { atmer: 3, thank: 2, mum: 1 } },
-      { label: "我？道歉？你确定没搞错？", scores: { fuck: 3, boss: 2, sexy: 1 } },
-      { label: "谁先道歉无所谓，反正我吵完就忘了", scores: { ojbk: 3, dead: 2, monk: 1 } },
+      { label: "谁错谁先，很公平，我没错我凭啥先", scores: { ctrl: 3, think: 2, poor: 1 } },
+      { label: "我？道歉？你确定没搞错？我才不会低头", scores: { fuck: 3, boss: 2, sexy: 1 } },
+      { label: "谁先道歉无所谓，反正我吵完五分钟就忘了", scores: { ojbk: 3, dead: 2, monk: 1 } },
     ]
   },
   {
     id: 62,
-    text: "你最近的状态是？",
+    text: "周一早上你走进办公室那一刻，你的灵魂说了句？",
     options: [
-      { label: "人间清醒", scores: { ctrl: 2, monk: 2, think: 1 } },
-      { label: "人间迷路", scores: { ohno: 3, imfw: 2, solo: 1 } },
-      { label: "人间蒸发了", scores: { dead: 3, zzzz: 2, solo: 1 } },
-      { label: "人间值得", scores: { hhhh: 3, thank: 2, lover: 1 } },
+      { label: "清醒上班！又是搞钱的一天！", scores: { ctrl: 2, monk: 2, think: 1 } },
+      { label: "我在哪？这是哪？我为什么在这里？", scores: { ohno: 3, imfw: 2, solo: 1 } },
+      { label: "我已经去世了，现在是丧尸模式", scores: { dead: 3, zzzz: 2, solo: 1 } },
+      { label: "嘿！早上好大家！今天也是元气满满！", scores: { hhhh: 3, thank: 2, lover: 1 } },
     ]
   },
   {
     id: 63,
-    text: "你做错事了，第一反应？",
+    text: "你不小心把工作文件发错群了，撤回不了，你？",
     options: [
-      { label: "认了，赶紧改", scores: { ctrl: 3, thank: 2, boss: 1 } },
-      { label: "先找个借口缓冲一下气氛", scores: { fake: 3, joker: 2, ohno: 1 } },
-      { label: "内心愧疚到爆炸但嘴上说不出对不起", scores: { imfw: 3, lover: 2, solo: 1 } },
-      { label: "死鸭子嘴硬，我没做错", scores: { fuck: 3, diors: 2, sexy: 1 } },
+      { label: "马上承认错误！赶紧补救！跪了", scores: { ctrl: 3, thank: 2, boss: 1 } },
+      { label: "先发个表情包缓冲一下气氛，假装在玩", scores: { fake: 3, joker: 2, ohno: 1 } },
+      { label: "内心愧疚到爆炸但嘴上说不出来，假装无事发生", scores: { imfw: 3, lover: 2, solo: 1 } },
+      { label: "死鸭子嘴硬：我故意的，你们管得着吗", scores: { fuck: 3, diors: 2, sexy: 1 } },
     ]
   },
   {
     id: 64,
-    text: "你最怕哪种社死现场？",
+    text: "部门聚餐被点名讲两句，你？",
     options: [
-      { label: "自我介绍被所有人盯着看", scores: { solo: 3, imfw: 2, ohno: 1 } },
-      { label: "全场冷场所有人不说话", scores: { mum: 3, hhhh: 2, atmer: 1 } },
-      { label: "被当众点名回答问题", scores: { fake: 3, imfw: 2, dead: 1 } },
-      { label: "我不怕社死，社死的是别人", scores: { sexy: 3, fuck: 2, boss: 1 } },
+      { label: "站起来就开始紧张结巴，脑子一片空白", scores: { solo: 3, imfw: 2, ohno: 1 } },
+      { label: "我来活跃气氛！讲个段子让大家先笑起来", scores: { mum: 3, hhhh: 2, atmer: 1 } },
+      { label: "照着提前准备的稿子念，别让我即兴发挥", scores: { fake: 3, imfw: 2, dead: 1 } },
+      { label: "讲两句？两句哪够？来我给大家来一段！", scores: { sexy: 3, fuck: 2, boss: 1 } },
     ]
   },
   {
     id: 65,
-    text: "你喜欢什么样的领导？",
+    text: "面试官问你「你期望什么样的leader」，你？",
     options: [
-      { label: "强势型，告诉我做什么别让我自己想", scores: { ojbk: 3, fake: 2, mum: 1 } },
-      { label: "放手型，别管我让我自己飞", scores: { gogo: 3, solo: 2, ctrl: 1 } },
-      { label: "导师型，带我升级打怪", scores: { think: 3, poor: 2, diors: 1 } },
-      { label: "什么型都行，不加班的型最好", scores: { malo: 3, dead: 2, zzzz: 1 } },
+      { label: "能明确告诉我做什么的，别让我自己想", scores: { ojbk: 3, fake: 2, mum: 1 } },
+      { label: "放手让我干的，别管我让我自己飞", scores: { gogo: 3, solo: 2, ctrl: 1 } },
+      { label: "能带我升级打怪的导师型，我要成长", scores: { think: 3, poor: 2, diors: 1 } },
+      { label: "什么型都行，不加班就行", scores: { malo: 3, dead: 2, zzzz: 1 } },
     ]
   },
   {
     id: 66,
-    text: "旅行时你是什么角色？",
+    text: "跟朋友去旅游，你是出发前那个人还是出发后那个人？",
     options: [
-      { label: "攻略狂魔，精确到几点去哪个厕所", scores: { ctrl: 3, poor: 2, think: 1 } },
-      { label: "走到哪算哪，迷路也是一种风景", scores: { gogo: 3, ojbk: 2, malo: 1 } },
-      { label: "跟着走就行，你安排我配合", scores: { atmer: 2, ojbk: 2, fake: 1 } },
-      { label: "出发了才想起来查天气那种", scores: { ohno: 3, imsb: 2, zzzz: 1 } },
+      { label: "攻略狂魔！精确到几点去哪个厕所都给你安排好", scores: { ctrl: 3, poor: 2, think: 1 } },
+      { label: "走到哪算哪，迷路也是一种风景！", scores: { gogo: 3, ojbk: 2, malo: 1 } },
+      { label: "跟着走就行，你安排我配合，我负责吃", scores: { atmer: 2, ojbk: 2, fake: 1 } },
+      { label: "出发了才想起来查天气那种，主打一个随性", scores: { ohno: 3, imsb: 2, zzzz: 1 } },
     ]
   },
   {
     id: 67,
-    text: "遇到不公平的事你？",
+    text: "排队被别人插队了，你？",
     options: [
-      { label: "当场就指出来！不服！", scores: { fuck: 3, boss: 2, ctrl: 1 } },
-      { label: "回去越想越气，半夜还在复盘", scores: { shit: 3, ohno: 2, joker: 1 } },
-      { label: "算了，世界本来就不公平", scores: { monk: 3, dead: 2, ojbk: 1 } },
-      { label: "想办法用规则反击，打蛇打七寸", scores: { think: 3, ctrl: 2, poor: 1 } },
+      { label: "当场指出来！不许插队！大家都在排！", scores: { fuck: 3, boss: 2, ctrl: 1 } },
+      { label: "内心气炸但没开口，回去越想越气，半夜还在复盘", scores: { shit: 3, ohno: 2, joker: 1 } },
+      { label: "算了算了，世界本来就不公平，不值得为这生气", scores: { monk: 3, dead: 2, ojbk: 1 } },
+      { label: "找工作人员处理，用规则反击，打蛇打七寸", scores: { think: 3, ctrl: 2, poor: 1 } },
     ]
   },
   {
     id: 68,
-    text: "你的恋爱观更接近？",
+    text: "闺蜜/兄弟深夜给你打电话哭诉分手了，你？",
     options: [
-      { label: "爱就要说出来！藏着掖着算什么谈恋爱", scores: { lover: 3, fuck: 2, gogo: 1 } },
-      { label: "细水长流，慢慢来比较快", scores: { monk: 3, think: 2, thank: 1 } },
-      { label: "先把自己变优秀，对的人自然来", scores: { ctrl: 3, poor: 2, boss: 1 } },
-      { label: "恋爱？我只想搞钱", scores: { diors: 3, shit: 2, malo: 1 } },
+      { label: "边哭边骂陪TA！那个渣男/渣女配不上你！", scores: { lover: 3, fuck: 2, gogo: 1 } },
+      { label: "安静听TA说，递纸巾，慢慢来比较快", scores: { monk: 3, think: 2, thank: 1 } },
+      { label: "帮TA分析问题出在哪，理性复盘这段关系", scores: { ctrl: 3, poor: 2, boss: 1 } },
+      { label: "先说别哭了，明天请你吃火锅，用食物疗伤", scores: { diors: 3, shit: 2, malo: 1 } },
     ]
   },
   {
     id: 69,
-    text: "你睡前最后一件事？",
+    text: "睡前最后一件事你在干嘛？",
     options: [
       { label: "刷手机刷到手机砸脸自动关机", scores: { dead: 3, zzzz: 2, malo: 1 } },
-      { label: "复盘今天发生的事，包括别人说的每句话", scores: { think: 3, shit: 2, ctrl: 1 } },
+      { label: "复盘今天发生的每件事，包括别人说的每句话", scores: { think: 3, shit: 2, ctrl: 1 } },
       { label: "跟对象/朋友聊到对方先睡着", scores: { lover: 3, atmer: 2, hhhh: 1 } },
       { label: "发呆，想着有的没的直到意识模糊", scores: { solo: 3, drunk: 2, imfw: 1 } },
     ]
   },
   {
     id: 70,
-    text: "你的情绪更像什么？",
+    text: "你这周的情绪像什么天气？",
     options: [
-      { label: "过山车！今天上天明天下地", scores: { ohno: 3, woc: 2, drunk: 1 } },
-      { label: "死海，波澜不惊，情绪稳定器本器", scores: { monk: 3, ctrl: 2, ojbk: 1 } },
+      { label: "雷暴！今天上天明天下地，刺激得很", scores: { ohno: 3, woc: 2, drunk: 1 } },
+      { label: "晴天无云，波澜不惊，情绪稳定器本器", scores: { monk: 3, ctrl: 2, ojbk: 1 } },
       { label: "活火山，平时没事一旦爆发方圆十里避难", scores: { fuck: 3, shit: 2, joker: 1 } },
-      { label: "阴天，持续低电量模式", scores: { dead: 3, imfw: 2, solo: 1 } },
+      { label: "阴天，持续低电量模式，看不见太阳那种", scores: { dead: 3, imfw: 2, solo: 1 } },
     ]
   },
   {
     id: 71,
-    text: "你上次哭是因为？",
+    text: "你上次哭是什么情况？",
     options: [
       { label: "看个电影哭成狗，纸巾用了一整包", scores: { lover: 3, thank: 2, ohno: 1 } },
       { label: "太累了绷不住了，成年人的崩溃就在一瞬间", scores: { imfw: 3, fake: 2, dead: 1 } },
       { label: "被气哭的！凭什么叫我改八遍！", scores: { fuck: 3, ohno: 2, woc: 1 } },
-      { label: "我不记得了/我不哭的/我眼泪很贵", scores: { ctrl: 2, monk: 2, dead: 1 } },
+      { label: "不记得了/我不哭的/我眼泪很贵", scores: { ctrl: 2, monk: 2, dead: 1 } },
     ]
   },
   {
     id: 72,
-    text: "压力山大的时候你怎么泄洪？",
+    text: "被甲方改了八遍方案快疯了，你怎么泄洪？",
     options: [
       { label: "出去跑一圈/健个身，用汗水冲走焦虑", scores: { gogo: 3, sexy: 2, boss: 1 } },
-      { label: "吃喝买！消费疗法虽迟但到", scores: { drunk: 3, atmer: 2, diors: 1 } },
+      { label: "吃喝买！消费疗法虽迟但到！", scores: { drunk: 3, atmer: 2, diors: 1 } },
       { label: "把自己关起来消化，别来烦我", scores: { solo: 3, monk: 2, think: 1 } },
       { label: "找个人疯狂吐槽，说出来就舒服了", scores: { lover: 3, atmer: 2, hhhh: 1 } },
     ]
   },
   {
     id: 73,
-    text: "有人给你发自拍，你？",
+    text: "暧昧对象突然给你发自拍，你？",
     options: [
       { label: "好看好看好看！！！夸就完事了", scores: { atmer: 3, lover: 2, thank: 1 } },
-      { label: "客观评价，好看就说好看不好看也说", scores: { ctrl: 3, think: 2, poor: 1 } },
-      { label: "反手发一张自己的，比比谁更帅", scores: { sexy: 3, hhhh: 2, imsb: 1 } },
-      { label: "嗯嗯（敷衍.jpg）", scores: { fake: 2, solo: 2, dead: 1 } },
+      { label: "客观评价：左边好看点，右边光线差", scores: { ctrl: 3, think: 2, poor: 1 } },
+      { label: "反手发一张自己的，比比谁更帅/更美", scores: { sexy: 3, hhhh: 2, imsb: 1 } },
+      { label: "嗯嗯（敷衍.jpg）继续刷我的短视频", scores: { fake: 2, solo: 2, dead: 1 } },
     ]
   },
   {
     id: 74,
-    text: "提到前任你的内心OS？",
+    text: "朋友聚会聊到前任，你的反应？",
     options: [
-      { label: "祝TA幸福，真心的", scores: { thank: 3, monk: 2, lover: 1 } },
-      { label: "TA过得不好我就放心了", scores: { shit: 3, fuck: 2, joker: 1 } },
-      { label: "前任？什么前任？没印象了", scores: { ojbk: 3, dead: 2, monk: 1 } },
-      { label: "偶尔深夜还会想起...算了", scores: { lover: 3, drunk: 2, solo: 1 } },
+      { label: "祝TA幸福，真心的，都过去了", scores: { thank: 3, monk: 2, lover: 1 } },
+      { label: "TA过得不好我就放心了嘿嘿嘿", scores: { shit: 3, fuck: 2, joker: 1 } },
+      { label: "前任？什么前任？没印象了，下一个话题", scores: { ojbk: 3, dead: 2, monk: 1 } },
+      { label: "偶尔深夜还会想起...算了不说了", scores: { lover: 3, drunk: 2, solo: 1 } },
     ]
   },
   {
     id: 75,
-    text: "你想在哪儿扎根？",
+    text: "给你一张单程票，你去哪？",
     options: [
-      { label: "大城市！机会多，节奏快，适合我卷", scores: { boss: 3, diors: 2, gogo: 1 } },
-      { label: "小城市！节奏慢，生活成本低，适合我躺", scores: { monk: 3, ojbk: 2, malo: 1 } },
-      { label: "朋友在哪我就在哪", scores: { atmer: 3, lover: 2, thank: 1 } },
+      { label: "大城市！机会多节奏快，适合我冲", scores: { boss: 3, diors: 2, gogo: 1 } },
+      { label: "小城市！节奏慢生活成本低，适合我躺", scores: { monk: 3, ojbk: 2, malo: 1 } },
+      { label: "朋友在哪我就在哪，在哪不是过日子", scores: { atmer: 3, lover: 2, thank: 1 } },
       { label: "深山老林，与世隔绝，别来找我", scores: { solo: 3, dead: 2, monk: 1 } },
     ]
   },
   {
     id: 76,
-    text: "你觉得「努力」这玩意儿？",
+    text: "你妈说「隔壁小王年薪百万了」，你？",
     options: [
-      { label: "不努力怎么行！卷起来！", scores: { boss: 3, ctrl: 2, poor: 1 } },
-      { label: "方向比努力重要一百倍，别瞎忙", scores: { think: 3, ctrl: 2, diors: 1 } },
-      { label: "能不努力就不努力，努力多累啊", scores: { malo: 3, dead: 2, zzzz: 1 } },
-      { label: "伪概念，好多人努力了一辈子也没用", scores: { shit: 3, drunk: 2, fake: 1 } },
+      { label: "那我也行！等我卷起来！", scores: { boss: 3, ctrl: 2, poor: 1 } },
+      { label: "方向比努力重要，小王那是选对了赛道", scores: { think: 3, ctrl: 2, diors: 1 } },
+      { label: "小王累不累啊...我选择快乐", scores: { malo: 3, dead: 2, zzzz: 1 } },
+      { label: "伪命题，好多年薪百万的人也不幸福", scores: { shit: 3, drunk: 2, fake: 1 } },
     ]
   },
   {
     id: 77,
-    text: "你的表情包库存什么水平？",
+    text: "群里有人发了个超好笑的表情包，你？",
     options: [
-      { label: "几百张起步，聊天全靠表情包续命", scores: { joker: 3, hhhh: 2, woc: 1 } },
-      { label: "很少，我靠文字表达真情实感", scores: { think: 3, ctrl: 2, monk: 1 } },
-      { label: "只存搞笑的，不开心的时候翻一翻", scores: { hhhh: 3, malo: 2, imsb: 1 } },
+      { label: "立刻偷图！几百张起步，聊天全靠表情包续命", scores: { joker: 3, hhhh: 2, woc: 1 } },
+      { label: "微笑略过，我靠文字表达真情实感", scores: { think: 3, ctrl: 2, monk: 1 } },
+      { label: "保存！不开心的时候翻一翻，快乐源泉", scores: { hhhh: 3, malo: 2, imsb: 1 } },
       { label: "不用表情包，我很正经的（不是）", scores: { solo: 3, fake: 2, dead: 1 } },
     ]
   },
   {
     id: 78,
-    text: "你打游戏时的人格？",
+    text: "王者荣耀/吃鸡组排，你是哪种队友？",
     options: [
-      { label: "指挥官！都听我的，包赢", scores: { boss: 3, ctrl: 2, fuck: 1 } },
-      { label: "冲锋怪！不管了先冲再说", scores: { gogo: 3, sexy: 2, diors: 1 } },
+      { label: "指挥官！都听我的，包赢！", scores: { boss: 3, ctrl: 2, fuck: 1 } },
+      { label: "冲锋怪！不管了先冲再说！", scores: { gogo: 3, sexy: 2, diors: 1 } },
       { label: "佛系玩家，输赢无所谓开心就行", scores: { ojbk: 3, malo: 2, monk: 1 } },
       { label: "不玩游戏，游戏不值得我花时间", scores: { solo: 2, monk: 2, think: 1 } },
     ]
   },
   {
     id: 79,
-    text: "你的睡眠质量？",
+    text: "凌晨一点你还醒着，你在干嘛？",
     options: [
-      { label: "秒睡型！倒头就着，地震都不醒", scores: { zzzz: 3, ojbk: 2, hhhh: 1 } },
-      { label: "翻来覆去型，脑子里演电影停不下来", scores: { think: 3, ohno: 2, drunk: 1 } },
-      { label: "熬夜型，不到凌晨两点合不上眼", scores: { dead: 3, malo: 2, imsb: 1 } },
-      { label: "薛定谔型，时好时坏看命", scores: { fake: 2, imfw: 2, lover: 1 } },
+      { label: "秒睡型选手表示不懂，我十一点就鼾声如雷了", scores: { zzzz: 3, ojbk: 2, hhhh: 1 } },
+      { label: "翻来覆去，脑子里演电影停不下来", scores: { think: 3, ohno: 2, drunk: 1 } },
+      { label: "还在刷手机！不到两点合不上眼", scores: { dead: 3, malo: 2, imsb: 1 } },
+      { label: "今晚能不能睡着全看命，薛定谔的睡眠", scores: { fake: 2, imfw: 2, lover: 1 } },
     ]
   },
   {
     id: 80,
-    text: "你对社交媒体的真实态度？",
+    text: "打开朋友圈看到前任秀恩爱了，你？",
     options: [
-      { label: "重度上瘾，一天刷8小时不是梦", scores: { woc: 3, malo: 2, dead: 1 } },
-      { label: "偶尔看看，不怎么发，朋友圈是别人的", scores: { solo: 3, think: 2, monk: 1 } },
-      { label: "精心经营人设，每条都要P图选滤镜", scores: { sexy: 3, fake: 2, ctrl: 1 } },
-      { label: "朋友圈半年更一次，还设了三天可见", scores: { dead: 3, monk: 2, solo: 1 } },
+      { label: "疯狂吃瓜！这个比那个精彩，根本停不下来", scores: { woc: 3, malo: 2, dead: 1 } },
+      { label: "随便看看，不怎么发也不怎么评", scores: { solo: 3, think: 2, monk: 1 } },
+      { label: "我的每条朋友圈都要精心P图选滤镜！人设不能崩", scores: { sexy: 3, fake: 2, ctrl: 1 } },
+      { label: "朋友圈？半年更一次，还设了三天可见", scores: { dead: 3, monk: 2, solo: 1 } },
     ]
   },
   {
     id: 81,
-    text: "超市结账你选哪条队？",
+    text: "超市结账你选了最短的那条队，结果隔壁队更快，你？",
     options: [
-      { label: "最短的！效率优先，我的时间很贵", scores: { gogo: 3, ctrl: 2, boss: 1 } },
-      { label: "随便排，等就等呗", scores: { ojbk: 3, monk: 2, thank: 1 } },
+      { label: "换队！效率优先，我的时间很贵", scores: { gogo: 3, ctrl: 2, boss: 1 } },
+      { label: "算了，等就等呗，都排上了", scores: { ojbk: 3, monk: 2, thank: 1 } },
       { label: "边排边刷手机，等了多久根本不知道", scores: { dead: 3, malo: 2, fake: 1 } },
-      { label: "看哪条收银员颜值最高", scores: { sexy: 2, hhhh: 2, joker: 1 } },
+      { label: "换到颜值最高的收银员那条队", scores: { sexy: 2, hhhh: 2, joker: 1 } },
     ]
   },
   {
     id: 82,
-    text: "遇到一个搞不定的难题？",
+    text: "老板让你做一件你从没做过的事，你？",
     options: [
-      { label: "死磕！不信老子搞不定你", scores: { boss: 3, diors: 2, fuck: 1 } },
-      { label: "百度/问人/求助外挂", scores: { think: 2, atmer: 2, poor: 1 } },
-      { label: "先放着吧，灵感来了再说", scores: { zzzz: 3, ojbk: 2, malo: 1 } },
-      { label: "直接放弃，这个不适合我（其实是怂了）", scores: { dead: 3, imfw: 2, ojbk: 1 } },
+      { label: "死磕！不信老子搞不定你！", scores: { boss: 3, diors: 2, fuck: 1 } },
+      { label: "百度/问人/求助外挂，找到方法再说", scores: { think: 2, atmer: 2, poor: 1 } },
+      { label: "先放着吧...灵感来了再说我先摸会鱼", scores: { zzzz: 3, ojbk: 2, malo: 1 } },
+      { label: "直接说不会，这个不适合我（其实是怂了）", scores: { dead: 3, imfw: 2, ojbk: 1 } },
     ]
   },
   {
     id: 83,
-    text: "你对自己的评价更接近？",
+    text: "面试官问「你怎么评价自己」，你？",
     options: [
       { label: "我挺好的我知道，不接受反驳", scores: { ctrl: 3, sexy: 2, boss: 1 } },
       { label: "还行吧不好不坏凑合过", scores: { ojbk: 3, fake: 2, monk: 1 } },
-      { label: "别问了，我什么都不好（哭）", scores: { imfw: 3, dead: 2, ohno: 1 } },
-      { label: "每天都在重新认识自己，今天又不太一样", scores: { think: 3, lover: 2, solo: 1 } },
+      { label: "别问了...我什么都不好（想哭）", scores: { imfw: 3, dead: 2, ohno: 1 } },
+      { label: "每天都在重新认识自己，今天又不太一样了", scores: { think: 3, lover: 2, solo: 1 } },
     ]
   },
   {
     id: 84,
-    text: "「合群」这事儿你怎么看？",
+    text: "同学聚会你被拉进了一个全是陌生人的微信群，你？",
     options: [
-      { label: "很重要！人不能活成孤岛", scores: { lover: 3, atmer: 2, mum: 1 } },
-      { label: "不重要！做自己才最酷", scores: { fuck: 3, solo: 2, monk: 1 } },
-      { label: "看情况，该合群时合群该独处时独处", scores: { ctrl: 3, fake: 2, think: 1 } },
-      { label: "合什么群，群都是利益绑定", scores: { shit: 3, dead: 2, joker: 1 } },
+      { label: "主动发消息！大家好！认识一下！人不能活成孤岛", scores: { lover: 3, atmer: 2, mum: 1 } },
+      { label: "默默退群，做自己才最酷，合什么群", scores: { fuck: 3, solo: 2, monk: 1 } },
+      { label: "潜水观察，该说话时说话该隐身时隐身", scores: { ctrl: 3, fake: 2, think: 1 } },
+      { label: "合什么群，群都是利益绑定，看看他们演什么戏", scores: { shit: 3, dead: 2, joker: 1 } },
     ]
   },
   {
     id: 85,
-    text: "你最缺什么？",
+    text: "双十一购物车满了但钱包空了，你？",
     options: [
-      { label: "钱！这还用问吗", scores: { poor: 3, diors: 2, shit: 1 } },
-      { label: "陪伴，一个人真的有点难熬", scores: { solo: 3, lover: 2, drunk: 1 } },
-      { label: "自信，总是觉得自己不够好", scores: { imfw: 3, ohno: 2, fake: 1 } },
-      { label: "什么都不缺，我自给自足", scores: { ctrl: 2, monk: 2, sexy: 1 } },
+      { label: "借钱也要买！钱就是用来花的！", scores: { poor: 3, diors: 2, shit: 1 } },
+      { label: "一个人抢购好寂寞...缺的是陪伴不是钱", scores: { solo: 3, lover: 2, drunk: 1 } },
+      { label: "犹豫半天还是全删了，觉得自己不配买这些", scores: { imfw: 3, ohno: 2, fake: 1 } },
+      { label: "什么都不缺，我自给自足，不跟风消费", scores: { ctrl: 2, monk: 2, sexy: 1 } },
     ]
   },
   {
     id: 86,
-    text: "打开你的冰箱里面有什么？",
+    text: "打开你的冰箱，里面是什么风景？",
     options: [
-      { label: "满满的像小型超市，安全感爆棚", scores: { mum: 3, ctrl: 2, atmer: 1 } },
-      { label: "几瓶水和两罐过期的酱料", scores: { dead: 3, zzzz: 2, malo: 1 } },
-      { label: "外卖剩菜和啤酒，成年人的冰箱", scores: { drunk: 3, malo: 2, ohno: 1 } },
-      { label: "健康食材，我很注重饮食的", scores: { think: 3, sexy: 2, poor: 1 } },
+      { label: "满满的像小型超市！安全感爆棚！", scores: { mum: 3, ctrl: 2, atmer: 1 } },
+      { label: "几瓶水和两罐过期的酱料，别看了", scores: { dead: 3, zzzz: 2, malo: 1 } },
+      { label: "外卖剩菜和啤酒，成年人冰箱的真实写照", scores: { drunk: 3, malo: 2, ohno: 1 } },
+      { label: "健康食材整整齐齐，我很注重饮食的", scores: { think: 3, sexy: 2, poor: 1 } },
     ]
   },
   {
     id: 87,
-    text: "你上一次发自拍是什么时候？",
+    text: "朋友给你拍了张合照你发现没P过就发了朋友圈，你？",
     options: [
-      { label: "今天/昨天，好看的必须记录", scores: { sexy: 3, hhhh: 2, woc: 1 } },
-      { label: "太久以前了，久到我自己都不记得", scores: { solo: 3, monk: 2, dead: 1 } },
-      { label: "我从来不发自拍", scores: { dead: 3, solo: 2, fake: 1 } },
-      { label: "只发风景照/美食照，脸不重要", scores: { think: 2, monk: 2, gogo: 1 } },
+      { label: "好看！必须发！我要让全世界看到我的美！", scores: { sexy: 3, hhhh: 2, woc: 1 } },
+      { label: "赶紧叫TA删了！我每一张照片都要精心P过！", scores: { solo: 3, monk: 2, fake: 1 } },
+      { label: "算了算了，真实点也挺好...虽然还是想删", scores: { dead: 3, solo: 2, fake: 1 } },
+      { label: "无所谓，脸不重要，重要的是场景/美食", scores: { think: 2, monk: 2, gogo: 1 } },
     ]
   },
   {
     id: 88,
-    text: "你说话时手在干嘛？",
+    text: "你跟人说话时手在干嘛？",
     options: [
-      { label: "比划来比划去，像指挥交响乐", scores: { boss: 3, fuck: 2, gogo: 1 } },
+      { label: "比划来比划去，像指挥交响乐，停不下来", scores: { boss: 3, fuck: 2, gogo: 1 } },
       { label: "插口袋/抱臂，酷就完事", scores: { solo: 3, sexy: 2, ctrl: 1 } },
       { label: "玩手机/摸东西，手不能闲着", scores: { fake: 3, malo: 2, ohno: 1 } },
       { label: "没什么动作，我很安静的", scores: { monk: 3, ojbk: 2, think: 1 } },
@@ -1269,137 +1269,137 @@ export const questions: Question[] = [
   },
   {
     id: 89,
-    text: "「孤独」和「寂寞」的区别？",
+    text: "朋友问「孤独和寂寞有什么区别」，你？",
     options: [
-      { label: "孤独是享受，寂寞是煎熬，差别大了", scores: { solo: 3, monk: 2, think: 1 } },
-      { label: "都一样，都是一个人", scores: { dead: 3, ojbk: 2, malo: 1 } },
-      { label: "我不知道，我朋友很多不孤独也不寂寞", scores: { hhhh: 3, sexy: 2, gogo: 1 } },
-      { label: "两个都是老朋友了，天天见", scores: { lover: 3, drunk: 2, imfw: 1 } },
+      { label: "孤独是享受，寂寞是煎熬，差别大了去了", scores: { solo: 3, monk: 2, think: 1 } },
+      { label: "都一样，都是一个人，有啥好区分的", scores: { dead: 3, ojbk: 2, malo: 1 } },
+      { label: "我不知道，我朋友很多不孤独也不寂寞！", scores: { hhhh: 3, sexy: 2, gogo: 1 } },
+      { label: "两个都是老朋友了，天天见面的那种", scores: { lover: 3, drunk: 2, imfw: 1 } },
     ]
   },
   {
     id: 90,
-    text: "你喜欢什么天气？",
+    text: "窗外突然下起了暴雨，你？",
     options: [
-      { label: "大晴天！出门浪！", scores: { gogo: 3, sexy: 2, hhhh: 1 } },
-      { label: "下雨天！窝在家里的理由", scores: { solo: 3, drunk: 2, think: 1 } },
-      { label: "阴天，不冷不热不出汗", scores: { ojbk: 3, fake: 2, dead: 1 } },
-      { label: "暴风雨！刺激！", scores: { woc: 3, fuck: 2, diors: 1 } },
+      { label: "大晴天！我要出门浪！", scores: { gogo: 3, sexy: 2, hhhh: 1 } },
+      { label: "下雨天最适合窝在家里了，天赐的宅家理由", scores: { solo: 3, drunk: 2, think: 1 } },
+      { label: "阴天就好，不冷不热不出汗", scores: { ojbk: 3, fake: 2, dead: 1 } },
+      { label: "暴风雨！刺激！人生就该这样！", scores: { woc: 3, fuck: 2, diors: 1 } },
     ]
   },
   {
     id: 91,
-    text: "你对「规则」什么态度？",
+    text: "公司规定打卡不能迟到一分钟，你？",
     options: [
-      { label: "规则就是用来遵守的，别搞特殊", scores: { ctrl: 3, poor: 2, thank: 1 } },
-      { label: "规则是人定的，不合理就改", scores: { boss: 3, think: 2, fuck: 1 } },
-      { label: "看心情，方便我就遵守不方便就当没看见", scores: { malo: 3, ojbk: 2, fake: 1 } },
+      { label: "遵守！规则就是用来遵守的，别搞特殊", scores: { ctrl: 3, poor: 2, thank: 1 } },
+      { label: "这规则不合理，我提议修改！不能忍", scores: { boss: 3, think: 2, fuck: 1 } },
+      { label: "看心情，方便我就遵守不方便就...你懂的", scores: { malo: 3, ojbk: 2, fake: 1 } },
       { label: "规则？什么规则？我的规则就是没有规则", scores: { dead: 3, imsb: 2, diors: 1 } },
     ]
   },
   {
     id: 92,
-    text: "电梯里遇到邻居你？",
+    text: "电梯里就你和邻居两个人，你？",
     options: [
-      { label: "主动打招呼！早上好！吃了吗！", scores: { hhhh: 3, atmer: 2, gogo: 1 } },
+      { label: "主动打招呼！早上好！吃了吗！今天天气真好！", scores: { hhhh: 3, atmer: 2, gogo: 1 } },
       { label: "点头微笑，不多说，社交礼仪到此为止", scores: { fake: 3, ojbk: 2, thank: 1 } },
-      { label: "假装看手机，信号不好没看到", scores: { solo: 3, dead: 2, malo: 1 } },
-      { label: "内心疯狂祈祷：别跟我说话别跟我说话", scores: { ohno: 3, imfw: 2, solo: 1 } },
+      { label: "假装看手机，信号不好没看到没看到", scores: { solo: 3, dead: 2, malo: 1 } },
+      { label: "内心疯狂祈祷：别跟我说话别跟我说话...", scores: { ohno: 3, imfw: 2, solo: 1 } },
     ]
   },
   {
     id: 93,
-    text: "你觉得值不值的判断标准？",
+    text: "买了个东西被朋友说「不值得」，你？",
     options: [
-      { label: "我自己的感觉，值就值不值就不值", scores: { ctrl: 3, think: 2, boss: 1 } },
-      { label: "开心就值！千金难买我乐意", scores: { hhhh: 3, imsb: 2, atmer: 1 } },
-      { label: "性价比！花最少的钱办最大的事", scores: { poor: 3, think: 2, diors: 1 } },
+      { label: "我自己的感觉，值就值不值就不值，关你啥事", scores: { ctrl: 3, think: 2, boss: 1 } },
+      { label: "千金难买我乐意！开心就值！", scores: { hhhh: 3, imsb: 2, atmer: 1 } },
+      { label: "让我算算性价比...花最少的钱办最大的事才行", scores: { poor: 3, think: 2, diors: 1 } },
       { label: "没什么值不值得，活着就行", scores: { dead: 3, monk: 2, ojbk: 1 } },
     ]
   },
   {
     id: 94,
-    text: "猫还是狗？",
+    text: "路边一只流浪猫和一只流浪狗都在看你，你？",
     options: [
-      { label: "猫，高冷独立像我", scores: { solo: 3, monk: 2, sexy: 1 } },
-      { label: "狗，忠诚热情像我希望被爱", scores: { lover: 3, hhhh: 2, atmer: 1 } },
-      { label: "都喜欢，选择困难症犯了", scores: { ojbk: 3, thank: 2, ohno: 1 } },
-      { label: "都别来，嫌麻烦", scores: { dead: 3, zzzz: 2, malo: 1 } },
+      { label: "蹲下来摸猫！高冷独立像我", scores: { solo: 3, monk: 2, sexy: 1 } },
+      { label: "摸狗！忠诚热情的小可爱！", scores: { lover: 3, hhhh: 2, atmer: 1 } },
+      { label: "都想摸！选择困难症犯了！", scores: { ojbk: 3, thank: 2, ohno: 1 } },
+      { label: "都别来，嫌麻烦，快点走", scores: { dead: 3, zzzz: 2, malo: 1 } },
     ]
   },
   {
     id: 95,
-    text: "朋友怎么形容你？",
+    text: "你过生日朋友给你准备了个惊喜，你进门那一刻？",
     options: [
-      { label: "靠谱，什么事交代给你放心", scores: { ctrl: 3, mum: 2, poor: 1 } },
-      { label: "搞笑，有你在不冷场", scores: { joker: 3, hhhh: 2, woc: 1 } },
-      { label: "温柔，善解人意暖宝宝", scores: { lover: 3, thank: 2, atmer: 1 } },
-      { label: "神秘，看不透你在想啥", scores: { solo: 3, fake: 2, monk: 1 } },
+      { label: "稳！什么场面我没见过，淡定微笑", scores: { ctrl: 3, mum: 2, poor: 1 } },
+      { label: "哈哈哈哈笑到停不下来！你们太搞了！", scores: { joker: 3, hhhh: 2, woc: 1 } },
+      { label: "感动到想哭...你们太好了呜呜呜", scores: { lover: 3, thank: 2, atmer: 1 } },
+      { label: "吓一跳...你们怎么知道我生日的...我不是一个人吗", scores: { solo: 3, fake: 2, monk: 1 } },
     ]
   },
   {
     id: 96,
-    text: "你最大的问题是什么？",
+    text: "你最大的bug是什么？",
     options: [
       { label: "太在意别人的看法，活着像在演给别人看", scores: { imfw: 3, fake: 2, ohno: 1 } },
       { label: "太直了，话一出口对方脸就绿了", scores: { fuck: 3, shit: 2, joker: 1 } },
-      { label: "太懒了，执行力为负", scores: { zzzz: 3, malo: 2, dead: 1 } },
-      { label: "想太多做太少，脑内剧场比现实丰富", scores: { think: 3, ohno: 2, diors: 1 } },
+      { label: "太懒了，执行力为负，启动困难", scores: { zzzz: 3, malo: 2, dead: 1 } },
+      { label: "想太多做太少，脑内剧场比现实精彩", scores: { think: 3, ohno: 2, diors: 1 } },
     ]
   },
   {
     id: 97,
-    text: "等人时你在干嘛？",
+    text: "约了朋友在商场门口等，TA迟到了20分钟，你？",
     options: [
-      { label: "刷手机，根本停不下来", scores: { dead: 3, malo: 2, woc: 1 } },
-      { label: "观察路人，脑补他们的故事", scores: { think: 3, joker: 2, solo: 1 } },
-      { label: "焦虑！等不了！怎么还不来！", scores: { ohno: 3, fuck: 2, gogo: 1 } },
-      { label: "发呆，进入低功耗待机模式", scores: { monk: 3, zzzz: 2, dead: 1 } },
+      { label: "刷手机，根本停不下来，等了多久不知道", scores: { dead: 3, malo: 2, woc: 1 } },
+      { label: "观察路人，脑补他们的故事，等成了消遣", scores: { think: 3, joker: 2, solo: 1 } },
+      { label: "焦虑！等不了！怎么还不来！发消息催！", scores: { ohno: 3, fuck: 2, gogo: 1 } },
+      { label: "发呆，进入低功耗待机模式，等人不费电", scores: { monk: 3, zzzz: 2, dead: 1 } },
     ]
   },
   {
     id: 98,
-    text: "你对钱的态度？",
+    text: "月底了看到工资条上的数字，你？",
     options: [
       { label: "能省则省，一分钱掰成两半花", scores: { poor: 3, think: 2, ctrl: 1 } },
-      { label: "花得开心最重要，钱就是用来花的", scores: { atmer: 3, hhhh: 2, drunk: 1 } },
-      { label: "钱是赚出来的不是省出来的", scores: { boss: 3, diors: 2, gogo: 1 } },
-      { label: "无所谓，够用就行", scores: { monk: 3, ojbk: 2, dead: 1 } },
+      { label: "花得开心最重要！钱就是用来花的！", scores: { atmer: 3, hhhh: 2, drunk: 1 } },
+      { label: "钱是赚出来的不是省出来的，我要搞副业", scores: { boss: 3, diors: 2, gogo: 1 } },
+      { label: "无所谓，够用就行，多了也没处花", scores: { monk: 3, ojbk: 2, dead: 1 } },
     ]
   },
   {
     id: 99,
-    text: "你对「成功」的定义？",
+    text: "如果让你定义「成功」，你选哪个？",
     options: [
-      { label: "有钱有权有地位，世俗意义上的赢", scores: { boss: 3, ctrl: 2, diors: 1 } },
-      { label: "内心平静，活得自在", scores: { monk: 3, solo: 2, ojbk: 1 } },
+      { label: "有钱有权有地位，世俗意义上的赢！", scores: { boss: 3, ctrl: 2, diors: 1 } },
+      { label: "内心平静，活得自在，不受人摆布", scores: { monk: 3, solo: 2, ojbk: 1 } },
       { label: "被爱，被需要，被人想起时嘴角上扬", scores: { lover: 3, thank: 2, atmer: 1 } },
       { label: "活着就是成功，别的要求太高了", scores: { dead: 3, malo: 2, imsb: 1 } },
     ]
   },
   {
     id: 100,
-    text: "饭局上你是谁？",
+    text: "饭局上你是哪种人？",
     options: [
-      { label: "点菜+安排一切的大总管", scores: { boss: 3, ctrl: 2, mum: 1 } },
-      { label: "气氛组，全程活跃绝不让场子冷", scores: { hhhh: 3, joker: 2, sexy: 1 } },
-      { label: "默默吃，偶尔附和一下", scores: { solo: 3, fake: 2, dead: 1 } },
-      { label: "买单侠，钱包最大的那个冤种", scores: { atmer: 3, thank: 2, poor: 1 } },
+      { label: "点菜+安排一切的大总管，我来说！", scores: { boss: 3, ctrl: 2, mum: 1 } },
+      { label: "气氛组，全程活跃绝不让场子冷！", scores: { hhhh: 3, joker: 2, sexy: 1 } },
+      { label: "默默吃，偶尔附和一下，嘴忙着呢", scores: { solo: 3, fake: 2, dead: 1 } },
+      { label: "买单侠，钱包最大的那个冤种就是我", scores: { atmer: 3, thank: 2, poor: 1 } },
     ]
   },
   {
     id: 101,
-    text: "你更怕失去什么？",
+    text: "手机突然弹出「你的隐私可能已泄露」，你？",
     options: [
-      { label: "自由！别束缚我", scores: { gogo: 3, fuck: 2, solo: 1 } },
-      { label: "安全感，失去就塌了", scores: { imfw: 3, ohno: 2, lover: 1 } },
-      { label: "面子，社死比死还难受", scores: { fake: 3, sexy: 2, boss: 1 } },
-      { label: "没什么可失去的，已经空了", scores: { dead: 3, monk: 2, ojbk: 1 } },
+      { label: "自由！谁也别想监控我！赶紧改密码", scores: { gogo: 3, fuck: 2, solo: 1 } },
+      { label: "安全感崩了！完了完了我要被诈骗了", scores: { imfw: 3, ohno: 2, lover: 1 } },
+      { label: "面子要紧！赶紧看看有没有社死记录泄露", scores: { fake: 3, sexy: 2, boss: 1 } },
+      { label: "没什么可泄露的，已经空了", scores: { dead: 3, monk: 2, ojbk: 1 } },
     ]
   },
   {
     id: 102,
-    text: "你的生活哲学？",
+    text: "今天发工资了你的第一笔支出？",
     options: [
       { label: "及时行乐！今天不嗨明天后悔", scores: { gogo: 3, hhhh: 2, drunk: 1 } },
       { label: "未雨绸缪！有备无患才安心", scores: { ctrl: 3, poor: 2, think: 1 } },
@@ -1409,7 +1409,7 @@ export const questions: Question[] = [
   },
   {
     id: 103,
-    text: "你通讯录多少人？",
+    text: "你打开通讯录翻了翻，发现？",
     options: [
       { label: "几百个，三教九流我都认识", scores: { hhhh: 3, sexy: 2, atmer: 1 } },
       { label: "不到一百，只留真有用的", scores: { solo: 3, ctrl: 2, monk: 1 } },
@@ -1419,7 +1419,7 @@ export const questions: Question[] = [
   },
   {
     id: 104,
-    text: "你对自己的未来什么感觉？",
+    text: "元旦那天你发了个新年flag，现在看看？",
     options: [
       { label: "信心满满！我就是明天的C位", scores: { boss: 3, ctrl: 2, sexy: 1 } },
       { label: "有点迷茫，但还在走，总比停着强", scores: { ohno: 3, think: 2, diors: 1 } },
@@ -1429,7 +1429,7 @@ export const questions: Question[] = [
   },
   {
     id: 105,
-    text: "你更想当什么角色？",
+    text: "公司团建需要选队长，你？",
     options: [
       { label: "领导者，我说了算", scores: { boss: 3, ctrl: 2, fuck: 1 } },
       { label: "跟随者，告诉我干啥就行", scores: { ojbk: 3, fake: 2, mum: 1 } },
@@ -1439,7 +1439,7 @@ export const questions: Question[] = [
   },
   {
     id: 106,
-    text: "聚会你想提前溜，你怎么走？",
+    text: "聚会到了你想走的时间，你？",
     options: [
       { label: "跟每个人说再见，一个都不能少", scores: { atmer: 3, thank: 2, mum: 1 } },
       { label: "悄悄消失，像从未来过", scores: { solo: 3, dead: 2, fake: 1 } },
@@ -1449,7 +1449,7 @@ export const questions: Question[] = [
   },
   {
     id: 107,
-    text: "「中年危机」会来找你吗？",
+    text: "35岁了亲戚又来催婚了，你？",
     options: [
       { label: "我已经在危机里了好吗！", scores: { shit: 3, drunk: 2, dead: 1 } },
       { label: "不会，我有规划，稳如老狗", scores: { ctrl: 3, think: 2, poor: 1 } },
@@ -1459,7 +1459,7 @@ export const questions: Question[] = [
   },
   {
     id: 108,
-    text: "被误解了你？",
+    text: "发朋友圈被人曲解了意思评论里吵起来了，你？",
     options: [
       { label: "必须解释清楚！一个字都不能含糊", scores: { ctrl: 3, fuck: 2, lover: 1 } },
       { label: "算了，解释也没用，信不信随你", scores: { monk: 3, solo: 2, dead: 1 } },
@@ -1469,7 +1469,7 @@ export const questions: Question[] = [
   },
   {
     id: 109,
-    text: "你更喜欢哪种沟通风格？",
+    text: "朋友跟你吐槽对象，你？",
     options: [
       { label: "直来直去！别绕弯子别猜谜", scores: { fuck: 3, boss: 2, gogo: 1 } },
       { label: "委婉一点，顾及一下别人感受行不行", scores: { mum: 3, thank: 2, lover: 1 } },
@@ -1479,7 +1479,7 @@ export const questions: Question[] = [
   },
   {
     id: 110,
-    text: "你的「社畜指数」？",
+    text: "周末老板在工作群里@你，你？",
     options: [
       { label: "100%！社畜本畜，已完全驯化", scores: { fake: 3, poor: 2, dead: 1 } },
       { label: "0%！反卷先锋，绝不加班", scores: { malo: 3, fuck: 2, dead: 1 } },
@@ -1489,7 +1489,7 @@ export const questions: Question[] = [
   },
   {
     id: 111,
-    text: "你最怕哪种社死？",
+    text: "你跟新认识的人打招呼对方没听见，你？",
     options: [
       { label: "打招呼对方没看见，手在空中尴尬飘着", scores: { ohno: 3, imfw: 2, fake: 1 } },
       { label: "消息发错了群，而且撤回不了", scores: { ohno: 3, woc: 2, dead: 1 } },
@@ -1509,7 +1509,7 @@ export const questions: Question[] = [
   },
   {
     id: 113,
-    text: "你对「躺平」的看法？",
+    text: "朋友圈刷到有人晒躺平日常，你？",
     options: [
       { label: "一种觉醒！拒绝被资本PUA", scores: { malo: 3, shit: 2, think: 1 } },
       { label: "一种逃避，问题不解决还在那", scores: { boss: 3, ctrl: 2, poor: 1 } },
@@ -1519,7 +1519,7 @@ export const questions: Question[] = [
   },
   {
     id: 114,
-    text: "你的工作桌面长啥样？",
+    text: "同事路过你的工位看了一眼你的桌面，你？",
     options: [
       { label: "整整齐齐，强迫症看了都说好", scores: { ctrl: 3, poor: 2, boss: 1 } },
       { label: "乱但我知道东西在哪，别动我桌面！", scores: { think: 3, joker: 2, diors: 1 } },
@@ -1529,7 +1529,7 @@ export const questions: Question[] = [
   },
   {
     id: 115,
-    text: "「社交距离」这事儿？",
+    text: "新同事第一天就勾肩搭背叫你兄弟/姐妹，你？",
     options: [
       { label: "非常重要！别靠太近！我有气泡！", scores: { solo: 3, monk: 2, ctrl: 1 } },
       { label: "看关系远近，熟人靠多近都行", scores: { ojbk: 3, think: 2, fake: 1 } },
@@ -1549,7 +1549,7 @@ export const questions: Question[] = [
   },
   {
     id: 117,
-    text: "你最擅长什么？",
+    text: "年初你立了个flag到现在？",
     options: [
       { label: "开始新的事！起跑第一名", scores: { gogo: 3, boss: 2, diors: 1 } },
       { label: "把事情做完！坚持到终点", scores: { ctrl: 3, poor: 2, mum: 1 } },
@@ -1559,7 +1559,7 @@ export const questions: Question[] = [
   },
   {
     id: 118,
-    text: "你对「小确幸」？",
+    text: "下班路上买到一杯超好喝的奶茶，你？",
     options: [
       { label: "很享受，一杯奶茶就能开心一整天", scores: { thank: 3, lover: 2, hhhh: 1 } },
       { label: "不够！我要大确幸！暴富那种！", scores: { boss: 3, diors: 2, fuck: 1 } },
@@ -1569,7 +1569,7 @@ export const questions: Question[] = [
   },
   {
     id: 119,
-    text: "你喜欢跟什么样的人混？",
+    text: "你要搬新家了第一个邀请谁来暖房？",
     options: [
       { label: "有趣的！能让我笑的人就是好人", scores: { hhhh: 3, joker: 2, woc: 1 } },
       { label: "靠谱的！说到做到，别画饼", scores: { ctrl: 3, poor: 2, think: 1 } },
@@ -1579,7 +1579,7 @@ export const questions: Question[] = [
   },
   {
     id: 120,
-    text: "你是什么类型打工人？",
+    text: "你被分到了一个全是陌生人的项目组，你？",
     options: [
       { label: "卷王！升职加薪我全都要", scores: { boss: 3, poor: 2, ctrl: 1 } },
       { label: "摸鱼王！能偷懒就偷懒，老板看不到就行", scores: { malo: 3, zzzz: 2, dead: 1 } },
@@ -1589,7 +1589,7 @@ export const questions: Question[] = [
   },
   {
     id: 121,
-    text: "你记人脸还是记人名？",
+    text: "公司年会上有人叫错你名字，你？",
     options: [
       { label: "脸！过目不忘，三秒认人", scores: { think: 3, sexy: 2, joker: 1 } },
       { label: "名！每个人的名字我都能叫出来", scores: { mum: 3, atmer: 2, ctrl: 1 } },
@@ -1599,7 +1599,7 @@ export const questions: Question[] = [
   },
   {
     id: 122,
-    text: "「内卷」的本质是什么？",
+    text: "你妈说隔壁小王年薪百万了，你？",
     options: [
       { label: "零和博弈，互相消耗，最后谁都赢不了", scores: { shit: 3, think: 2, ctrl: 1 } },
       { label: "换个赛道不就行了，想不开的人才卷", scores: { gogo: 3, boss: 2, diors: 1 } },
@@ -1609,7 +1609,7 @@ export const questions: Question[] = [
   },
   {
     id: 123,
-    text: "你更容易被什么打动？",
+    text: "有人给你写了一封手写信，你？",
     options: [
       { label: "真诚的关心，别整虚的", scores: { thank: 3, lover: 2, imfw: 1 } },
       { label: "有逻辑的分析，说服我比感动我有效", scores: { think: 3, ctrl: 2, poor: 1 } },
@@ -1619,7 +1619,7 @@ export const questions: Question[] = [
   },
   {
     id: 124,
-    text: "你的音乐年度报告你会？",
+    text: "音乐APP年度报告出来了，你？",
     options: [
       { label: "秒发朋友圈！我的品味必须让全世界知道", scores: { sexy: 3, woc: 2, hhhh: 1 } },
       { label: "自己悄悄看，不想让别人知道我听什么", scores: { solo: 3, monk: 2, think: 1 } },
@@ -1629,7 +1629,7 @@ export const questions: Question[] = [
   },
   {
     id: 125,
-    text: "哪种客套话最让你翻白眼？",
+    text: "饭局结束有人说「改天一起吃饭」，你？",
     options: [
       { label: "「改天一起吃饭」——改天是哪天？！", scores: { fuck: 3, shit: 2, joker: 1 } },
       { label: "「你最近变好了」——啥意思我以前不好？", scores: { ohno: 3, imfw: 2, fake: 1 } },
@@ -1639,7 +1639,7 @@ export const questions: Question[] = [
   },
   {
     id: 126,
-    text: "收到礼物你第一反应？",
+    text: "生日收到一个包装精美的礼物，你？",
     options: [
       { label: "当场拆！惊喜！谢谢！我好喜欢！", scores: { hhhh: 3, thank: 2, lover: 1 } },
       { label: "回去再拆，不想当场表演开心", scores: { solo: 3, fake: 2, think: 1 } },
@@ -1649,7 +1649,7 @@ export const questions: Question[] = [
   },
   {
     id: 127,
-    text: "一个人在家你放飞到什么程度？",
+    text: "室友/家人出门了你一个人在家，你？",
     options: [
       { label: "疯狂唱歌跳舞，整个家都是我的舞台", scores: { hhhh: 3, imsb: 2, sexy: 1 } },
       { label: "安静待着，享受与世无争的时光", scores: { solo: 3, monk: 2, think: 1 } },
@@ -1659,7 +1659,7 @@ export const questions: Question[] = [
   },
   {
     id: 128,
-    text: "你觉得什么最重要？",
+    text: "如果只能保留一样东西其他全丢，你？",
     options: [
       { label: "自由！灵魂不能被关笼子里", scores: { gogo: 3, solo: 2, fuck: 1 } },
       { label: "安全感！没有安全感我什么都做不了", scores: { imfw: 3, lover: 2, ctrl: 1 } },
@@ -1669,7 +1669,7 @@ export const questions: Question[] = [
   },
   {
     id: 129,
-    text: "选择困难症犯了你？",
+    text: "菜单上好几道都想吃选不出来，你？",
     options: [
       { label: "直接选第一个！纠结什么！命中注定！", scores: { gogo: 3, fuck: 2, boss: 1 } },
       { label: "列清单做对比打分表", scores: { think: 3, ctrl: 2, poor: 1 } },
@@ -1679,7 +1679,7 @@ export const questions: Question[] = [
   },
   {
     id: 130,
-    text: "你对加班的态度？",
+    text: "周五下午5:59老板叫你名字，你？",
     options: [
       { label: "有意义的加班可以接受，别加没意义的班", scores: { ctrl: 3, think: 2, poor: 1 } },
       { label: "绝不加班！准点走人，谁爱加谁加", scores: { malo: 3, fuck: 2, zzzz: 1 } },
@@ -1689,7 +1689,7 @@ export const questions: Question[] = [
   },
   {
     id: 131,
-    text: "你觉得自己是什么人？",
+    text: "用一个字总结你这人，你选？",
     options: [
       { label: "好人，对谁都好，宁愿委屈自己", scores: { thank: 3, atmer: 2, mum: 1 } },
       { label: "狠人，对谁都狠，包括我自己", scores: { fuck: 3, boss: 2, shit: 1 } },
@@ -1699,7 +1699,7 @@ export const questions: Question[] = [
   },
   {
     id: 132,
-    text: "你的消费观更像？",
+    text: "618/双十一你通常？",
     options: [
       { label: "花未来的钱！先爽再说！", scores: { atmer: 3, gogo: 2, diors: 1 } },
       { label: "只花自己有的钱，一分都不超支", scores: { poor: 3, ctrl: 2, think: 1 } },
@@ -1709,7 +1709,7 @@ export const questions: Question[] = [
   },
   {
     id: 133,
-    text: "你的理想团队？",
+    text: "新项目需要组队你？",
     options: [
       { label: "我说了算，你们执行就行", scores: { boss: 3, ctrl: 2, fuck: 1 } },
       { label: "大家平等协商，谁有道理听谁的", scores: { thank: 3, ojbk: 2, lover: 1 } },
@@ -1719,7 +1719,7 @@ export const questions: Question[] = [
   },
   {
     id: 134,
-    text: "你微信置顶是谁？",
+    text: "你打开微信第一个看的是？",
     options: [
       { label: "对象/喜欢的人，必须第一时间看到", scores: { lover: 3, drunk: 2, sexy: 1 } },
       { label: "工作群...社畜的悲哀", scores: { fake: 3, poor: 2, ctrl: 1 } },
@@ -1729,7 +1729,7 @@ export const questions: Question[] = [
   },
   {
     id: 135,
-    text: "被批评了你？",
+    text: "领导在会上批评了你，你？",
     options: [
       { label: "虚心接受，认真改，知错能改善莫大焉", scores: { thank: 3, ctrl: 2, poor: 1 } },
       { label: "内心不服但表面疯狂点头", scores: { fake: 3, shit: 2, fuck: 1 } },
@@ -1749,7 +1749,7 @@ export const questions: Question[] = [
   },
   {
     id: 137,
-    text: "你在意别人怎么评价你吗？",
+    text: "你发了个动态3小时0赞0评，你？",
     options: [
       { label: "非常在意！被说了会记一辈子", scores: { imfw: 3, ohno: 2, fake: 1 } },
       { label: "有点在意，但不会影响我的行为", scores: { think: 3, lover: 2, thank: 1 } },
@@ -1759,7 +1759,7 @@ export const questions: Question[] = [
   },
   {
     id: 138,
-    text: "什么最能治愈你？",
+    text: "连续加班一周你终于休息了，你？",
     options: [
       { label: "和好朋友在一起，笑就完了", scores: { hhhh: 3, atmer: 2, lover: 1 } },
       { label: "一个人安安静静待着，别来烦我", scores: { solo: 3, monk: 2, think: 1 } },
@@ -1769,7 +1769,7 @@ export const questions: Question[] = [
   },
   {
     id: 139,
-    text: "你更怕什么场景？",
+    text: "公司搞团建要上台玩游戏，你？",
     options: [
       { label: "在人多的地方发言，腿抖", scores: { imfw: 3, solo: 2, ohno: 1 } },
       { label: "一个人被困密闭空间，缺氧又恐慌", scores: { gogo: 3, lover: 2, atmer: 1 } },
@@ -1779,7 +1779,7 @@ export const questions: Question[] = [
   },
   {
     id: 140,
-    text: "你像什么饮料？",
+    text: "你走进一家饮品店，你选？",
     options: [
       { label: "可乐！刺激爽快冒泡泡！", scores: { gogo: 3, hhhh: 2, woc: 1 } },
       { label: "咖啡！苦但提神，打工人的命根子", scores: { ctrl: 3, poor: 2, think: 1 } },
@@ -1789,7 +1789,7 @@ export const questions: Question[] = [
   },
   {
     id: 141,
-    text: "你对「完美主义」？",
+    text: "你做完一件事总觉得不够好，你？",
     options: [
       { label: "我就是完美主义！做就做最好！", scores: { ctrl: 3, poor: 2, boss: 1 } },
       { label: "差不多得了，别太较真", scores: { ojbk: 3, malo: 2, hhhh: 1 } },
@@ -1799,7 +1799,7 @@ export const questions: Question[] = [
   },
   {
     id: 142,
-    text: "你坐地铁/公交时在干嘛？",
+    text: "地铁上你旁边的人在打电话，你？",
     options: [
       { label: "刷手机听音乐，进入个人宇宙", scores: { dead: 3, malo: 2, fake: 1 } },
       { label: "观察车上的人，脑补他们的故事", scores: { think: 3, joker: 2, solo: 1 } },
@@ -1809,7 +1809,7 @@ export const questions: Question[] = [
   },
   {
     id: 143,
-    text: "「朋友」的定义是什么？",
+    text: "朋友问你觉得什么样的才算真朋友，你？",
     options: [
       { label: "能一起吃饭聊天的人就够了", scores: { hhhh: 3, atmer: 2, gogo: 1 } },
       { label: "关键时刻能帮我的人才是真朋友", scores: { ctrl: 3, think: 2, poor: 1 } },
@@ -1819,7 +1819,7 @@ export const questions: Question[] = [
   },
   {
     id: 144,
-    text: "你更愿意把钱砸在？",
+    text: "发工资了你想犒劳自己，你？",
     options: [
       { label: "吃！民以食为天，嘴不能亏", scores: { hhhh: 3, malo: 2, atmer: 1 } },
       { label: "穿！形象管理很重要", scores: { sexy: 3, boss: 2, fake: 1 } },
@@ -1829,7 +1829,7 @@ export const questions: Question[] = [
   },
   {
     id: 145,
-    text: "你对自己身体什么态度？",
+    text: "体检报告出来你的第一反应？",
     options: [
       { label: "很注重健康，规律作息自律达人", scores: { ctrl: 3, think: 2, poor: 1 } },
       { label: "知道不健康但改不了，熬夜一时爽一直熬夜一直爽", scores: { fake: 3, ohno: 2, drunk: 1 } },
@@ -1839,7 +1839,7 @@ export const questions: Question[] = [
   },
   {
     id: 146,
-    text: "你更擅长输出还是倾听？",
+    text: "朋友找你倾诉，你通常是？",
     options: [
       { label: "输出！我有很多想法不吐不快", scores: { boss: 3, fuck: 2, sexy: 1 } },
       { label: "倾听！我更愿意听别人说", scores: { thank: 3, mum: 2, solo: 1 } },
@@ -1849,7 +1849,7 @@ export const questions: Question[] = [
   },
   {
     id: 147,
-    text: "你的电量什么时候最低？",
+    text: "社交完回到家关上门那一刻，你？",
     options: [
       { label: "社交之后，急需充电回血", scores: { solo: 3, fake: 2, monk: 1 } },
       { label: "工作结束，被掏空了", scores: { dead: 3, poor: 2, zzzz: 1 } },
@@ -1859,7 +1859,7 @@ export const questions: Question[] = [
   },
   {
     id: 148,
-    text: "你更相信什么？",
+    text: "遇到人生十字路口你信什么？",
     options: [
       { label: "自己！只有自己不会背叛自己", scores: { ctrl: 3, solo: 2, fuck: 1 } },
       { label: "缘分！该来的总会来", scores: { monk: 3, ojbk: 2, thank: 1 } },
@@ -1869,7 +1869,7 @@ export const questions: Question[] = [
   },
   {
     id: 149,
-    text: "哪种关系最让你安心？",
+    text: "深夜你突然收到一条关心的消息，你？",
     options: [
       { label: "家人，血脉相连跑不掉", scores: { thank: 3, mum: 2, atmer: 1 } },
       { label: "恋人，被一个人全心全意对待", scores: { lover: 3, drunk: 2, sexy: 1 } },
@@ -1879,7 +1879,7 @@ export const questions: Question[] = [
   },
   {
     id: 150,
-    text: "你怎么解压？",
+    text: "今天被领导骂了你想怎么回血？",
     options: [
       { label: "运动出汗！跑步举铁把压力撸走", scores: { gogo: 3, boss: 2, sexy: 1 } },
       { label: "购物消费！买买买最解压", scores: { atmer: 3, sexy: 2, diors: 1 } },
@@ -1889,7 +1889,7 @@ export const questions: Question[] = [
   },
   {
     id: 151,
-    text: "「被拒绝」和「被忽视」你更怕哪个？",
+    text: "你给暗恋的人发消息没回，你更怕？",
     options: [
       { label: "被拒绝！面子上过不去啊", scores: { fake: 3, ohno: 2, sexy: 1 } },
       { label: "被忽视！存在感为零比死还难受", scores: { joker: 3, imfw: 2, lover: 1 } },
@@ -1899,7 +1899,7 @@ export const questions: Question[] = [
   },
   {
     id: 152,
-    text: "「年龄焦虑」你有吗？",
+    text: "看到同龄人已经买房买车了，你？",
     options: [
       { label: "有！时间不够用，什么都没做成", scores: { diors: 3, poor: 2, boss: 1 } },
       { label: "没有！年龄只是数字，该怎样怎样", scores: { monk: 3, ojbk: 2, gogo: 1 } },
@@ -1909,7 +1909,7 @@ export const questions: Question[] = [
   },
   {
     id: 153,
-    text: "你假期怎么安排？",
+    text: "黄金周7天长假你？",
     options: [
       { label: "提前规划好每一天，行程精确到小时", scores: { ctrl: 3, poor: 2, gogo: 1 } },
       { label: "走一步看一步，迷路也是旅行", scores: { ojbk: 3, malo: 2, hhhh: 1 } },
@@ -1919,7 +1919,7 @@ export const questions: Question[] = [
   },
   {
     id: 154,
-    text: "你的安全感来自？",
+    text: "半夜醒来睡不着你最想摸到什么？",
     options: [
       { label: "钱！余额就是安全感", scores: { poor: 3, diors: 2, ctrl: 1 } },
       { label: "亲密关系，有人等我回家", scores: { lover: 3, mum: 2, thank: 1 } },
@@ -1929,7 +1929,7 @@ export const questions: Question[] = [
   },
   {
     id: 155,
-    text: "你在团队里通常扮演什么？",
+    text: "项目快崩了你被拉进救火，你？",
     options: [
       { label: "出点子的人，脑洞担当", scores: { think: 3, joker: 2, diors: 1 } },
       { label: "收拾烂摊子的人，擦屁股专业户", scores: { mum: 3, atmer: 2, poor: 1 } },
@@ -1939,7 +1939,7 @@ export const questions: Question[] = [
   },
   {
     id: 156,
-    text: "你对「承诺」什么态度？",
+    text: "你答应了朋友一件事结果忘了，你？",
     options: [
       { label: "说到做到！一口唾沫一个钉", scores: { ctrl: 3, poor: 2, boss: 1 } },
       { label: "看情况，能办到才承诺，别画饼", scores: { think: 3, ojbk: 2, thank: 1 } },
@@ -1949,7 +1949,7 @@ export const questions: Question[] = [
   },
   {
     id: 157,
-    text: "「运气」在你生活里占多大比重？",
+    text: "你买彩票中了个小奖，你觉得？",
     options: [
       { label: "很重要！我的人生就是靠运气撑着的", scores: { ohno: 3, imsb: 2, diors: 1 } },
       { label: "不存在！一切都是自己争取的", scores: { boss: 3, ctrl: 2, poor: 1 } },
@@ -1959,7 +1959,7 @@ export const questions: Question[] = [
   },
   {
     id: 158,
-    text: "你最常感到什么情绪？",
+    text: "别人问你今天心情怎么样，你？",
     options: [
       { label: "快乐！天生乐观派", scores: { hhhh: 3, sexy: 2, gogo: 1 } },
       { label: "焦虑！什么都想什么都担心", scores: { ohno: 3, imfw: 2, think: 1 } },
@@ -1969,7 +1969,7 @@ export const questions: Question[] = [
   },
   {
     id: 159,
-    text: "你聊天是什么风格？",
+    text: "朋友给你发消息你通常？",
     options: [
       { label: "秒回型！看到就回，不回浑身难受", scores: { atmer: 3, hhhh: 2, lover: 1 } },
       { label: "轮回型！想起来才回，可能是明天", scores: { dead: 3, solo: 2, zzzz: 1 } },
@@ -1979,7 +1979,7 @@ export const questions: Question[] = [
   },
   {
     id: 160,
-    text: "哪句话最能代表你？",
+    text: "你走进一家新开的店，你？",
     options: [
       { label: "宁可错杀一千不可放过一个！", scores: { boss: 3, fuck: 2, ctrl: 1 } },
       { label: "随遇而安，强求不来", scores: { monk: 3, ojbk: 2, thank: 1 } },
@@ -1989,7 +1989,7 @@ export const questions: Question[] = [
   },
   {
     id: 161,
-    text: "「幸福」离你多远？",
+    text: "深夜你一个人看着窗外，你觉得幸福？",
     options: [
       { label: "就在身边！我现在就很幸福", scores: { hhhh: 3, thank: 2, sexy: 1 } },
       { label: "不远，再努力一下就到了", scores: { diors: 3, poor: 2, boss: 1 } },
@@ -1999,7 +1999,7 @@ export const questions: Question[] = [
   },
   {
     id: 162,
-    text: "你喜欢什么工作方式？",
+    text: "领导说这个项目你自己搞定，你？",
     options: [
       { label: "独立完成！别管我让我自己飞", scores: { solo: 3, ctrl: 2, monk: 1 } },
       { label: "团队协作！一起干才带劲", scores: { hhhh: 3, atmer: 2, mum: 1 } },
@@ -2009,7 +2009,7 @@ export const questions: Question[] = [
   },
   {
     id: 163,
-    text: "你对自己的脸什么态度？",
+    text: "照镜子的时候你？",
     options: [
       { label: "我觉得自己很好看！自信即巅峰", scores: { sexy: 3, hhhh: 2, ctrl: 1 } },
       { label: "还行吧，不丑也不惊艳，凑合看", scores: { ojbk: 3, fake: 2, think: 1 } },
@@ -2019,7 +2019,7 @@ export const questions: Question[] = [
   },
   {
     id: 164,
-    text: "「面子」重要吗？",
+    text: "饭局上有人让你丢了面子，你？",
     options: [
       { label: "非常重要！面子就是尊严！", scores: { boss: 3, sexy: 2, fake: 1 } },
       { label: "不太重要，里子比面子实在", scores: { think: 3, ctrl: 2, poor: 1 } },
@@ -2029,7 +2029,7 @@ export const questions: Question[] = [
   },
   {
     id: 165,
-    text: "你更喜欢怎么学东西？",
+    text: "你想学个新技能，你？",
     options: [
       { label: "自己研究，文档教程走起，闭门造车我开心", scores: { think: 3, solo: 2, ctrl: 1 } },
       { label: "跟人学！边做边问，有人带进步快", scores: { gogo: 3, atmer: 2, ohno: 1 } },
@@ -2039,7 +2039,7 @@ export const questions: Question[] = [
   },
   {
     id: 166,
-    text: "你的「人格面具」是？",
+    text: "你发了一条很认真的朋友圈，你希望别人觉得你是？",
     options: [
       { label: "温柔善良的好人，妈妈的骄傲", scores: { thank: 3, mum: 2, fake: 1 } },
       { label: "无所不能的强者，什么都难不倒我", scores: { boss: 3, ctrl: 2, sexy: 1 } },
@@ -2049,7 +2049,7 @@ export const questions: Question[] = [
   },
   {
     id: 167,
-    text: "别人对你好你？",
+    text: "有人突然对你特别好，你？",
     options: [
       { label: "开心接受并真诚感谢！", scores: { thank: 3, hhhh: 2, atmer: 1 } },
       { label: "不好意思...觉得自己不配...", scores: { imfw: 3, ohno: 2, lover: 1 } },
@@ -2059,7 +2059,7 @@ export const questions: Question[] = [
   },
   {
     id: 168,
-    text: "你对自己最大的误解是什么？",
+    text: "你觉得自己最被误解的一点是？",
     options: [
       { label: "以为我很坚强，其实动不动就想哭", scores: { lover: 3, joker: 2, fake: 1 } },
       { label: "以为我很软弱，其实我比谁都硬", scores: { fuck: 3, ctrl: 2, boss: 1 } },
@@ -2069,7 +2069,7 @@ export const questions: Question[] = [
   },
   {
     id: 169,
-    text: "你更怕「改变」还是「一成不变」？",
+    text: "你的生活突然被打乱了，你？",
     options: [
       { label: "改变！我不想失去现有的", scores: { imfw: 3, lover: 2, ctrl: 1 } },
       { label: "一成不变！太无聊了我要刺激", scores: { gogo: 3, woc: 2, diors: 1 } },
@@ -2079,7 +2079,7 @@ export const questions: Question[] = [
   },
   {
     id: 170,
-    text: "压力之下你？",
+    text: "月底KPI完不成你？",
     options: [
       { label: "更高效！压力就是我的燃料", scores: { boss: 3, ctrl: 2, poor: 1 } },
       { label: "更焦虑！脑子一片空白效率归零", scores: { ohno: 3, imfw: 2, fake: 1 } },
@@ -2089,7 +2089,7 @@ export const questions: Question[] = [
   },
   {
     id: 171,
-    text: "你喜欢什么节奏的生活？",
+    text: "你的生活节奏更像？",
     options: [
       { label: "快节奏！忙碌充实才感觉在活着", scores: { boss: 3, gogo: 2, ctrl: 1 } },
       { label: "慢节奏！悠然自得才是人生", scores: { monk: 3, ojbk: 2, thank: 1 } },
@@ -2099,7 +2099,7 @@ export const questions: Question[] = [
   },
   {
     id: 172,
-    text: "「成年」意味着什么？",
+    text: "你第一次拿到工资的感觉？",
     options: [
       { label: "自由和独立！终于没人管我了", scores: { gogo: 3, solo: 2, ctrl: 1 } },
       { label: "责任和压力！成年人的世界没有容易二字", scores: { fake: 3, poor: 2, imfw: 1 } },
@@ -2109,7 +2109,7 @@ export const questions: Question[] = [
   },
   {
     id: 173,
-    text: "你更想「被需要」还是「被喜欢」？",
+    text: "你发了一条朋友圈只有1个赞，你？",
     options: [
       { label: "被需要！说明我有价值，没我不行", scores: { mum: 3, ctrl: 2, atmer: 1 } },
       { label: "被喜欢！被人爱着最幸福", scores: { lover: 3, sexy: 2, thank: 1 } },
@@ -2119,7 +2119,7 @@ export const questions: Question[] = [
   },
   {
     id: 174,
-    text: "你最大的优势？",
+    text: "面试官问你最大优势，你？",
     options: [
       { label: "执行力！说干就干绝不墨迹", scores: { gogo: 3, boss: 2, ctrl: 1 } },
       { label: "思考力！看得远想得深", scores: { think: 3, ctrl: 2, monk: 1 } },
@@ -2129,7 +2129,7 @@ export const questions: Question[] = [
   },
   {
     id: 175,
-    text: "你对「失败」？",
+    text: "你投的简历全部被拒了，你？",
     options: [
       { label: "失败了就再来！多大点事", scores: { diors: 3, gogo: 2, boss: 1 } },
       { label: "很痛苦，需要很长时间自我修复", scores: { imfw: 3, lover: 2, ohno: 1 } },
@@ -2139,7 +2139,7 @@ export const questions: Question[] = [
   },
   {
     id: 176,
-    text: "你的社交电池容量？",
+    text: "参加完一场大型社交活动，你？",
     options: [
       { label: "超大！社交永动机，根本不需要充电", scores: { hhhh: 3, sexy: 2, gogo: 1 } },
       { label: "中等，用完需要充一下", scores: { fake: 3, think: 2, ojbk: 1 } },
@@ -2149,7 +2149,7 @@ export const questions: Question[] = [
   },
   {
     id: 177,
-    text: "你对「未来」最大的感受？",
+    text: "深夜你刷到一条关于未来的焦虑帖，你？",
     options: [
       { label: "期待！未来一定会更好", scores: { boss: 3, hhhh: 2, gogo: 1 } },
       { label: "焦虑！不确定的东西太多了", scores: { ohno: 3, imfw: 2, poor: 1 } },
@@ -2159,7 +2159,7 @@ export const questions: Question[] = [
   },
   {
     id: 178,
-    text: "什么最能代表你的人生态度？",
+    text: "你走出家门那一刻，你的内心OS是？",
     options: [
       { label: "冲！", scores: { gogo: 3, fuck: 2, diors: 1 } },
       { label: "佛~", scores: { monk: 3, ojbk: 2, zzzz: 1 } },
@@ -2169,7 +2169,7 @@ export const questions: Question[] = [
   },
   {
     id: 179,
-    text: "你喜欢跟谁一起旅行？",
+    text: "朋友问你去哪旅行你选？",
     options: [
       { label: "一大群朋友！人越多越嗨", scores: { hhhh: 3, atmer: 2, woc: 1 } },
       { label: "一两个亲密的人，安安静静", scores: { lover: 3, solo: 2, monk: 1 } },
@@ -2179,7 +2179,7 @@ export const questions: Question[] = [
   },
   {
     id: 180,
-    text: "「长大」是好事吗？",
+    text: "你看着小朋友在玩你小时候的玩具，你？",
     options: [
       { label: "是！自由更多了，想干嘛干嘛", scores: { gogo: 3, boss: 2, ctrl: 1 } },
       { label: "不是！快乐变少了，账单变多了", scores: { drunk: 3, lover: 2, imfw: 1 } },
@@ -2189,7 +2189,7 @@ export const questions: Question[] = [
   },
   {
     id: 181,
-    text: "你更喜欢清晨还是深夜？",
+    text: "你最好的工作时间段是？",
     options: [
       { label: "清晨！世界刚醒来的感觉太好了", scores: { gogo: 3, boss: 2, ctrl: 1 } },
       { label: "深夜！安静无人打扰适合灵魂出窍", scores: { solo: 3, drunk: 2, think: 1 } },
@@ -2199,7 +2199,7 @@ export const questions: Question[] = [
   },
   {
     id: 182,
-    text: "你对「社交礼节」？",
+    text: "公司团建要求穿正装出席，你？",
     options: [
       { label: "很重要！教养是第一印象", scores: { mum: 3, ctrl: 2, thank: 1 } },
       { label: "表面功夫太假了！虚伪！", scores: { fuck: 3, shit: 2, joker: 1 } },
@@ -2209,7 +2209,7 @@ export const questions: Question[] = [
   },
   {
     id: 183,
-    text: "你想拥有什么超能力？",
+    text: "老天爷说可以给你一个超能力，你选？",
     options: [
       { label: "读心术！看穿所有人想什么", scores: { ctrl: 3, think: 2, shit: 1 } },
       { label: "隐身术！没人能发现我", scores: { solo: 3, fake: 2, dead: 1 } },
@@ -2219,7 +2219,7 @@ export const questions: Question[] = [
   },
   {
     id: 184,
-    text: "你的人生BGM是？",
+    text: "如果给你的人生配一首BGM，你选？",
     options: [
       { label: "热血战斗曲！每天都是BOSS战", scores: { boss: 3, gogo: 2, fuck: 1 } },
       { label: "抒情慢歌，内心住着一个诗人", scores: { lover: 3, drunk: 2, solo: 1 } },
@@ -2229,7 +2229,7 @@ export const questions: Question[] = [
   },
   {
     id: 185,
-    text: "你更想以什么方式存在？",
+    text: "公司年会表演节目，你？",
     options: [
       { label: "被关注！舞台中央聚光灯打我身上", scores: { sexy: 3, boss: 2, hhhh: 1 } },
       { label: "被需要！幕后功臣，没我不行", scores: { mum: 3, ctrl: 2, thank: 1 } },
@@ -2239,7 +2239,7 @@ export const questions: Question[] = [
   },
   {
     id: 186,
-    text: "你是什么味的冰淇淋？",
+    text: "甜品店让你选一个口味代表你自己，你？",
     options: [
       { label: "香草，经典百搭不出错", scores: { ojbk: 3, thank: 2, think: 1 } },
       { label: "辣味！刺激出圈让人忘不了", scores: { fuck: 3, woc: 2, diors: 1 } },
@@ -2249,7 +2249,7 @@ export const questions: Question[] = [
   },
   {
     id: 187,
-    text: "你对「社恐」？",
+    text: "你被拉去参加一个全是陌生人的局，你？",
     options: [
       { label: "我就是社恐本恐，别看我", scores: { solo: 3, imfw: 2, dead: 1 } },
       { label: "社恐？不存在的，我社牛", scores: { sexy: 3, hhhh: 2, gogo: 1 } },
@@ -2259,7 +2259,7 @@ export const questions: Question[] = [
   },
   {
     id: 188,
-    text: "什么颜色最能代表你？",
+    text: "朋友问你觉得你是什么颜色的，你？",
     options: [
       { label: "红色！热情似火走到哪烧到哪", scores: { fuck: 3, gogo: 2, sexy: 1 } },
       { label: "蓝色！冷静理性像一片深海", scores: { think: 3, ctrl: 2, monk: 1 } },
@@ -2269,7 +2269,7 @@ export const questions: Question[] = [
   },
   {
     id: 189,
-    text: "你最讨厌哪种聊天？",
+    text: "你加了个新群发现氛围不对，你？",
     options: [
       { label: "阴阳怪气型，有话直说不行吗", scores: { fuck: 3, shit: 2, ohno: 1 } },
       { label: "已读不回型，你看了为什么不回！", scores: { lover: 3, ohno: 2, imfw: 1 } },
@@ -2279,7 +2279,7 @@ export const questions: Question[] = [
   },
   {
     id: 190,
-    text: "你喜欢「惊喜」还是「确定性」？",
+    text: "朋友说要给你个惊喜，你？",
     options: [
       { label: "惊喜！生活需要刺激不然跟咸鱼有啥区别", scores: { woc: 3, hhhh: 2, gogo: 1 } },
       { label: "确定性！不想有意外，意外都不是好意外", scores: { ctrl: 3, poor: 2, imfw: 1 } },
@@ -2289,7 +2289,7 @@ export const questions: Question[] = [
   },
   {
     id: 191,
-    text: "「善良」是优点还是弱点？",
+    text: "你在路边看到有人摔倒扶不扶，你？",
     options: [
       { label: "优点！善良是力量", scores: { thank: 3, lover: 2, mum: 1 } },
       { label: "弱点！善良容易被欺负", scores: { shit: 3, imfw: 2, fuck: 1 } },
@@ -2299,7 +2299,7 @@ export const questions: Question[] = [
   },
   {
     id: 192,
-    text: "你朋友圈发什么最多？",
+    text: "你发朋友圈的时候你在想什么？",
     options: [
       { label: "美食/风景/日常记录", scores: { hhhh: 3, gogo: 2, thank: 1 } },
       { label: "吐槽/段子和梗图，朋友圈是我的舞台", scores: { joker: 3, shit: 2, woc: 1 } },
@@ -2309,7 +2309,7 @@ export const questions: Question[] = [
   },
   {
     id: 193,
-    text: "你的灵魂年龄是？",
+    text: "朋友说你看起来像几岁的人，你？",
     options: [
       { label: "5岁！永远长不大，快乐最重要", scores: { imsb: 3, hhhh: 2, ohno: 1 } },
       { label: "80岁！看透一切心如止水", scores: { monk: 3, dead: 2, shit: 1 } },
@@ -2319,7 +2319,7 @@ export const questions: Question[] = [
   },
   {
     id: 194,
-    text: "你更怕「犯错」还是「错过」？",
+    text: "你站在跳板边上犹豫跳不跳，你？",
     options: [
       { label: "犯错！丢人！社死！", scores: { imfw: 3, fake: 2, ohno: 1 } },
       { label: "错过！后悔一辈子！", scores: { gogo: 3, lover: 2, diors: 1 } },
@@ -2329,7 +2329,7 @@ export const questions: Question[] = [
   },
   {
     id: 195,
-    text: "你的精神状态更像？",
+    text: "你今天的精神状态用一张图形容？",
     options: [
       { label: "稳定如山，雷打不动", scores: { ctrl: 3, monk: 2, boss: 1 } },
       { label: "过山车！今天天堂明天地狱", scores: { ohno: 3, woc: 2, drunk: 1 } },
@@ -2339,7 +2339,7 @@ export const questions: Question[] = [
   },
   {
     id: 196,
-    text: "你对「加班费」？",
+    text: "HR问你接受加班吗，你？",
     options: [
       { label: "给钱就加！有钱能使鬼推磨", scores: { poor: 3, diors: 2, ctrl: 1 } },
       { label: "给钱也不想加！我的时间无价", scores: { malo: 3, gogo: 2, solo: 1 } },
@@ -2349,7 +2349,7 @@ export const questions: Question[] = [
   },
   {
     id: 197,
-    text: "「孤独」对你来说是什么体验？",
+    text: "你一个人在家突然觉得好安静，你？",
     options: [
       { label: "享受！独处是最好的充电方式", scores: { solo: 3, monk: 2, think: 1 } },
       { label: "痛苦！我不想一个人", scores: { lover: 3, imfw: 2, ohno: 1 } },
@@ -2359,7 +2359,7 @@ export const questions: Question[] = [
   },
   {
     id: 198,
-    text: "你想活在哪部影视作品里？",
+    text: "你打开电视想追剧，你选？",
     options: [
       { label: "热血漫！战斗冒险燃烧青春", scores: { gogo: 3, boss: 2, diors: 1 } },
       { label: "治愈系！温暖日常岁月静好", scores: { thank: 3, lover: 2, mum: 1 } },
@@ -2369,7 +2369,7 @@ export const questions: Question[] = [
   },
   {
     id: 199,
-    text: "你最不擅长什么？",
+    text: "别人求你帮忙但你真的很忙，你？",
     options: [
       { label: "拒绝别人，我说不出那个不字", scores: { atmer: 3, imfw: 2, thank: 1 } },
       { label: "表达感情，爱你在心口难开", scores: { solo: 3, fake: 2, dead: 1 } },
@@ -2379,7 +2379,7 @@ export const questions: Question[] = [
   },
   {
     id: 200,
-    text: "你对「退休」的想象？",
+    text: "你想象自己退休后的生活，你？",
     options: [
       { label: "环游世界！把年轻时没去的地方全去了", scores: { gogo: 3, sexy: 2, hhhh: 1 } },
       { label: "种花养猫！安静度日与世无争", scores: { monk: 3, solo: 2, thank: 1 } },
@@ -2389,7 +2389,7 @@ export const questions: Question[] = [
   },
   {
     id: 201,
-    text: "你的「人设」是什么？",
+    text: "你走进一个房间大家都在笑，你觉得？",
     options: [
       { label: "靠谱担当，交给我放心", scores: { ctrl: 3, poor: 2, mum: 1 } },
       { label: "搞笑担当，有我在不冷场", scores: { joker: 3, hhhh: 2, imsb: 1 } },
@@ -2399,7 +2399,7 @@ export const questions: Question[] = [
   },
   {
     id: 202,
-    text: "最后确认一下，你的精神状态？",
+    text: "做完这个测试最后确认一下，你的精神状态？",
     options: [
       { label: "非常好！人生巅峰状态在线", scores: { boss: 3, sexy: 2, hhhh: 1 } },
       { label: "一般般，凑合过吧", scores: { ojbk: 3, fake: 2, monk: 1 } },

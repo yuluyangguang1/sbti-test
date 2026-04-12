@@ -47,10 +47,10 @@ export function PersonalityAvatar({ emoji, name, color, avatar, size = 'md', cla
           </>
         )}
 
-        {/* 液态玻璃头像框 */}
+        {/* 头像图片 — 直接展示，无玻璃框 */}
         <div
           className={`relative w-full h-full overflow-hidden ${isLarge ? 'liquid-avatar' : ''}`}
-          style={glassStyle}
+          style={{ borderRadius: '50%' }}
         >
           <img
             src={avatar}
@@ -58,23 +58,6 @@ export function PersonalityAvatar({ emoji, name, color, avatar, size = 'md', cla
             className="w-full h-full object-cover"
             loading="lazy"
           />
-
-          {/* 玻璃高光 — 顶部光泽条 */}
-          {isLarge && (
-            <>
-              <div
-                className="absolute top-[2px] left-[15%] right-[15%] h-3 rounded-full"
-                style={{ background: 'rgba(255,255,255,0.20)' }}
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 50%)',
-                  pointerEvents: 'none',
-                }}
-              />
-            </>
-          )}
         </div>
       </div>
     );

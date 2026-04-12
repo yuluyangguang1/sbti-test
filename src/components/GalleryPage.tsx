@@ -97,30 +97,12 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
           </div>
         </div>
 
-        {/* Filters — 液态玻璃按钮 */}
-        <div className="flex gap-3 overflow-x-auto pb-2 mb-8 sm:mb-10 scrollbar-hide">
-          {filters.map(f => (
-            <button
-              key={f.key ?? 'all'}
-              onClick={() => setActiveFilter(f.key)}
-              className={`shrink-0 px-5 py-2.5 text-sm sm:text-base font-medium transition-all duration-200 ${
-                activeFilter === f.key
-                  ? 'glass-filter-active text-purple-600'
-                  : 'glass-filter text-black/45 hover:text-black/65'
-              }`}
-              style={{ borderRadius: 'var(--radius-lg)', letterSpacing: '0.01em' }}
-            >
-              {f.label}
-          </button>
-          ))}
-        </div>
-
         {/* Count */}
-        <p className="text-sm text-black/20 mb-6" style={{ letterSpacing: '0.04em' }}>{filteredPersonalities.length} 种人格</p>
+        <p className="text-sm text-black/20 mb-6" style={{ letterSpacing: '0.04em' }}>{personalities.length} 种人格</p>
 
         {/* Personality Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-          {filteredPersonalities.map((p, i) => (
+          {personalities.map((p, i) => (
             <div
               key={p.id}
               onClick={() => setSelectedPersonality(p.id)}
@@ -156,13 +138,6 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
             </div>
           ))}
         </div>
-
-        {filteredPersonalities.length === 0 && (
-          <div className="text-center py-16 text-black/25">
-            <div className="text-4xl mb-4">🔍</div>
-            <p style={{ letterSpacing: '0.01em' }}>没有找到匹配的人格类型</p>
-          </div>
-        )}
 
         {/* Personality Detail Modal — 液态玻璃弹窗 */}
         {displayPersonality && (

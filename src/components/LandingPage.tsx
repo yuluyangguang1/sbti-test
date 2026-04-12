@@ -74,15 +74,15 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
 
           {/* 数字指标 — 液态玻璃胶囊 */}
           <div className="mt-16 sm:mt-20 flex justify-center gap-5 sm:gap-8">
-            <div className="glass-tag px-8 py-5 sm:px-10 sm:py-6 text-center" style={{ borderRadius: 'var(--radius-lg)' }}>
+            <div className="px-8 py-5 sm:px-10 sm:py-6 text-center">
               <div className="text-3xl sm:text-4xl font-bold text-purple-500" style={{ letterSpacing: '-0.03em' }}>27</div>
               <div className="text-xs sm:text-sm text-gray-700/30 mt-1" style={{ letterSpacing: '0.04em' }}>种人格</div>
             </div>
-            <div className="glass-tag px-8 py-5 sm:px-10 sm:py-6 text-center" style={{ borderRadius: 'var(--radius-lg)' }}>
+            <div className="px-8 py-5 sm:px-10 sm:py-6 text-center">
               <div className="text-3xl sm:text-4xl font-bold text-pink-500" style={{ letterSpacing: '-0.03em' }}>31</div>
               <div className="text-xs sm:text-sm text-gray-700/30 mt-1" style={{ letterSpacing: '0.04em' }}>道题目</div>
             </div>
-            <div className="glass-tag px-8 py-5 sm:px-10 sm:py-6 text-center" style={{ borderRadius: 'var(--radius-lg)' }}>
+            <div className="px-8 py-5 sm:px-10 sm:py-6 text-center">
               <div className="text-3xl sm:text-4xl font-bold text-blue-500" style={{ letterSpacing: '-0.03em' }}>15</div>
               <div className="text-xs sm:text-sm text-gray-700/30 mt-1" style={{ letterSpacing: '0.04em' }}>个维度</div>
             </div>
@@ -125,59 +125,36 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
         </div>
       </div>
 
-      {/* 五套模型 — 列表 */}
+      {/* 五套模型 — 轻量展示 */}
       <div className="px-8 sm:px-12 pb-24 sm:pb-32 relative z-10">
         <div className="max-w-2xl mx-auto">
           <h3 className="text-center text-xl sm:text-2xl font-bold text-gray-800 mb-3" style={{ letterSpacing: '-0.03em' }}>五套人格模型</h3>
-          <p className="text-center text-sm sm:text-base text-gray-700/30 mb-8 sm:mb-10" style={{ letterSpacing: '0.01em' }}>3 维度 × 3 落点，画出你的十五维人格指纹</p>
+          <p className="text-center text-sm sm:text-base text-gray-700/30 mb-10 sm:mb-14" style={{ letterSpacing: '0.01em' }}>3 维度 × 3 落点，画出你的十五维人格指纹</p>
 
-          <div className="glass-card overflow-hidden !p-0">
-            <div className="relative z-10">
-              {modelMeta.map((meta, idx) => {
-                const model = modelDescriptions[meta.key];
-                const dims = dimensionDefs.filter(d => d.modelKey === meta.key);
-                return (
-                  <div key={meta.key}>
-                    <div className="px-8 sm:px-10 py-6 sm:py-8">
-                      {/* 图标 + 名称 */}
-                      <div className="flex items-center gap-3 sm:gap-4 mb-3">
-                        <div
-                          className="w-10 h-10 sm:w-11 sm:h-11 shrink-0 flex items-center justify-center text-lg sm:text-xl"
-                          style={{
-                            background: `linear-gradient(135deg, ${meta.color}18, ${meta.color}08)`,
-                            border: `0.5px solid ${meta.color}20`,
-                            borderRadius: 'var(--radius-md)',
-                          }}
-                        >
-                          {meta.icon}
-                        </div>
-                        <div className="text-base sm:text-lg font-bold text-gray-800" style={{ letterSpacing: '-0.01em' }}>{model.name}</div>
-                      </div>
-                      {/* 三个维度 */}
-                      <div className="flex gap-2.5 sm:gap-3">
-                        {dims.map(dim => (
-                          <span
-                            key={dim.key}
-                            className="text-sm sm:text-base px-3 py-1.5"
-                            style={{
-                              color: meta.color,
-                              background: `${meta.color}0c`,
-                              borderRadius: 'var(--radius-sm)',
-                              letterSpacing: '0.01em',
-                            }}
-                          >
-                            {dim.label}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    {idx < modelMeta.length - 1 && (
-                      <div className="mx-8 sm:mx-10 border-b border-black/[0.04]" />
-                    )}
+          <div className="space-y-8 sm:space-y-10">
+            {modelMeta.map((meta) => {
+              const model = modelDescriptions[meta.key];
+              const dims = dimensionDefs.filter(d => d.modelKey === meta.key);
+              return (
+                <div key={meta.key} className="text-center">
+                  <div className="inline-flex items-center gap-2.5 mb-4">
+                    <span className="text-lg sm:text-xl">{meta.icon}</span>
+                    <span className="text-base sm:text-lg font-bold text-gray-800" style={{ letterSpacing: '-0.01em' }}>{model.name}</span>
                   </div>
-                );
-              })}
-            </div>
+                  <div className="flex justify-center gap-3 sm:gap-4">
+                    {dims.map(dim => (
+                      <span
+                        key={dim.key}
+                        className="text-sm sm:text-base text-gray-700/40"
+                        style={{ letterSpacing: '0.02em' }}
+                      >
+                        {dim.label}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
