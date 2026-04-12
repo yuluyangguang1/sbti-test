@@ -142,20 +142,28 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
         {/* Personality Detail Modal — 液态玻璃弹窗 */}
         {displayPersonality && (
           <div
-            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-6"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
             onClick={() => setSelectedPersonality(null)}
           >
             <div className="absolute inset-0 bg-black/30 backdrop-blur-md" />
 
-            {/* 外层容器：不裁剪，让光晕自由溢出 */}
+            {/* 弹窗主体 — 固定居中、不形变 */}
             <div
-              className="relative w-full sm:max-w-lg max-h-[92vh] sm:max-h-[90vh] flex flex-col animate-slide-up"
+              className="relative w-full max-w-lg max-h-[85vh] flex flex-col animate-slide-up overflow-hidden"
               onClick={(e) => e.stopPropagation()}
+              style={{
+                background: 'rgba(255, 255, 255, 0.60)',
+                backdropFilter: 'blur(40px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+                border: '0.5px solid rgba(255,255,255,0.60)',
+                borderRadius: 'var(--radius-xl)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08), 0 0 0 0.5px rgba(255,255,255,0.20) inset, 0 1px 0 rgba(255,255,255,0.50) inset',
+              }}
             >
               {/* Close button */}
               <button
                 onClick={() => setSelectedPersonality(null)}
-                className="absolute top-2 right-4 sm:top-3 sm:right-5 z-30 w-9 h-9 rounded-full flex items-center justify-center text-black/25 hover:text-black/55 text-sm transition-colors"
+                className="absolute top-3 right-4 z-30 w-9 h-9 rounded-full flex items-center justify-center text-black/25 hover:text-black/55 text-sm transition-colors"
                 style={{
                   background: 'rgba(255,255,255,0.45)',
                   backdropFilter: 'blur(8px)',
@@ -165,32 +173,23 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
                 ✕
               </button>
 
-              {/* 头像区 — 浮在框外，无背景裁剪 */}
-              <div className="shrink-0 overflow-visible text-center pt-6 pb-4 sm:pt-8 sm:pb-5">
-                <PersonalityAvatar
-                  emoji={displayPersonality.emoji}
-                  name={displayPersonality.name}
-                  color={displayPersonality.color}
-                  avatar={displayPersonality.avatar}
-                  size="lg"
-                />
-                <div className="text-sm font-mono text-black/20 mt-4 mb-2" style={{ letterSpacing: '0.08em' }}>{displayPersonality.code}</div>
-                <h3 className="text-3xl sm:text-4xl font-black text-black/75 mb-3" style={{ letterSpacing: '-0.03em' }}>{displayPersonality.name}</h3>
-                <p className="text-base sm:text-lg text-black/40 italic" style={{ letterSpacing: '0.01em' }}>"{displayPersonality.slogan}"</p>
-              </div>
+              {/* 可滚动内容区 */}
+              <div className="flex-1 overflow-y-auto min-h-0">
+                <div className="p-8 sm:p-10 space-y-8">
+                  {/* 头像区 */}
+                  <div className="text-center pt-2 pb-2">
+                    <PersonalityAvatar
+                      emoji={displayPersonality.emoji}
+                      name={displayPersonality.name}
+                      color={displayPersonality.color}
+                      avatar={displayPersonality.avatar}
+                      size="lg"
+                    />
+                    <div className="text-sm font-mono text-black/20 mt-4 mb-2" style={{ letterSpacing: '0.08em' }}>{displayPersonality.code}</div>
+                    <h3 className="text-3xl sm:text-4xl font-black text-black/75 mb-3" style={{ letterSpacing: '-0.03em' }}>{displayPersonality.name}</h3>
+                    <p className="text-base sm:text-lg text-black/40 italic" style={{ letterSpacing: '0.01em' }}>"{displayPersonality.slogan}"</p>
+                  </div>
 
-              {/* 文字内容区 — 玻璃框只包住这里 */}
-              <div
-                className="flex-1 overflow-y-auto min-h-0 rounded-t-3xl sm:rounded-t-3xl"
-                style={{
-                  background: 'rgba(255, 255, 255, 0.60)',
-                  backdropFilter: 'blur(40px) saturate(180%)',
-                  WebkitBackdropFilter: 'blur(40px) saturate(180%)',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.06), 0 -1px 0 rgba(255,255,255,0.40) inset, 0 1px 0 rgba(255,255,255,0.50) inset',
-                  borderTop: `1px solid ${displayPersonality.color}30`,
-                }}
-              >
-                <div className="p-8 sm:p-14 space-y-12">
                   {/* Description */}
                   <p className="text-base sm:text-lg text-black/45 leading-[1.85] indent" style={{ letterSpacing: '0.01em' }}>
                     {displayPersonality.description}

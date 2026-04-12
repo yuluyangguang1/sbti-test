@@ -129,7 +129,7 @@ function App() {
         <RankingsPage onBackHome={handleBackHome} onStartQuiz={handleStartQuiz} />
       )}
       {!hideNav && (
-        <footer className="text-center py-8 text-xs text-gray-400 select-none">
+        <footer className="text-center pt-4 pb-6 text-xs text-gray-400 select-none">
           <span className="relative inline-block group cursor-default">
             by yuluyangguang
             <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
