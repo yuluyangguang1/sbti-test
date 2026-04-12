@@ -130,7 +130,16 @@ function App() {
       )}
       {!hideNav && (
         <footer className="text-center py-8 text-xs text-gray-400 select-none">
-          by yuluyangguang
+          <span className="relative inline-block group cursor-default">
+            by yuluyangguang
+            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+              <img
+                src="/yuluyangguangdoudian.png"
+                alt="yuluyangguang"
+                className="w-24 h-24 rounded-full shadow-lg ring-2 ring-purple-200"
+              />
+            </span>
+          </span>
         </footer>
       )}
     </div>
