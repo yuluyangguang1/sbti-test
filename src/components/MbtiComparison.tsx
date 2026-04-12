@@ -52,8 +52,7 @@ export function MbtiComparison({ personality }: MbtiComparisonProps) {
   const whyText = generateWhyText(personality);
 
   return (
-    <div className="glass-card" style={{ padding: '48px 44px' }}>
-      <div className="relative z-10">
+    <div>
       {/* Title */}
       <h3 className="text-base sm:text-lg font-bold text-black/80 mb-1">
         SBTI <span className="text-purple-500">×</span> MBTI
@@ -103,7 +102,7 @@ export function MbtiComparison({ personality }: MbtiComparisonProps) {
 
       {/* Bridge reading - dual column */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div className="rounded-xl glass-tag p-3 sm:p-4">
+        <div className="rounded-xl p-3 sm:p-4" style={{ background: 'rgba(255,255,255,0.30)' }}>
           <div className="flex items-center gap-2 mb-2">
             <span
               className="px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-bold"
@@ -117,7 +116,7 @@ export function MbtiComparison({ personality }: MbtiComparisonProps) {
             这不是官方一一对应，也不是科学换算，而是把相近的人格气质换成 MBTI 更熟悉的表达，方便你快速理解这页结果大概落在哪条路线上。
           </p>
         </div>
-        <div className="rounded-xl glass-tag p-4 sm:p-5">
+        <div className="rounded-xl p-4 sm:p-5" style={{ background: 'rgba(255,255,255,0.30)' }}>
           <div className="flex items-center gap-2 mb-2">
             <span
               className="px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-bold"
@@ -131,7 +130,6 @@ export function MbtiComparison({ personality }: MbtiComparisonProps) {
             把 MBTI 当成阅读抓手就够了，不要当成裁判结论。真要看日常行为、关系反应和互联网精神状态，SBTI 这套语言会更贴脸。
           </p>
         </div>
-      </div>
       </div>
     </div>
   );

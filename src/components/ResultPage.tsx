@@ -189,12 +189,11 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
         </div>
 
         {/* Score Ranking — 液态玻璃卡片 */}
-        <div className="animate-card-enter mt-36 sm:mt-40 md:mt-48 glass-card" style={{ padding: '48px 44px', animationDelay: '0.6s' }}>
-          <div className="relative z-10">
-            <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-6 sm:mb-8" style={{ letterSpacing: '-0.03em' }}>
-              你的人格匹配度排行
-            </h3>
-            <div className="space-y-5 sm:space-y-6">
+        <div className="animate-card-enter mt-36 sm:mt-40 md:mt-48" style={{ animationDelay: '0.6s' }}>
+          <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-6 sm:mb-8" style={{ letterSpacing: '-0.03em' }}>
+            你的人格匹配度排行
+          </h3>
+          <div className="space-y-5 sm:space-y-6">
               {topPersonalities.map((item, index) => (
                 <div key={item.personality.id} className="flex items-center gap-4 sm:gap-5">
                   <PersonalityAvatar
@@ -228,7 +227,6 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
                 </div>
               ))}
             </div>
-          </div>
         </div>
 
         {/* Actions */}

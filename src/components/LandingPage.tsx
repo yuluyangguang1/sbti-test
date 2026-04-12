@@ -105,7 +105,7 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
 
           <div className="grid grid-cols-3 gap-6 sm:gap-8">
             {specialPersonalities.map((sp, idx) => (
-              <div key={sp.id} className="glass-card glass-card-hover text-center animate-card-enter" style={{ padding: '44px 36px', animationDelay: `${idx * 0.1}s` }}>
+              <div key={sp.id} className="text-center animate-card-enter" style={{ animationDelay: `${idx * 0.1}s` }}>
                 <div className="relative z-10">
                   <PersonalityAvatar
                     emoji={sp.emoji}
@@ -165,7 +165,7 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
           <h3 className="text-center text-sm text-gray-700/25 mb-12 sm:mb-14 tracking-widest" style={{ letterSpacing: '0.08em' }}>
             你可能是什么人格？
           </h3>
-          <div className="glass-card" style={{ padding: '52px 44px' }}>
+          <div>
             <div className="relative z-10 grid grid-cols-3 gap-4 sm:gap-6">
               {randomPersonalities.map((p, idx) => (
                 <div key={p.id} className="text-center py-5 animate-card-enter" style={{ animationDelay: `${idx * 0.05 + 0.2}s` }}>
