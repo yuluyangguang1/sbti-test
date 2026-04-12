@@ -17,14 +17,14 @@ export function SimilarPersonalities({ personality, onViewPersonality }: Similar
   if (similarTypes.length === 0) return null;
 
   return (
-    <div className="glass-card p-6 sm:p-8">
+    <div className="glass-card !p-8 sm:!p-10">
       <div className="relative z-10">
         <h3 className="text-base sm:text-lg font-bold text-black/80 mb-1">和你很像的人</h3>
         <p className="text-xs sm:text-sm text-black/40 mb-4 sm:mb-5">
           以下是气质上和你最接近的几种人格
         </p>
 
-        <div className="space-y-4">
+        <div className="space-y-5 sm:space-y-6">
           {similarTypes.map((p) => (
             <button
               key={p.id}

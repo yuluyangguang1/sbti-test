@@ -65,7 +65,7 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
 
         {/* Result Card — 液态玻璃主卡片（含分享功能） */}
         <div className="animate-fade-in">
-          <div id="share-card-area" className="glass-card !p-10 sm:!p-16 md:!p-24 text-center relative overflow-hidden">
+          <div id="share-card-area" className="glass-card !p-12 sm:!p-16 md:!p-24 text-center relative overflow-hidden">
             {/* Background pattern — 淡化到不干扰 */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
               <div className="absolute top-0 left-0 text-[100px] sm:text-[180px] leading-none font-black" style={{ color: personality.color }}>
@@ -174,22 +174,22 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
         </div>
 
         {/* Dimension Fingerprint */}
-        <div className="animate-slide-up mt-24 sm:mt-28" style={{ animationDelay: '0.3s' }}>
+        <div className="animate-slide-up mt-32 sm:mt-36" style={{ animationDelay: '0.3s' }}>
           <DimensionFingerprint personality={personality} />
         </div>
 
         {/* SBTI × MBTI Comparison */}
-        <div className="animate-slide-up mt-24 sm:mt-28" style={{ animationDelay: '0.4s' }}>
+        <div className="animate-slide-up mt-32 sm:mt-36" style={{ animationDelay: '0.4s' }}>
           <MbtiComparison personality={personality} />
         </div>
 
         {/* Similar Personalities */}
-        <div className="animate-slide-up mt-24 sm:mt-28" style={{ animationDelay: '0.5s' }}>
+        <div className="animate-slide-up mt-32 sm:mt-36" style={{ animationDelay: '0.5s' }}>
           <SimilarPersonalities personality={personality} onViewPersonality={handleViewPersonality} />
         </div>
 
         {/* Score Ranking — 液态玻璃卡片 */}
-        <div className="animate-card-enter mt-32 sm:mt-36 md:mt-44 glass-card !p-8 sm:!p-14 md:!p-18" style={{ animationDelay: '0.6s' }}>
+        <div className="animate-card-enter mt-36 sm:mt-40 md:mt-48 glass-card !p-10 sm:!p-14 md:!p-18" style={{ animationDelay: '0.6s' }}>
           <div className="relative z-10">
             <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-6 sm:mb-8" style={{ letterSpacing: '-0.03em' }}>
               你的人格匹配度排行

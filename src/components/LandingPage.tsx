@@ -103,9 +103,9 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
           <h3 className="text-center text-3xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4" style={{ letterSpacing: '-0.03em' }}>隐藏人格</h3>
           <p className="text-center text-base sm:text-base text-gray-700/30 mb-14 sm:mb-16" style={{ letterSpacing: '0.01em' }}>有些人格，不是你想当就能当的</p>
 
-          <div className="grid grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-3 gap-6 sm:gap-8">
             {specialPersonalities.map((sp, idx) => (
-              <div key={sp.id} className="glass-card glass-card-hover !p-6 sm:!p-10 text-center animate-card-enter" style={{ animationDelay: `${idx * 0.1}s` }}>
+              <div key={sp.id} className="glass-card glass-card-hover !p-8 sm:!p-10 text-center animate-card-enter" style={{ animationDelay: `${idx * 0.1}s` }}>
                 <div className="relative z-10">
                   <PersonalityAvatar
                     emoji={sp.emoji}
@@ -131,7 +131,7 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
           <h3 className="text-center text-2xl sm:text-2xl font-bold text-gray-800 mb-4" style={{ letterSpacing: '-0.03em' }}>五套人格模型</h3>
           <p className="text-center text-sm sm:text-base text-gray-700/30 mb-14 sm:mb-16" style={{ letterSpacing: '0.01em' }}>3 维度 × 3 落点，画出你的十五维人格指纹</p>
 
-          <div className="space-y-10 sm:space-y-12">
+          <div className="space-y-14 sm:space-y-16">
             {modelMeta.map((meta) => {
               const model = modelDescriptions[meta.key];
               const dims = dimensionDefs.filter(d => d.modelKey === meta.key);
@@ -165,7 +165,7 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
           <h3 className="text-center text-sm text-gray-700/25 mb-12 sm:mb-14 tracking-widest" style={{ letterSpacing: '0.08em' }}>
             你可能是什么人格？
           </h3>
-          <div className="glass-card !p-8 sm:!p-14">
+          <div className="glass-card !p-10 sm:!p-14">
             <div className="relative z-10 grid grid-cols-3 gap-4 sm:gap-6">
               {randomPersonalities.map((p, idx) => (
                 <div key={p.id} className="text-center py-5 animate-card-enter" style={{ animationDelay: `${idx * 0.05 + 0.2}s` }}>

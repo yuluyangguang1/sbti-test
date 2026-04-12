@@ -294,7 +294,7 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
           </h2>
 
           {/* 选项列表 */}
-          <div className="space-y-5 sm:space-y-5 md:space-y-6">
+          <div className="space-y-6 sm:space-y-6 md:space-y-7">
             {question.options.map((option, index) => (
               <button
                 key={index}

@@ -53,7 +53,7 @@ export function DimensionFingerprint({ personality }: DimensionFingerprintProps)
   };
 
   return (
-    <div className="space-y-4 sm:space-y-5">
+    <div className="space-y-8 sm:space-y-10">
       {/* 标题 */}
       <div className="text-center mb-4 sm:mb-6">
         <h3 className="text-base sm:text-lg font-bold text-black/80 mb-1">
@@ -82,10 +82,10 @@ export function DimensionFingerprint({ personality }: DimensionFingerprintProps)
 
       {/* 每个模型一个卡片 */}
       {groupedDimensions.map((group) => (
-        <div key={group.modelKey} className="glass-card p-6 sm:p-8">
+        <div key={group.modelKey} className="glass-card !p-7 sm:!p-10">
           <div className="relative z-10">
           {/* 模型头部 */}
-          <div className="mb-3">
+          <div className="mb-5">
             <div className="flex items-center gap-2 mb-0.5">
               <span
                 className="inline-flex items-center justify-center w-6 h-6 rounded-md text-[10px] sm:text-xs font-bold"
@@ -99,7 +99,7 @@ export function DimensionFingerprint({ personality }: DimensionFingerprintProps)
           </div>
 
           {/* 维度行 */}
-          <div className="space-y-2.5 sm:space-y-3 pl-1 sm:pl-2">
+          <div className="space-y-4 sm:space-y-5 pl-1 sm:pl-2">
             {group.dims.map((dim) => {
               const level = personality.dimensions[dim.key] as 'H' | 'M' | 'L';
               const style = getLevelStyle(level);
@@ -131,7 +131,7 @@ export function DimensionFingerprint({ personality }: DimensionFingerprintProps)
       ))}
 
       {/* 总览条 */}
-      <div className="glass-card p-6 sm:p-8">
+      <div className="glass-card !p-7 sm:!p-10">
         <div className="relative z-10">
         <div className="text-center mb-3">
           <span className="text-xs text-black/35">维度落点总览</span>

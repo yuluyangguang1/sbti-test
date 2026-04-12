@@ -61,14 +61,14 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   letter-spacing: var(--text-tracking-normal);
-  line-height: 1.9;
+  line-height: 2.2;
 }
 
 /* ========== 移动端全局优化 — liquid-glass.org 呼吸感 ========== */
 @media (max-width: 640px) {
   body {
     font-size: 16px;
-    line-height: 2.0;
+    line-height: 2.4;
   }
   button, a, input, textarea, select {
     min-height: 48px;
@@ -79,7 +79,7 @@ body {
     padding-bottom: env(safe-area-inset-bottom, 0);
   }
   .glass-card {
-    padding: 36px !important;
+    padding: 40px !important;
     border-radius: var(--radius-xl) !important;
   }
   .result-section {
@@ -564,8 +564,8 @@ body {
     border-radius: var(--radius-xl);
     padding-left: 56px !important;
     padding-right: 40px !important;
-    padding-top: 20px !important;
-    padding-bottom: 20px !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
   }
 }
 
