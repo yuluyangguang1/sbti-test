@@ -64,11 +64,11 @@ body {
   line-height: 1.9;
 }
 
-/* ========== 移动端全局优化 ========== */
+/* ========== 移动端全局优化 — liquid-glass.org 呼吸感 ========== */
 @media (max-width: 640px) {
   body {
-    font-size: 15px;
-    line-height: 1.8;
+    font-size: 16px;
+    line-height: 2.0;
   }
   button, a, input, textarea, select {
     min-height: 48px;
@@ -79,11 +79,11 @@ body {
     padding-bottom: env(safe-area-inset-bottom, 0);
   }
   .glass-card {
-    padding: var(--space-card-p) !important;
+    padding: 36px !important;
     border-radius: var(--radius-xl) !important;
   }
   .result-section {
-    margin-top: 32px;
+    margin-top: 48px;
   }
 }
 
@@ -558,12 +558,14 @@ body {
   -webkit-backdrop-filter: blur(40px) saturate(200%);
 }
 
-/* ========== 移动端答题选项更宽松 ========== */
+/* ========== 移动端答题选项更宽松 — liquid-glass.org 呼吸感 ========== */
 @media (max-width: 640px) {
   .quiz-option {
     border-radius: var(--radius-xl);
-    padding-left: 52px !important;
-    padding-right: 36px !important;
+    padding-left: 56px !important;
+    padding-right: 40px !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
   }
 }
 

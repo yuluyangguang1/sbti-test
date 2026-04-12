@@ -231,7 +231,7 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col px-8 sm:px-12 py-12 sm:py-20 relative">
+    <div className="min-h-screen flex flex-col px-8 sm:px-12 py-16 sm:py-20 relative">
       {/* 液态背景 */}
       <div className="liquid-bg">
         <div className="liquid-blob" />
@@ -240,7 +240,7 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
       </div>
 
       {/* 顶部导航：返回首页 + 重新随机 */}
-      <div className="max-w-2xl mx-auto w-full mb-8 relative z-10 flex justify-between items-center">
+      <div className="max-w-2xl mx-auto w-full mb-10 relative z-10 flex justify-between items-center">
         <button
           onClick={onBackHome}
           className="text-sm text-gray-700/30 hover:text-gray-700/60 transition-colors"
@@ -258,7 +258,7 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
       </div>
 
       {/* Progress */}
-      <div className="max-w-2xl mx-auto w-full mb-12 sm:mb-16 relative z-10">
+      <div className="max-w-2xl mx-auto w-full mb-14 sm:mb-16 relative z-10">
         <div className="flex justify-between items-center mb-3">
           <span className="text-sm text-gray-700/40" style={{ letterSpacing: '0.01em' }}>
             第 {currentQuestion + 1} / {shuffledQuestions.length} 题
@@ -289,12 +289,12 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
           )}
 
           {/* 题目 */}
-          <h2 className="text-xl sm:text-2xl md:text-[28px] md:leading-[2.2] font-bold text-gray-800 mb-12 sm:mb-16 text-center leading-[2] px-2" style={{ letterSpacing: '-0.01em' }}>
+          <h2 className="text-2xl sm:text-2xl md:text-[28px] md:leading-[2.2] font-bold text-gray-800 mb-14 sm:mb-16 text-center leading-[2] px-2" style={{ letterSpacing: '-0.01em' }}>
             {question.text}
           </h2>
 
           {/* 选项列表 */}
-          <div className="space-y-4 sm:space-y-5 md:space-y-6">
+          <div className="space-y-5 sm:space-y-5 md:space-y-6">
             {question.options.map((option, index) => (
               <button
                 key={index}
@@ -306,14 +306,14 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
               >
                 {/* A/B/C 字母前缀 + 选项文字 */}
                 <span className="flex items-start gap-4 relative z-10">
-                  <span className={`flex-shrink-0 w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center text-sm md:text-base font-bold transition-all duration-200 ${
+                  <span className={`flex-shrink-0 w-9 h-9 md:w-9 md:h-9 rounded-full flex items-center justify-center text-sm md:text-base font-bold transition-all duration-200 ${
                     selectedOption === index
                       ? 'bg-purple-500 text-white shadow-md'
                       : 'bg-gray-100 text-gray-500'
                   }`}>
                     {optionLetters[index]}
                   </span>
-                  <span className="text-lg sm:text-xl md:text-[22px] md:leading-[2.2] text-gray-800 leading-[2] pt-0.5" style={{ letterSpacing: '0.01em' }}>
+                  <span className="text-xl sm:text-xl md:text-[22px] md:leading-[2.2] text-gray-800 leading-[2] pt-0.5" style={{ letterSpacing: '0.01em' }}>
                     {option.label}
                   </span>
                 </span>
@@ -324,7 +324,7 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
       </div>
 
       {/* 底部导航：上一题 / 提示 */}
-      <div className="max-w-2xl mx-auto w-full mt-12 sm:mt-16 relative z-10">
+      <div className="max-w-2xl mx-auto w-full mt-14 sm:mt-16 relative z-10">
         {/* 提示语 */}
         <p className="text-center text-sm text-gray-700/25 mb-6 animate-fade-in" key={currentQuestion} style={{ letterSpacing: '0.01em' }}>
           {hint}

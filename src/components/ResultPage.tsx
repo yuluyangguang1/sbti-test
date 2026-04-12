@@ -38,7 +38,7 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
   };
 
   return (
-    <div className="min-h-screen px-8 sm:px-12 md:px-16 py-16 sm:py-24 md:py-28 relative">
+    <div className="min-h-screen px-8 sm:px-12 md:px-16 py-20 sm:py-24 md:py-28 relative">
       {/* 液态背景装饰 */}
       <div className="liquid-bg">
         <div className="liquid-blob" style={{ background: `linear-gradient(135deg, ${personality.color}, ${personality.color}cc)` }} />
@@ -48,7 +48,7 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
 
       <div className="max-w-3xl mx-auto relative z-10">
         {/* Back button */}
-        <div className="flex justify-between items-center mb-14 sm:mb-20">
+        <div className="flex justify-between items-center mb-16 sm:mb-20">
           <button
             onClick={onBackHome}
             className="text-black/30 hover:text-gray-800/60 transition-colors text-sm sm:text-base flex items-center gap-1" style={{ letterSpacing: '0.01em' }}
@@ -65,7 +65,7 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
 
         {/* Result Card — 液态玻璃主卡片（含分享功能） */}
         <div className="animate-fade-in">
-          <div id="share-card-area" className="glass-card p-12 sm:p-16 md:p-24 text-center relative overflow-hidden">
+          <div id="share-card-area" className="glass-card !p-10 sm:!p-16 md:!p-24 text-center relative overflow-hidden">
             {/* Background pattern — 淡化到不干扰 */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
               <div className="absolute top-0 left-0 text-[100px] sm:text-[180px] leading-none font-black" style={{ color: personality.color }}>
@@ -83,7 +83,7 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
 
             <div className="relative z-10">
               {/* Avatar */}
-              <div className="flex justify-center mb-12 sm:mb-16">
+              <div className="flex justify-center mb-14 sm:mb-16 md:mb-18">
                 <PersonalityAvatar
                   emoji={personality.emoji}
                   name={personality.name}
@@ -99,22 +99,22 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
               </div>
 
               {/* Name */}
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-gray-800 mb-6 sm:mb-8 md:mb-10" style={{ letterSpacing: '-0.03em' }}>
+              <h1 className="text-5xl sm:text-5xl md:text-7xl font-black text-gray-800 mb-8 sm:mb-8 md:mb-10" style={{ letterSpacing: '-0.03em' }}>
                 {personality.name}
               </h1>
 
               {/* Slogan */}
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-700/40 italic mb-12 sm:mb-16 md:mb-20" style={{ letterSpacing: '0.01em' }}>
+              <p className="text-xl sm:text-xl md:text-2xl text-gray-700/40 italic mb-14 sm:mb-16 md:mb-20" style={{ letterSpacing: '0.01em' }}>
                 "{personality.slogan}"
               </p>
 
               {/* Description */}
-              <p className="text-base sm:text-lg md:text-xl text-gray-700/50 leading-[1.85] max-w-lg mx-auto text-left indent" style={{ letterSpacing: '0.01em' }}>
+              <p className="text-lg sm:text-lg md:text-xl text-gray-700/50 leading-[1.85] max-w-lg mx-auto text-left indent" style={{ letterSpacing: '0.01em' }}>
                 {personality.description}
               </p>
 
               {/* Traits — 液态玻璃标签 */}
-              <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-10 sm:mt-12">
+              <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-12 sm:mt-12">
                 {personality.traits.map((trait, i) => (
                   <span
                     key={i}
@@ -174,22 +174,22 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
         </div>
 
         {/* Dimension Fingerprint */}
-        <div className="animate-slide-up mt-20 sm:mt-24" style={{ animationDelay: '0.3s' }}>
+        <div className="animate-slide-up mt-24 sm:mt-28" style={{ animationDelay: '0.3s' }}>
           <DimensionFingerprint personality={personality} />
         </div>
 
         {/* SBTI × MBTI Comparison */}
-        <div className="animate-slide-up mt-20 sm:mt-24" style={{ animationDelay: '0.4s' }}>
+        <div className="animate-slide-up mt-24 sm:mt-28" style={{ animationDelay: '0.4s' }}>
           <MbtiComparison personality={personality} />
         </div>
 
         {/* Similar Personalities */}
-        <div className="animate-slide-up mt-20 sm:mt-24" style={{ animationDelay: '0.5s' }}>
+        <div className="animate-slide-up mt-24 sm:mt-28" style={{ animationDelay: '0.5s' }}>
           <SimilarPersonalities personality={personality} onViewPersonality={handleViewPersonality} />
         </div>
 
         {/* Score Ranking — 液态玻璃卡片 */}
-        <div className="animate-card-enter mt-28 sm:mt-36 md:mt-44 glass-card p-10 sm:p-14 md:p-18" style={{ animationDelay: '0.6s' }}>
+        <div className="animate-card-enter mt-32 sm:mt-36 md:mt-44 glass-card !p-8 sm:!p-14 md:!p-18" style={{ animationDelay: '0.6s' }}>
           <div className="relative z-10">
             <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-6 sm:mb-8" style={{ letterSpacing: '-0.03em' }}>
               你的人格匹配度排行
@@ -232,7 +232,7 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
         </div>
 
         {/* Actions */}
-        <div className="animate-slide-up mt-28 sm:mt-36 flex flex-col gap-6" style={{ animationDelay: '0.7s' }}>
+        <div className="animate-slide-up mt-32 sm:mt-36 flex flex-col gap-6" style={{ animationDelay: '0.7s' }}>
           <button
             onClick={onViewGallery}
             className="btn-primary w-full py-5 sm:py-6 text-lg sm:text-xl"

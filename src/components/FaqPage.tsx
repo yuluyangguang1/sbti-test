@@ -51,7 +51,7 @@ export function FaqPage({ onBackHome }: FaqPageProps) {
   };
 
   return (
-    <div className="min-h-screen px-8 sm:px-12 md:px-16 py-16 sm:py-24 relative">
+    <div className="min-h-screen px-8 sm:px-12 md:px-16 py-20 sm:py-24 relative">
       <div className="liquid-bg">
         <div className="liquid-blob" />
         <div className="liquid-blob" />

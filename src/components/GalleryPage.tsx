@@ -55,7 +55,7 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
     : null;
 
   return (
-    <div className="min-h-screen px-8 sm:px-12 md:px-16 py-16 sm:py-24 relative">
+    <div className="min-h-screen px-8 sm:px-12 md:px-16 py-20 sm:py-24 relative">
       {/* 液态背景装饰 */}
       <div className="liquid-bg">
         <div className="liquid-blob" />
@@ -65,7 +65,7 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Header */}
-        <div className="flex justify-between items-center mb-10 sm:mb-14">
+        <div className="flex justify-between items-center mb-12 sm:mb-14">
           <button
             onClick={onBackHome}
             className="text-black/30 hover:text-black/60 transition-colors text-sm sm:text-base flex items-center gap-1" style={{ letterSpacing: '0.01em' }}
@@ -77,7 +77,7 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
         </div>
 
         {/* Search — 液态玻璃输入框 */}
-        <div className="mb-6 sm:mb-8">
+        <div className="mb-8 sm:mb-8">
           <div className="relative">
             <input
               type="text"
@@ -101,12 +101,12 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
         <p className="text-sm text-black/20 mb-6" style={{ letterSpacing: '0.04em' }}>{personalities.length} 种人格</p>
 
         {/* Personality Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-8 lg:gap-10">
           {personalities.map((p, i) => (
             <div
               key={p.id}
               onClick={() => setSelectedPersonality(p.id)}
-              className={`glass-card glass-card-hover !p-8 sm:!p-10 lg:!p-12 cursor-pointer animate-card-enter ${
+              className={`glass-card glass-card-hover !p-7 sm:!p-10 lg:!p-12 cursor-pointer animate-card-enter ${
                 selectedPersonality === p.id ? 'ring-1 ring-purple-400/50' : ''
               }`}
               style={{
@@ -190,7 +190,7 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
                   borderTop: `1px solid ${displayPersonality.color}30`,
                 }}
               >
-                <div className="p-10 sm:p-14 space-y-12">
+                <div className="p-8 sm:p-14 space-y-12">
                   {/* Description */}
                   <p className="text-base sm:text-lg text-black/45 leading-[1.85] indent" style={{ letterSpacing: '0.01em' }}>
                     {displayPersonality.description}
