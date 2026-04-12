@@ -1,14 +1,15 @@
 import { useMemo } from 'react';
-import { type PersonalityType, dimensionDefs, dimensionInterpretations, modelDescriptions } from '../data';
+import { type PersonalityType, type DimensionLevel, dimensionDefs, dimensionInterpretations, modelDescriptions } from '../data';
 
 interface DimensionFingerprintProps {
   personality: PersonalityType;
+  userDimensionLevels?: Record<string, DimensionLevel>; // 用户的实际维度落点
 }
 
 // 模型顺序
 const MODEL_ORDER = ['S', 'E', 'A', 'Ac', 'So'];
 
-export function DimensionFingerprint({ personality }: DimensionFingerprintProps) {
+export function DimensionFingerprint({ personality, userDimensionLevels }: DimensionFingerprintProps) {
   // 按模型分组
   const groupedDimensions = useMemo(() => {
     const groups: { modelKey: string; modelName: string; modelDesc: string; dims: typeof dimensionDefs }[] = [];
@@ -52,6 +53,14 @@ export function DimensionFingerprint({ personality }: DimensionFingerprintProps)
     }
   };
 
+  // 显示用户的维度落点，如果没有则显示人格模板的
+  const getDimension = (dimKey: string): DimensionLevel => {
+    if (userDimensionLevels && userDimensionLevels[dimKey]) {
+      return userDimensionLevels[dimKey];
+    }
+    return personality.dimensions[dimKey] as DimensionLevel;
+  };
+
   return (
     <div className="space-y-10 sm:space-y-12">
       {/* 标题 */}
@@ -80,10 +89,10 @@ export function DimensionFingerprint({ personality }: DimensionFingerprintProps)
         </div>
       </div>
 
-      {/* 总览条 — 顶部一眼看完 */}
+      {/* 总览条 */}
       <div className="flex justify-center gap-2 sm:gap-3 flex-wrap py-4">
         {dimensionDefs.map((dim) => {
-          const level = personality.dimensions[dim.key] as 'H' | 'M' | 'L';
+          const level = getDimension(dim.key);
           const style = getLevelStyle(level);
           return (
             <div
@@ -98,7 +107,7 @@ export function DimensionFingerprint({ personality }: DimensionFingerprintProps)
         })}
       </div>
 
-      {/* 每个模型 — 无玻璃卡片，纯排版 */}
+      {/* 每个模型 */}
       {groupedDimensions.map((group) => (
         <div key={group.modelKey} className="py-2">
           {/* 模型头部 */}
@@ -118,7 +127,7 @@ export function DimensionFingerprint({ personality }: DimensionFingerprintProps)
           {/* 维度行 */}
           <div className="space-y-3 sm:space-y-4 pl-1 sm:pl-2">
             {group.dims.map((dim) => {
-              const level = personality.dimensions[dim.key] as 'H' | 'M' | 'L';
+              const level = getDimension(dim.key);
               const style = getLevelStyle(level);
               const interpretation = dimensionInterpretations[dim.key]?.[level] || '';
 

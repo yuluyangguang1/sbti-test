@@ -1,10 +1,13 @@
 import { useMemo } from 'react';
+import { getAvatarPath, type AvatarStyle } from '../data';
 
 interface PersonalityAvatarProps {
   emoji: string;
   name: string;
   color: string;
   avatar?: string;
+  personalityId?: string;
+  avatarStyle?: AvatarStyle;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
 }
@@ -17,9 +20,18 @@ const sizeMap = {
   xl: { container: 'w-40 h-40 sm:w-48 sm:h-48', emoji: 'text-7xl sm:text-8xl' },
 };
 
-export function PersonalityAvatar({ emoji, name, color, avatar, size = 'md', className = '' }: PersonalityAvatarProps) {
+export function PersonalityAvatar({ emoji, name, color, avatar, personalityId, avatarStyle = 'remastered', size = 'md', className = '' }: PersonalityAvatarProps) {
   const s = sizeMap[size];
   const isLarge = size === 'lg' || size === 'xl';
+
+  // 根据图鉴风格计算实际头像路径
+  const resolvedAvatar = useMemo(() => {
+    if (avatarStyle === 'original' && personalityId) {
+      const origPath = getAvatarPath(personalityId, 'original');
+      if (origPath) return origPath;
+    }
+    return avatar;
+  }, [avatarStyle, personalityId, avatar]);
 
   // 液态玻璃头像框样式
   const glassStyle = {
@@ -32,7 +44,7 @@ export function PersonalityAvatar({ emoji, name, color, avatar, size = 'md', cla
   };
 
   // 如果有头像图片
-  if (avatar) {
+  if (resolvedAvatar) {
     return (
       <div className={`relative inline-flex items-center justify-center ${s.container} ${className}`}>
         {/* 大头像的液态光晕 */}
@@ -53,7 +65,7 @@ export function PersonalityAvatar({ emoji, name, color, avatar, size = 'md', cla
           style={{ borderRadius: '50%' }}
         >
           <img
-            src={avatar}
+            src={resolvedAvatar}
             alt={name}
             className="w-full h-full object-cover"
             loading="lazy"

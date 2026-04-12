@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { personalities } from '../data';
 import { PersonalityAvatar } from './PersonalityAvatar';
+import { useAvatarStyle } from './AvatarStyleContext';
 
 interface RankingsPageProps {
   onBackHome: () => void;
@@ -16,6 +17,7 @@ export function RankingsPage({ onBackHome, onStartQuiz }: RankingsPageProps) {
   const [rankings, setRankings] = useState<RankingItem[]>([]);
   const [totalSubmissions, setTotalSubmissions] = useState(0);
   const [listedTypes, setListedTypes] = useState(0);
+  const { style: avatarStyle } = useAvatarStyle();
 
   useEffect(() => {
     try {
@@ -102,7 +104,7 @@ export function RankingsPage({ onBackHome, onStartQuiz }: RankingsPageProps) {
                       {index + 1}
                     </span>
                     <div className="flex items-center gap-3">
-                      <PersonalityAvatar emoji={p.emoji} name={p.name} color={p.color} avatar={p.avatar} size="xs" />
+                      <PersonalityAvatar emoji={p.emoji} name={p.name} color={p.color} avatar={p.avatar} personalityId={p.id} avatarStyle={avatarStyle} size="xs" />
                       <span className="text-base font-medium text-gray-800 truncate" style={{ letterSpacing: '0.01em' }}>{p.name}</span>
                     </div>
                     <span className="text-base text-gray-700/45 text-center" style={{ letterSpacing: '0.04em' }}>{item.count}</span>

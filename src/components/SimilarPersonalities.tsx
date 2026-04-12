@@ -1,12 +1,13 @@
-import { personalities, type PersonalityType } from '../data';
+import { personalities, type PersonalityType, type AvatarStyle } from '../data';
 import { PersonalityAvatar } from './PersonalityAvatar';
 
 interface SimilarPersonalitiesProps {
   personality: PersonalityType;
   onViewPersonality: (id: string) => void;
+  avatarStyle?: AvatarStyle;
 }
 
-export function SimilarPersonalities({ personality, onViewPersonality }: SimilarPersonalitiesProps) {
+export function SimilarPersonalities({ personality, onViewPersonality, avatarStyle = 'remastered' }: SimilarPersonalitiesProps) {
   const similarIds = personality.similar || [];
   if (similarIds.length === 0) return null;
 
@@ -37,6 +38,8 @@ export function SimilarPersonalities({ personality, onViewPersonality }: Similar
                 name={p.name}
                 color={p.color}
                 avatar={p.avatar}
+                personalityId={p.id}
+                avatarStyle={avatarStyle}
                 size="sm"
               />
             </div>

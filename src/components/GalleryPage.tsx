@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { personalities, dimensionDefs, modelDescriptions, type PersonalityType } from '../data';
 import { PersonalityAvatar } from './PersonalityAvatar';
 import { MbtiComparison } from './MbtiComparison';
+import { useAvatarStyle } from './AvatarStyleContext';
 
 interface GalleryPageProps {
   onBackHome: () => void;
@@ -26,6 +27,7 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
   const [selectedPersonality, setSelectedPersonality] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const { style: avatarStyle, toggle: toggleAvatarStyle } = useAvatarStyle();
 
   // 按模型筛选
   const filters = [
@@ -73,7 +75,17 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
             ← 返回首页
           </button>
           <h2 className="text-xl sm:text-2xl font-bold gradient-text" style={{ letterSpacing: '-0.03em' }}>SBTI 人格图鉴</h2>
-          <div className="w-16 sm:w-20" />
+          <button
+            onClick={toggleAvatarStyle}
+            className="text-xs sm:text-sm px-3 py-1.5 rounded-full transition-all duration-300 hover:scale-105 active:scale-95 font-medium"
+            style={{
+              backgroundColor: avatarStyle === 'original' ? 'rgba(255,107,107,0.12)' : 'rgba(108,92,231,0.12)',
+              color: avatarStyle === 'original' ? '#ff6b6bcc' : '#6c5ce7cc',
+              border: avatarStyle === 'original' ? '1px solid rgba(255,107,107,0.25)' : '1px solid rgba(108,92,231,0.25)',
+            }}
+          >
+            {avatarStyle === 'original' ? '原版' : '重制'}图鉴
+          </button>
         </div>
 
         {/* Search — 液态玻璃输入框 */}
@@ -121,6 +133,8 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
                     name={p.name}
                     color={p.color}
                     avatar={p.avatar}
+                    personalityId={p.id}
+                    avatarStyle={avatarStyle}
                     size="sm"
                   />
                   <div className="flex-1 min-w-0">
@@ -183,6 +197,8 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
                       name={displayPersonality.name}
                       color={displayPersonality.color}
                       avatar={displayPersonality.avatar}
+                      personalityId={displayPersonality.id}
+                      avatarStyle={avatarStyle}
                       size="lg"
                     />
                     <div className="text-sm font-mono text-black/20 mt-4 mb-2" style={{ letterSpacing: '0.08em' }}>{displayPersonality.code}</div>

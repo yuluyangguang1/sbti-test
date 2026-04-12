@@ -1,35 +1,39 @@
 import { useMemo } from 'react';
-import { personalities, type PersonalityType } from '../data';
+import { personalities, type PersonalityType, type DimensionLevel, dimensionDefs, dimensionInterpretations, modelDescriptions, matchPersonality } from '../data';
 import { PersonalityAvatar } from './PersonalityAvatar';
 import { DimensionFingerprint } from './DimensionFingerprint';
 import { MbtiComparison } from './MbtiComparison';
 import { SimilarPersonalities } from './SimilarPersonalities';
+import { useAvatarStyle } from './AvatarStyleContext';
 
 interface ResultPageProps {
   personalityId: string;
-  scores: Record<string, number>;
+  dimensionLevels: Record<string, DimensionLevel>;
+  matchScore: number;
   onBackHome: () => void;
   onViewGallery: () => void;
   onRetake: () => void;
   onViewPersonality?: (id: string) => void;
 }
 
-export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, onRetake, onViewPersonality }: ResultPageProps) {
+export function ResultPage({ personalityId, dimensionLevels, matchScore, onBackHome, onViewGallery, onRetake, onViewPersonality }: ResultPageProps) {
   const personality = useMemo(() =>
     personalities.find(p => p.id === personalityId) || personalities[0],
     [personalityId]
   );
 
-  // Top 5 personality scores
+  const { style: avatarStyle, toggle: toggleAvatarStyle } = useAvatarStyle();
+
+  // 计算其他人格的匹配度排行
   const topPersonalities = useMemo(() => {
-    return Object.entries(scores)
-      .sort(([, a], [, b]) => b - a)
-      .slice(0, 5)
-      .map(([id, score]) => ({
-        personality: personalities.find(p => p.id === id) || personalities[0],
-        score,
-      }));
-  }, [scores]);
+    return personalities
+      .map(p => ({
+        personality: p,
+        score: Object.entries(p.dimensions).filter(([k, v]) => dimensionLevels[k] === v).length,
+      }))
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 5);
+  }, [dimensionLevels]);
 
   const handleViewPersonality = (id: string) => {
     if (onViewPersonality) {
@@ -66,14 +70,14 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
         {/* Result Card — 液态玻璃主卡片（含分享功能） */}
         <div className="animate-fade-in">
           <div id="share-card-area" className="glass-card text-center relative overflow-hidden" style={{ padding: '52px 44px' }}>
-            {/* Background pattern — 淡化到不干扰 */}
+            {/* Background pattern */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
               <div className="absolute top-0 left-0 text-[100px] sm:text-[180px] leading-none font-black" style={{ color: personality.color }}>
                 {personality.code}
               </div>
             </div>
 
-            {/* Liquid gradient overlay — 增强折射 */}
+            {/* Liquid gradient overlay */}
             <div
               className="absolute inset-0 pointer-events-none animate-refract"
               style={{
@@ -89,8 +93,27 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
                   name={personality.name}
                   color={personality.color}
                   avatar={personality.avatar}
+                  personalityId={personality.id}
+                  avatarStyle={avatarStyle}
                   size="xl"
                 />
+              </div>
+
+              {/* Avatar Style Toggle */}
+              <div className="flex justify-center mb-8">
+                <button
+                  onClick={toggleAvatarStyle}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 hover:scale-105 active:scale-95"
+                  style={{
+                    backgroundColor: `${personality.color}12`,
+                    color: `${personality.color}cc`,
+                    border: `1px solid ${personality.color}25`,
+                  }}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: avatarStyle === 'original' ? '#ff6b6b' : '#6c5ce7' }} />
+                  {avatarStyle === 'original' ? '原版图鉴' : '重制图鉴'}
+                  <span className="text-[10px] opacity-50">切换</span>
+                </button>
               </div>
 
               {/* Code */}
@@ -102,6 +125,17 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
               <h1 className="text-5xl sm:text-5xl md:text-7xl font-black text-gray-800 mb-8 sm:mb-8 md:mb-10" style={{ letterSpacing: '-0.03em' }}>
                 {personality.name}
               </h1>
+
+              {/* Match Score */}
+              <div className="mb-8">
+                <span
+                  className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-bold"
+                  style={{ backgroundColor: `${personality.color}15`, color: personality.color, border: `1px solid ${personality.color}30` }}
+                >
+                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: personality.color }} />
+                  匹配度 {Math.round(matchScore * 100)}%
+                </span>
+              </div>
 
               {/* Slogan */}
               <p className="text-xl sm:text-xl md:text-2xl text-gray-700/40 italic mb-14 sm:mb-16 md:mb-20" style={{ letterSpacing: '0.01em' }}>
@@ -127,7 +161,7 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
             </div>
           </div>
 
-          {/* 分享操作按钮 — 在卡片外面，不参与截图 */}
+          {/* 分享操作按钮 */}
           <div className="flex gap-5 mt-8 animate-card-enter" style={{ animationDelay: '0.2s' }}>
             <button
               onClick={async () => {
@@ -175,7 +209,7 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
 
         {/* Dimension Fingerprint */}
         <div className="animate-slide-up mt-32 sm:mt-36" style={{ animationDelay: '0.3s' }}>
-          <DimensionFingerprint personality={personality} />
+          <DimensionFingerprint personality={personality} userDimensionLevels={dimensionLevels} />
         </div>
 
         {/* SBTI × MBTI Comparison */}
@@ -185,13 +219,13 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
 
         {/* Similar Personalities */}
         <div className="animate-slide-up mt-32 sm:mt-36" style={{ animationDelay: '0.5s' }}>
-          <SimilarPersonalities personality={personality} onViewPersonality={handleViewPersonality} />
+          <SimilarPersonalities personality={personality} onViewPersonality={handleViewPersonality} avatarStyle={avatarStyle} />
         </div>
 
-        {/* Score Ranking — 液态玻璃卡片 */}
+        {/* Score Ranking — 维度匹配排行 */}
         <div className="animate-card-enter mt-36 sm:mt-40 md:mt-48" style={{ animationDelay: '0.6s' }}>
           <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-6 sm:mb-8" style={{ letterSpacing: '-0.03em' }}>
-            你的人格匹配度排行
+            你的维度匹配度排行
           </h3>
           <div className="space-y-5 sm:space-y-6">
               {topPersonalities.map((item, index) => (
@@ -201,6 +235,8 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
                     name={item.personality.name}
                     color={item.personality.color}
                     avatar={item.personality.avatar}
+                    personalityId={item.personality.id}
+                    avatarStyle={avatarStyle}
                     size="sm"
                   />
                   <div className="flex-1 min-w-0">
@@ -212,13 +248,13 @@ export function ResultPage({ personalityId, scores, onBackHome, onViewGallery, o
                           item.personality.name
                         )}
                       </span>
-                      <span className="text-[11px] sm:text-xs text-gray-700/30 shrink-0 ml-2" style={{ letterSpacing: '0.04em' }}>{item.score}分</span>
+                      <span className="text-[11px] sm:text-xs text-gray-700/30 shrink-0 ml-2" style={{ letterSpacing: '0.04em' }}>{item.score}/15 维匹配</span>
                     </div>
                     <div className="h-2 rounded-full bg-black/[0.05] overflow-hidden">
                       <div
                         className="h-full rounded-full transition-all duration-1000"
                         style={{
-                          width: `${(item.score / (topPersonalities[0]?.score || 1)) * 100}%`,
+                          width: `${(item.score / 15) * 100}%`,
                           backgroundColor: index === 0 ? item.personality.color : `${item.personality.color}50`,
                         }}
                       />

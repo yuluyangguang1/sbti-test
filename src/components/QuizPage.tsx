@@ -1,16 +1,21 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
-import { questions, personalities, dimensionDefs } from '../data';
+import {
+  originalQuestions,
+  hobbyGate,
+  drinkTrigger,
+  calculateDimensions,
+  matchPersonality,
+  dimensionDefs,
+  type DimensionLevel,
+} from '../data';
 
 interface QuizPageProps {
-  onFinish: (personalityId: string, scores: Record<string, number>) => void;
+  onFinish: (personalityId: string, dimensionLevels: Record<string, DimensionLevel>, matchScore: number) => void;
   onBackHome: () => void;
 }
 
-// 每次测试从题库抽取的题目数量
-const QUIZ_LENGTH = 31;
-
 // 选项字母前缀
-const optionLetters = ['A', 'B', 'C', 'D', 'E', 'F'];
+const optionLetters = ['A', 'B', 'C', 'D'];
 
 // 每题的趣味提示语
 const funHints = [
@@ -23,12 +28,10 @@ const funHints = [
   '别分析，直接选',
   '想太多反而不准',
   '第一反应通常最真实',
-  '随便选，反正不准（开玩笑的）',
   '认真选哦~',
   '答案没有好坏之分',
   '选最能代表你的那个',
   '你只需要对自己诚实',
-  '别当自己生活的旁观者',
   '冲就完了',
   '这个测试只花2分钟，很值',
   '选最像你的，不是最想成为的',
@@ -37,12 +40,7 @@ const funHints = [
   '每道题都在缩小范围...',
   '算法正在疯狂计算中...',
   '你的人格画像越来越清晰了',
-  '选完这道还有几道',
-  '差点就猜到你是什么人了',
   '最后几道了，加油！',
-  '你是E人还是I人？快出结果了',
-  '就差一点点了',
-  '再来两道！',
   '系统正在解码你的人格...',
   '最后一道了！冲！',
 ];
@@ -59,68 +57,54 @@ const loadingPhrases = [
   '正在生成你的专属报告...',
 ];
 
-// Fisher-Yates 洗牌算法
-function shuffleArray<T>(arr: T[]): T[] {
-  const shuffled = [...arr];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-}
-
-// 从题目的 scores key 推断维度标签
-function getDimensionLabel(question: typeof questions[0]): string | null {
-  const scoreKeys = new Set<string>();
-  for (const opt of question.options) {
-    for (const key of Object.keys(opt.scores)) {
-      scoreKeys.add(key.replace(/\s/g, ''));
-    }
-  }
-  // 找到匹配的维度定义
-  const matchedDim = dimensionDefs.find(d => scoreKeys.has(d.key));
-  if (matchedDim) {
-    return `${matchedDim.model} ${matchedDim.label}`;
-  }
-  return null;
-}
-
-// 存储每题的答案历史，支持回退
 interface AnswerRecord {
   questionIndex: number;
   optionIndex: number;
-  scoresBefore: Record<string, number>;
+  dimensionScoresBefore: Record<string, number>;
 }
 
 export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [scores, setScores] = useState<Record<string, number>>({});
+  const [dimensionScores, setDimensionScores] = useState<Record<string, number>>({});
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
-  const [shuffleKey, setShuffleKey] = useState(0);
   const [answerHistory, setAnswerHistory] = useState<AnswerRecord[]>([]);
+  const [drinkAnswer, setDrinkAnswer] = useState<number | null>(null);  // 爱好题答案
+  const [isDrunk, setIsDrunk] = useState(false);  // 是否触发酒鬼
+  const [showDrinkGate, setShowDrinkGate] = useState(false);
+  const [showDrinkTrigger, setShowDrinkTrigger] = useState(false);
 
-  // 从题库随机抽取指定数量的题目（最后一题固定放末尾）
-  const shuffledQuestions = useMemo(() => {
-    const lastQ = questions.find(q => q.id === 31);
-    const rest = questions.filter(q => q.id !== 31);
-    const shuffled = shuffleArray(rest).slice(0, QUIZ_LENGTH - 1);
-    if (lastQ) shuffled.push(lastQ);
-    return shuffled;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shuffleKey]);
+  // 构建完整的题目列表：30道常规题 + 门控题 + 可选的触发题
+  const allQuestions = useMemo(() => {
+    const qs: Array<{
+      type: 'normal' | 'gate' | 'trigger';
+      question: typeof originalQuestions[0] | typeof drinkGate | typeof drinkTrigger;
+    }> = [];
 
-  // 重新随机题序
-  const handleReshuffle = useCallback(() => {
-    setShuffleKey(k => k + 1);
-    setCurrentQuestion(0);
-    setScores({});
-    setSelectedOption(null);
-    setIsTransitioning(false);
-    setAnswerHistory([]);
+    for (const q of originalQuestions) {
+      qs.push({ type: 'normal', question: q });
+    }
+
+    // 门控题
+    qs.push({ type: 'gate', question: hobbyGate });
+
+    return qs;
   }, []);
+
+  // 当前题目总数（不含触发题）
+  const baseQuestionCount = allQuestions.length; // 31
+
+  // 完整题目列表（包含可能的触发题）
+  const fullQuestions = useMemo(() => {
+    if (drinkAnswer === 3) {  // 选了"饮酒"
+      return [...allQuestions, { type: 'trigger' as const, question: drinkTrigger }];
+    }
+    return allQuestions;
+  }, [allQuestions, drinkAnswer]);
+
+  const totalQuestions = fullQuestions.length;
 
   // 加载动画文案轮播
   useEffect(() => {
@@ -135,40 +119,56 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
   useEffect(() => {
     if (!showLoading) return;
     if (loadingStep >= loadingPhrases.length + 1) {
-      const sortedEntries = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-      const topId = sortedEntries[0]?.[0] || 'dead';
-      const matchedPersonality = personalities.find(p => p.id === topId);
-      onFinish(matchedPersonality?.id || 'dead', scores);
+      const dimensionLevels = calculateDimensions(dimensionScores);
+      const { personality, matchScore } = matchPersonality(dimensionLevels, isDrunk);
+      onFinish(personality.id, dimensionLevels, matchScore);
     }
-  }, [loadingStep, showLoading, scores, onFinish]);
+  }, [loadingStep, showLoading, dimensionScores, isDrunk, onFinish]);
 
-  // 选择选项（自动跳转下一题）
+  // 选择选项
   const handleSelectOption = useCallback((optionIndex: number) => {
     if (isTransitioning) return;
     setSelectedOption(optionIndex);
     setIsTransitioning(true);
 
-    // 记录答案历史
-    const record: AnswerRecord = {
-      questionIndex: currentQuestion,
-      optionIndex,
-      scoresBefore: { ...scores },
-    };
-    setAnswerHistory(prev => [...prev, record]);
+    const currentQ = fullQuestions[currentQuestion];
 
-    // 累计分数
-    const question = shuffledQuestions[currentQuestion];
-    const option = question.options[optionIndex];
-    const newScores = { ...scores };
-    for (const [key, value] of Object.entries(option.scores)) {
-      const cleanKey = key.replace(/\s/g, '');
-      newScores[cleanKey] = (newScores[cleanKey] || 0) + value;
+    if (currentQ.type === 'normal' || currentQ.type === 'trigger') {
+      const q = currentQ.question as typeof originalQuestions[0];
+      const value = q.options[optionIndex].value;
+
+      // 记录答案历史
+      const record: AnswerRecord = {
+        questionIndex: currentQuestion,
+        optionIndex,
+        dimensionScoresBefore: { ...dimensionScores },
+      };
+      setAnswerHistory(prev => [...prev, record]);
+
+      // 累计维度分数
+      const newScores = { ...dimensionScores };
+      const dim = q.dimension;
+      newScores[dim] = (newScores[dim] || 0) + value;
+      setDimensionScores(newScores);
+    } else if (currentQ.type === 'gate') {
+      const q = currentQ.question as typeof hobbyGate;
+      const value = q.options[optionIndex].value;
+      if (typeof value === 'number') {
+        setDrinkAnswer(value);
+      }
+    } else if (currentQ.type === 'trigger') {
+      const q = currentQ.question as typeof drinkTrigger;
+      const value = q.options[optionIndex].value;
+      // 选了"白酒当水喝"(value=2) → 触发酒鬼人格
+      if (value === 2) {
+        setIsDrunk(true);
+      }
     }
-    setScores(newScores);
 
     // 跳转到下一题或结束
     setTimeout(() => {
-      if (currentQuestion < shuffledQuestions.length - 1) {
+      if (currentQuestion < fullQuestions.length - 1) {
+        // 如果当前是门控题且选了heavy，下一题是触发题
         setCurrentQuestion(prev => prev + 1);
         setSelectedOption(null);
         setIsTransitioning(false);
@@ -177,29 +177,49 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
         setLoadingStep(0);
       }
     }, 400);
-  }, [currentQuestion, isTransitioning, scores, shuffledQuestions]);
+  }, [currentQuestion, isTransitioning, dimensionScores, fullQuestions]);
 
   // 上一题（恢复分数）
   const handlePrevious = useCallback(() => {
     if (currentQuestion === 0 || isTransitioning) return;
-    const lastAnswer = answerHistory[answerHistory.length - 1];
-    if (lastAnswer && lastAnswer.questionIndex === currentQuestion - 1) {
-      setScores(lastAnswer.scoresBefore);
-      setAnswerHistory(prev => prev.slice(0, -1));
+
+    const currentQ = fullQuestions[currentQuestion];
+
+    if (currentQ.type === 'normal' || currentQ.type === 'trigger') {
+      const lastAnswer = answerHistory[answerHistory.length - 1];
+      if (lastAnswer && lastAnswer.questionIndex === currentQuestion - 1) {
+        setDimensionScores(lastAnswer.dimensionScoresBefore);
+        setAnswerHistory(prev => prev.slice(0, -1));
+      }
+    } else if (currentQ.type === 'gate') {
+      setDrinkAnswer(null);
+      setIsDrunk(false);
+    } else if (currentQ.type === 'trigger') {
+      setIsDrunk(false);
     }
+
     setCurrentQuestion(prev => prev - 1);
     setSelectedOption(null);
-  }, [currentQuestion, isTransitioning, answerHistory]);
+  }, [currentQuestion, isTransitioning, answerHistory, fullQuestions]);
 
-  const progress = ((currentQuestion + 1) / shuffledQuestions.length) * 100;
-  const question = shuffledQuestions[currentQuestion];
+  const progress = ((currentQuestion + 1) / totalQuestions) * 100;
+  const currentQ = fullQuestions[currentQuestion];
   const hint = funHints[currentQuestion % funHints.length];
-  const dimLabel = getDimensionLabel(question);
+
+  // 获取维度标签
+  const getDimLabel = () => {
+    if (currentQ.type === 'normal' || currentQ.type === 'trigger') {
+      const q = currentQ.question as typeof originalQuestions[0];
+      const dimDef = dimensionDefs.find(d => d.key === q.dimension);
+      if (dimDef) return `${dimDef.model} · ${dimDef.label}`;
+    }
+    if (currentQ.type === 'gate') return '特别题 · 饮酒习惯';
+    return null;
+  };
 
   if (showLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center px-8 sm:px-12 relative">
-        {/* 液态背景 */}
         <div className="liquid-bg">
           <div className="liquid-blob" />
           <div className="liquid-blob" />
@@ -230,16 +250,32 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
     );
   }
 
+  // 获取当前题的选项
+  const getOptions = () => {
+    if (currentQ.type === 'gate') {
+      const q = currentQ.question as typeof hobbyGate;
+      return q.options.map(o => o.label);
+    }
+    if (currentQ.type === 'trigger') {
+      const q = currentQ.question as typeof drinkTrigger;
+      return q.options.map(o => o.label);
+    }
+    const q = currentQ.question as typeof originalQuestions[0];
+    return q.options.map(o => o.label);
+  };
+
+  const dimLabel = getDimLabel();
+  const options = getOptions();
+
   return (
     <div className="min-h-screen flex flex-col px-8 sm:px-12 py-16 sm:py-20 relative">
-      {/* 液态背景 */}
       <div className="liquid-bg">
         <div className="liquid-blob" />
         <div className="liquid-blob" />
         <div className="liquid-blob" />
       </div>
 
-      {/* 顶部导航：返回首页 + 重新随机 */}
+      {/* 顶部导航 */}
       <div className="max-w-2xl mx-auto w-full mb-10 relative z-10 flex justify-between items-center">
         <button
           onClick={onBackHome}
@@ -248,20 +284,16 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
         >
           返回首页
         </button>
-        <button
-          onClick={handleReshuffle}
-          className="text-sm text-gray-700/30 hover:text-purple-500 transition-colors"
-          style={{ letterSpacing: '0.01em' }}
-        >
-          重新随机题序
-        </button>
+        <span className="text-xs text-gray-700/20">
+          SBTI 原版
+        </span>
       </div>
 
       {/* Progress */}
       <div className="max-w-2xl mx-auto w-full mb-14 sm:mb-16 relative z-10">
         <div className="flex justify-between items-center mb-3">
           <span className="text-sm text-gray-700/40" style={{ letterSpacing: '0.01em' }}>
-            第 {currentQuestion + 1} / {shuffledQuestions.length} 题
+            第 {currentQuestion + 1} / {totalQuestions} 题
           </span>
           <span className="text-sm text-gray-700/40 font-medium" style={{ letterSpacing: '0.04em' }}>
             {Math.round(progress)}%
@@ -290,12 +322,16 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
 
           {/* 题目 */}
           <h2 className="text-2xl sm:text-2xl md:text-[28px] md:leading-[2.2] font-bold text-gray-800 mb-14 sm:mb-16 text-center leading-[2] px-2" style={{ letterSpacing: '-0.01em' }}>
-            {question.text}
+            {currentQ.type === 'gate'
+              ? (currentQ.question as typeof hobbyGate).text
+              : currentQ.type === 'trigger'
+                ? (currentQ.question as typeof drinkTrigger).text
+                : (currentQ.question as typeof originalQuestions[0]).text}
           </h2>
 
-          {/* 选项列表 */}
+          {/* 选项列表 - 3选1 */}
           <div className="space-y-6 sm:space-y-6 md:space-y-7">
-            {question.options.map((option, index) => (
+            {options.map((label, index) => (
               <button
                 key={index}
                 onClick={() => handleSelectOption(index)}
@@ -304,7 +340,6 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
                 }`}
                 disabled={isTransitioning}
               >
-                {/* A/B/C 字母前缀 + 选项文字 */}
                 <span className="flex items-start gap-4 relative z-10">
                   <span className={`flex-shrink-0 w-9 h-9 md:w-9 md:h-9 rounded-full flex items-center justify-center text-sm md:text-base font-bold transition-all duration-200 ${
                     selectedOption === index
@@ -314,7 +349,7 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
                     {optionLetters[index]}
                   </span>
                   <span className="text-xl sm:text-xl md:text-[22px] md:leading-[2.2] text-gray-800 leading-[2] pt-0.5" style={{ letterSpacing: '0.01em' }}>
-                    {option.label}
+                    {label}
                   </span>
                 </span>
               </button>
@@ -323,15 +358,12 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
         </div>
       </div>
 
-      {/* 底部导航：上一题 / 提示 */}
+      {/* 底部导航 */}
       <div className="max-w-2xl mx-auto w-full mt-14 sm:mt-16 relative z-10">
-        {/* 提示语 */}
         <p className="text-center text-sm text-gray-700/25 mb-6 animate-fade-in" key={currentQuestion} style={{ letterSpacing: '0.01em' }}>
           {hint}
         </p>
-
         <div className="flex justify-center">
-          {/* 上一题 */}
           <button
             onClick={handlePrevious}
             disabled={currentQuestion === 0 || isTransitioning}

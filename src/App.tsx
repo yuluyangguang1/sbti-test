@@ -7,13 +7,16 @@ import { FaqPage } from './components/FaqPage';
 import { AboutPage } from './components/AboutPage';
 import { RankingsPage } from './components/RankingsPage';
 import { Navbar } from './components/Navbar';
+import { AvatarStyleProvider } from './components/AvatarStyleContext';
+import { type DimensionLevel } from './data';
 
 export type Page = 'landing' | 'quiz' | 'result' | 'gallery' | 'faq' | 'about' | 'rankings';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('landing');
   const [resultId, setResultId] = useState<string>('');
-  const [scores, setScores] = useState<Record<string, number>>({});
+  const [dimensionLevels, setDimensionLevels] = useState<Record<string, DimensionLevel>>({});
+  const [matchScore, setMatchScore] = useState<number>(0);
   const [quizResetKey, setQuizResetKey] = useState(0);
 
   // 页面切换时滚动到顶部
@@ -29,7 +32,7 @@ function App() {
       // 支持 #type/IMSB 格式
       if (hash.startsWith('type/')) {
         const id = hash.replace('type/', '');
-        const validIds = ['dead','fuck','woc','shit','malo','joke-r','imsb','solo','poor','fake','ojbk','zzzz','think','ctrl','boss','gogo','sexy','love-r','mum','dior-s','atm-er','thank','oh-no','monk','hhhh','drunk'];
+        const validIds = ['ctrl','atmer','diors','boss','thank','ohno','gogo','sexy','lover','mum','fake','ojbk','malo','joker','woc','think','shit','zzzz','poor','monk','imsb','solo','fuck','dead','imfw','hhhh','drunk'];
         if (validIds.includes(id)) {
           setResultId(id);
           setCurrentPage('result');
@@ -53,9 +56,10 @@ function App() {
     navigateTo('quiz');
   };
 
-  const handleFinishQuiz = (personalityId: string, finalScores: Record<string, number>) => {
+  const handleFinishQuiz = (personalityId: string, dims: Record<string, DimensionLevel>, score: number) => {
     setResultId(personalityId);
-    setScores(finalScores);
+    setDimensionLevels(dims);
+    setMatchScore(score);
     setCurrentPage('result');
     window.location.hash = `type/${personalityId}`;
     // 记录到排行榜 localStorage
@@ -83,6 +87,7 @@ function App() {
   const hideNav = currentPage === 'quiz';
 
   return (
+    <AvatarStyleProvider>
     <div className="min-h-screen">
       {!hideNav && (
         <Navbar
@@ -106,7 +111,8 @@ function App() {
       {currentPage === 'result' && (
         <ResultPage
           personalityId={resultId}
-          scores={scores}
+          dimensionLevels={dimensionLevels}
+          matchScore={matchScore}
           onBackHome={handleBackHome}
           onViewGallery={handleViewGallery}
           onRetake={handleStartQuiz}
@@ -129,20 +135,37 @@ function App() {
         <RankingsPage onBackHome={handleBackHome} onStartQuiz={handleStartQuiz} />
       )}
       {!hideNav && (
-        <footer className="text-center pt-4 pb-6 text-xs text-gray-400 select-none">
-          <span className="relative inline-block group cursor-default">
-            by yuluyangguang
-            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-              <img
-                src="/yuluyangguangdoudian.png"
-                alt="yuluyangguang"
-                className="w-24 h-24 rounded-full shadow-lg ring-2 ring-purple-200"
-              />
-            </span>
-          </span>
+        <footer className="text-center pt-6 pb-8 select-none">
+          <div className="flex flex-col items-center gap-3">
+            {/* 两个二维码并排 */}
+            <div className="flex items-center gap-4">
+              <div className="flex flex-col items-center gap-1">
+                <div className="w-36 h-36 rounded-full overflow-hidden ring-2 ring-purple-200/60 shadow-md">
+                  <img
+                    src="/douyinma.jpeg"
+                    alt="抖音二维码"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="text-xs text-gray-400">关注抖音</span>
+              </div>
+              <div className="flex flex-col items-center gap-1">
+                <div className="w-36 h-36 rounded-full overflow-hidden ring-2 ring-purple-200/60 shadow-md">
+                  <img
+                    src="/yuluyangguangdoudian.png"
+                    alt="yuluyangguang"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="text-xs text-gray-400">创作者</span>
+              </div>
+            </div>
+            <span className="text-xs text-gray-400">by yuluyangguang</span>
+          </div>
         </footer>
       )}
     </div>
+    </AvatarStyleProvider>
   );
 }
 
