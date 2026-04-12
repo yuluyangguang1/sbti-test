@@ -22,7 +22,7 @@ export function Navbar({ currentPage, onNavigate, onStartQuiz }: NavbarProps) {
     <>
       {/* 占位元素，防止 fixed 导航栏遮挡内容 */}
       <div className="h-14 sm:h-16" />
-      <nav className="fixed top-0 left-0 right-0 z-40" style={{
+      <nav className="fixed top-0 left-0 right-0 z-40 outline-none overflow-hidden" style={{
         background: 'rgba(238, 240, 247, 0.68)',
         backdropFilter: 'blur(40px) saturate(180%)',
         WebkitBackdropFilter: 'blur(40px) saturate(180%)',
@@ -62,6 +62,7 @@ export function Navbar({ currentPage, onNavigate, onStartQuiz }: NavbarProps) {
         <button
           onClick={onStartQuiz}
           className="hidden md:block btn-primary !py-2 !px-5 !text-sm"
+          style={{ borderRadius: '12px' }}
         >
           开始测试
         </button>
@@ -90,7 +91,7 @@ export function Navbar({ currentPage, onNavigate, onStartQuiz }: NavbarProps) {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-white/30" style={{
+        <div className="md:hidden" style={{
           background: 'rgba(238, 240, 247, 0.92)',
           backdropFilter: 'blur(24px) saturate(150%)',
           WebkitBackdropFilter: 'blur(24px) saturate(150%)',
@@ -113,6 +114,7 @@ export function Navbar({ currentPage, onNavigate, onStartQuiz }: NavbarProps) {
             <button
               onClick={() => { onStartQuiz(); setMenuOpen(false); }}
               className="btn-primary w-full !py-3 !text-sm mt-2"
+              style={{ borderRadius: '12px' }}
             >
               开始测试
             </button>

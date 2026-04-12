@@ -91,6 +91,7 @@ body {
 button, .glass-card {
   -webkit-user-select: none;
   user-select: none;
+  outline: none;
 }
 
 /* Allow text selection on content */
