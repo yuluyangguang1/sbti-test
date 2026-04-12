@@ -125,40 +125,6 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
         </div>
       </div>
 
-      {/* 五套模型 — 轻量展示 */}
-      <div className="px-8 sm:px-12 md:px-16 pb-32 sm:pb-40 md:pb-48 relative z-10">
-        <div className="max-w-3xl mx-auto">
-          <h3 className="text-center text-2xl sm:text-2xl font-bold text-gray-800 mb-4" style={{ letterSpacing: '-0.03em' }}>五套人格模型</h3>
-          <p className="text-center text-sm sm:text-base text-gray-700/30 mb-14 sm:mb-16" style={{ letterSpacing: '0.01em' }}>3 维度 × 3 落点，画出你的十五维人格指纹</p>
-
-          <div className="space-y-14 sm:space-y-16">
-            {modelMeta.map((meta) => {
-              const model = modelDescriptions[meta.key];
-              const dims = dimensionDefs.filter(d => d.modelKey === meta.key);
-              return (
-                <div key={meta.key} className="text-center">
-                  <div className="inline-flex items-center gap-2.5 mb-4">
-                    <span className="text-lg sm:text-xl">{meta.icon}</span>
-                    <span className="text-base sm:text-lg font-bold text-gray-800" style={{ letterSpacing: '-0.01em' }}>{model.name}</span>
-                  </div>
-                  <div className="flex justify-center gap-3 sm:gap-4">
-                    {dims.map(dim => (
-                      <span
-                        key={dim.key}
-                        className="text-sm sm:text-base text-gray-700/40"
-                        style={{ letterSpacing: '0.02em' }}
-                      >
-                        {dim.label}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
       {/* 人格预览 — 单张大卡片 */}
       <div className="px-8 sm:px-12 md:px-16 pb-36 sm:pb-44 md:pb-52 relative z-10">
         <div className="max-w-3xl mx-auto">
@@ -196,6 +162,38 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
         >
           开始测试
         </button>
+
+        {/* 五套模型 — 放在开始测试下方 */}
+        <div className="mt-24 sm:mt-28 max-w-3xl mx-auto">
+          <h3 className="text-2xl sm:text-2xl font-bold text-gray-800 mb-4" style={{ letterSpacing: '-0.03em' }}>五套人格模型</h3>
+          <p className="text-sm sm:text-base text-gray-700/30 mb-14 sm:mb-16" style={{ letterSpacing: '0.01em' }}>3 维度 × 3 落点，画出你的十五维人格指纹</p>
+
+          <div className="space-y-14 sm:space-y-16">
+            {modelMeta.map((meta) => {
+              const model = modelDescriptions[meta.key];
+              const dims = dimensionDefs.filter(d => d.modelKey === meta.key);
+              return (
+                <div key={meta.key} className="text-center">
+                  <div className="inline-flex items-center gap-2.5 mb-4">
+                    <span className="text-lg sm:text-xl">{meta.icon}</span>
+                    <span className="text-base sm:text-lg font-bold text-gray-800" style={{ letterSpacing: '-0.01em' }}>{model.name}</span>
+                  </div>
+                  <div className="flex justify-center gap-3 sm:gap-4">
+                    {dims.map(dim => (
+                      <span
+                        key={dim.key}
+                        className="text-sm sm:text-base text-gray-700/40"
+                        style={{ letterSpacing: '0.02em' }}
+                      >
+                        {dim.label}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
       {/* Footer */}
