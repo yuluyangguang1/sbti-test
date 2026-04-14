@@ -648,19 +648,9 @@ export function scoreToLevel(score: number): DimensionLevel {
 
 // 计算用户15维向量
 export function calculateDimensions(answers: Record<string, number>): Record<string, DimensionLevel> {
-  const dimScores: Record<string, number> = {};
-
-  // 累加每个维度的得分
-  for (const q of originalQuestions) {
-    const val = answers[q.id];
-    if (val !== undefined) {
-      dimScores[q.dimension] = (dimScores[q.dimension] || 0) + val;
-    }
-  }
-
   const levels: Record<string, DimensionLevel> = {};
   for (const dim of dimensionDefs) {
-    const score = dimScores[dim.key] || 4; // 默认中间值
+    const score = answers[dim.key] ?? 4; // 直接用维度key查分
     levels[dim.key] = scoreToLevel(score);
   }
   return levels;
