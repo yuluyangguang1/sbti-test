@@ -118,16 +118,12 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
             <div
               key={p.id}
               onClick={() => setSelectedPersonality(p.id)}
-              className={`glass-card glass-card-hover cursor-pointer animate-card-enter ${
+              className={`glass-card glass-card-hover cursor-pointer ${
                 selectedPersonality === p.id ? 'ring-1 ring-purple-400/50' : ''
               }`}
-              style={{
-                animationDelay: `${i * 0.04}s`,
-                animationFillMode: 'both',
-              }}
             >
               <div className="relative z-10">
-                <div className="flex items-start gap-4 sm:gap-5">
+                <div className="flex flex-col items-center text-center">
                   <PersonalityAvatar
                     emoji={p.emoji}
                     name={p.name}
@@ -135,14 +131,15 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
                     avatar={p.avatar}
                     personalityId={p.id}
                     avatarStyle={avatarStyle}
-                    size="sm"
+                    size="lg"
+                    noAnimation
                   />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <span className="font-bold text-base sm:text-lg text-black/75 truncate" style={{ letterSpacing: '-0.01em' }}>{p.name}</span>
+                  <div className="mt-3 sm:mt-4">
+                    <div className="flex items-center justify-center gap-2 mb-1">
+                      <span className="font-bold text-base sm:text-lg text-black/75" style={{ letterSpacing: '-0.01em' }}>{p.name}</span>
                       <span className="text-xs sm:text-sm font-mono text-black/20 shrink-0" style={{ letterSpacing: '0.04em' }}>{p.code}</span>
                     </div>
-                    <p className="text-sm sm:text-base text-black/30 italic truncate" style={{ letterSpacing: '0.01em' }}>
+                    <p className="text-sm sm:text-base text-black/30 italic" style={{ letterSpacing: '0.01em' }}>
                       "{p.slogan}"
                     </p>
                     <DimensionBar personality={p} />

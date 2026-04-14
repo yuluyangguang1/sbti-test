@@ -5,11 +5,12 @@ interface PersonalityAvatarProps {
   emoji: string;
   name: string;
   color: string;
-  avatar?: string;
-  personalityId?: string;
-  avatarStyle?: AvatarStyle;
+  avatar: string;
+  personalityId: string;
+  avatarStyle?: 'original' | 'remastered';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
+  noAnimation?: boolean;
 }
 
 const sizeMap = {
@@ -20,7 +21,7 @@ const sizeMap = {
   xl: { container: 'w-40 h-40 sm:w-48 sm:h-48', emoji: 'text-7xl sm:text-8xl' },
 };
 
-export function PersonalityAvatar({ emoji, name, color, avatar, personalityId, avatarStyle = 'remastered', size = 'md', className = '' }: PersonalityAvatarProps) {
+export function PersonalityAvatar({ emoji, name, color, avatar, personalityId, avatarStyle = 'remastered', size = 'md', className = '', noAnimation = false }: PersonalityAvatarProps) {
   const s = sizeMap[size];
   const isLarge = size === 'lg' || size === 'xl';
 
@@ -51,7 +52,7 @@ export function PersonalityAvatar({ emoji, name, color, avatar, personalityId, a
         {isLarge && (
           <>
             <div
-              className="absolute -inset-6 rounded-full opacity-40 blur-2xl animate-liquid-float"
+              className={`absolute -inset-6 rounded-full opacity-40 blur-2xl ${noAnimation ? '' : 'animate-liquid-float'}`}
               style={{ backgroundColor: color, animationDuration: '5s' }}
             />
             <div className="liquid-avatar-ring-2" style={{ borderColor: `${color}15` }} />
@@ -82,7 +83,7 @@ export function PersonalityAvatar({ emoji, name, color, avatar, personalityId, a
       {isLarge && (
         <>
           <div
-            className="absolute -inset-8 rounded-full opacity-30 blur-2xl animate-liquid-float"
+            className={`absolute -inset-8 rounded-full opacity-30 blur-2xl ${noAnimation ? '' : 'animate-liquid-float'}`}
             style={{ backgroundColor: color, animationDuration: '6s' }}
           />
           <div className="liquid-avatar-ring-2" style={{ borderColor: `${color}12` }} />
@@ -130,7 +131,7 @@ export function PersonalityAvatar({ emoji, name, color, avatar, personalityId, a
         />
 
         {/* Emoji */}
-        <span className={`relative z-10 ${s.emoji} drop-shadow-lg`}>
+        <span className={`relative z-10 ${s.emoji} drop-shadow-lg ${noAnimation ? '' : 'animate-gentle-float'}`}>
           {emoji}
         </span>
       </div>
