@@ -160,7 +160,7 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
 
             {/* 弹窗主体 — 固定居中、不形变 */}
             <div
-              className="relative w-full max-w-lg max-h-[85vh] flex flex-col animate-slide-up overflow-hidden"
+              className="relative w-full max-w-lg h-[90vh] sm:max-h-[85vh] sm:h-auto flex flex-col animate-slide-up overflow-hidden"
               onClick={(e) => e.stopPropagation()}
               style={{
                 background: 'rgba(255, 255, 255, 0.60)',
@@ -186,7 +186,7 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
 
               {/* 可滚动内容区 */}
               <div className="flex-1 overflow-y-auto min-h-0">
-                <div className="p-8 sm:p-10 space-y-8">
+                <div className="p-5 sm:p-8 space-y-6 sm:space-y-8">
                   {/* 头像区 */}
                   <div className="text-center pt-2 pb-2">
                     <PersonalityAvatar
@@ -254,17 +254,20 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
                     </div>
                   )}
 
-                  {/* Action button */}
-                  <button
-                    onClick={() => {
-                      onViewPersonality(displayPersonality.id);
-                      setSelectedPersonality(null);
-                    }}
-                    className="btn-primary w-full py-4 text-base"
-                  >
-                    查看完整报告
-                  </button>
                 </div>
+              </div>
+
+              {/* 查看完整报告 — 固定在底部 */}
+              <div className="shrink-0 p-4 sm:p-5" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+                <button
+                  onClick={() => {
+                    onViewPersonality(displayPersonality.id);
+                    setSelectedPersonality(null);
+                  }}
+                  className="btn-primary w-full py-3.5 sm:py-4 text-base"
+                >
+                  查看完整报告
+                </button>
               </div>
             </div>
           </div>
