@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { personalities, type PersonalityType, type DimensionLevel, dimensionDefs, dimensionInterpretations, modelDescriptions, matchPersonality } from '../data';
+import { personalities, type PersonalityType, type DimensionLevel, type MatchResult, dimensionDefs, dimensionInterpretations, modelDescriptions } from '../data';
 import { PersonalityAvatar } from './PersonalityAvatar';
 import { DimensionFingerprint } from './DimensionFingerprint';
 import { MbtiComparison } from './MbtiComparison';
@@ -9,14 +9,14 @@ import { useAvatarStyle } from './AvatarStyleContext';
 interface ResultPageProps {
   personalityId: string;
   dimensionLevels: Record<string, DimensionLevel>;
-  matchScore: number;
+  matchResult: MatchResult;
   onBackHome: () => void;
   onViewGallery: () => void;
   onRetake: () => void;
   onViewPersonality?: (id: string) => void;
 }
 
-export function ResultPage({ personalityId, dimensionLevels, matchScore, onBackHome, onViewGallery, onRetake, onViewPersonality }: ResultPageProps) {
+export function ResultPage({ personalityId, dimensionLevels, matchResult, onBackHome, onViewGallery, onRetake, onViewPersonality }: ResultPageProps) {
   const personality = useMemo(() =>
     personalities.find(p => p.id === personalityId) || personalities[0],
     [personalityId]
@@ -24,16 +24,8 @@ export function ResultPage({ personalityId, dimensionLevels, matchScore, onBackH
 
   const { style: avatarStyle, toggle: toggleAvatarStyle } = useAvatarStyle();
 
-  // 计算其他人格的匹配度排行
-  const topPersonalities = useMemo(() => {
-    return personalities
-      .map(p => ({
-        personality: p,
-        score: Object.entries(p.dimensions).filter(([k, v]) => dimensionLevels[k] === v).length,
-      }))
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 5);
-  }, [dimensionLevels]);
+  // 使用原版算法的 Top 5 排行
+  const topPersonalities = matchResult.ranked.slice(0, 5);
 
   const handleViewPersonality = (id: string) => {
     if (onViewPersonality) {
@@ -133,7 +125,7 @@ export function ResultPage({ personalityId, dimensionLevels, matchScore, onBackH
                   style={{ backgroundColor: `${personality.color}15`, color: personality.color, border: `1px solid ${personality.color}30` }}
                 >
                   <span className="w-2 h-2 rounded-full" style={{ backgroundColor: personality.color }} />
-                  匹配度 {Math.round(matchScore * 100)}%
+                  {matchResult.badge}
                 </span>
               </div>
 
@@ -248,13 +240,13 @@ export function ResultPage({ personalityId, dimensionLevels, matchScore, onBackH
                           item.personality.name
                         )}
                       </span>
-                      <span className="text-[11px] sm:text-xs text-gray-700/30 shrink-0 ml-2" style={{ letterSpacing: '0.04em' }}>{item.score}/15 维匹配</span>
+<span className="text-[11px] sm:text-xs text-gray-700/30 shrink-0 ml-2" style={{ letterSpacing: '0.04em' }}>{item.similarity}% · {item.exactCount}/15 维</span>
                     </div>
                     <div className="h-2 rounded-full bg-black/[0.05] overflow-hidden">
                       <div
                         className="h-full rounded-full transition-all duration-1000"
                         style={{
-                          width: `${(item.score / 15) * 100}%`,
+                          width: `${item.similarity}%`,
                           backgroundColor: index === 0 ? item.personality.color : `${item.personality.color}50`,
                         }}
                       />

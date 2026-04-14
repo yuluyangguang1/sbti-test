@@ -10,7 +10,7 @@ import {
 } from '../data';
 
 interface QuizPageProps {
-  onFinish: (personalityId: string, dimensionLevels: Record<string, DimensionLevel>, matchScore: number) => void;
+  onFinish: (personalityId: string, dimensionLevels: Record<string, DimensionLevel>, matchResult: import('../data').MatchResult) => void;
   onBackHome: () => void;
 }
 
@@ -120,8 +120,8 @@ export function QuizPage({ onFinish, onBackHome }: QuizPageProps) {
     if (!showLoading) return;
     if (loadingStep >= loadingPhrases.length + 1) {
       const dimensionLevels = calculateDimensions(dimensionScores);
-      const { personality, matchScore } = matchPersonality(dimensionLevels, isDrunk);
-      onFinish(personality.id, dimensionLevels, matchScore);
+      const result = matchPersonality(dimensionLevels, isDrunk);
+      onFinish(result.personality.id, dimensionLevels, result);
     }
   }, [loadingStep, showLoading, dimensionScores, isDrunk, onFinish]);
 

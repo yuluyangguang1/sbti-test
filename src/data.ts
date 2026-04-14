@@ -641,71 +641,154 @@ export const drinkTrigger: GateQuestion = {
 
 // 维度得分转等级（原版规则：两题总分 2-3→L，4→M，5-6→H）
 export function scoreToLevel(score: number): DimensionLevel {
-  if (score >= 5) return 'H';
-  if (score >= 4) return 'M';
-  return 'L';
+  if (score <= 3) return 'L';
+  if (score === 4) return 'M';
+  return 'H';
+}
+
+// 维度等级转数字（用于距离计算）
+function levelNum(level: DimensionLevel): number {
+  return { L: 1, M: 2, H: 3 }[level];
 }
 
 // 计算用户15维向量
 export function calculateDimensions(answers: Record<string, number>): Record<string, DimensionLevel> {
   const levels: Record<string, DimensionLevel> = {};
   for (const dim of dimensionDefs) {
-    const score = answers[dim.key] ?? 4; // 直接用维度key查分
+    const score = answers[dim.key] ?? 4;
     levels[dim.key] = scoreToLevel(score);
   }
   return levels;
 }
 
-// 计算用户15维向量与人格模板的匹配度
-// 原版算法：计算距离，距离最小者匹配
-function calculateDistance(userDims: Record<string, DimensionLevel>, personalityDims: Record<string, DimensionLevel>): number {
-  let distance = 0;
-  const levelMap: Record<DimensionLevel, number> = { 'L': 1, 'M': 2, 'H': 3 };
+// 维度顺序（与原版一致）
+const dimensionOrder = ['S1','S2','S3','E1','E2','E3','A1','A2','A3','Ac1','Ac2','Ac3','So1','So2','So3'];
 
-  for (const dim of dimensionDefs) {
-    const uVal = levelMap[userDims[dim.key]] || 2;
-    const pVal = levelMap[personalityDims[dim.key]] || 2;
-    distance += Math.abs(uVal - pVal);
-  }
-  return distance;
+// 原版25种标准人格 pattern（H=高, M=中, L=低）
+const NORMAL_TYPES: { code: string; pattern: string }[] = [
+  { code: 'CTRL',   pattern: 'HHH-HMH-MHH-HHH-MHM' },
+  { code: 'ATM-er', pattern: 'HHH-HHM-HHH-HMH-MHL' },
+  { code: 'Dior-s', pattern: 'MHM-MMH-MHM-HMH-LHL' },
+  { code: 'BOSS',   pattern: 'HHH-HMH-MMH-HHH-LHL' },
+  { code: 'THAN-K', pattern: 'MHM-HMM-HHM-MMH-MHL' },
+  { code: 'OH-NO',  pattern: 'HHL-LMH-LHH-HHM-LHL' },
+  { code: 'GOGO',   pattern: 'HHM-HMH-MMH-HHH-MHM' },
+  { code: 'SEXY',   pattern: 'HMH-HHL-HMM-HMM-HLH' },
+  { code: 'LOVE-R', pattern: 'MLH-LHL-HLH-MLM-MLH' },
+  { code: 'MUM',    pattern: 'MMH-MHL-HMM-LMM-HLL' },
+  { code: 'FAKE',   pattern: 'HLM-MML-MLM-MLM-HLH' },
+  { code: 'OJBK',   pattern: 'MMH-MMM-HML-LMM-MML' },
+  { code: 'MALO',   pattern: 'MLH-MHM-MLH-MLH-LMH' },
+  { code: 'JOKE-R', pattern: 'LLH-LHL-LML-LLL-MLM' },
+  { code: 'WOC!',   pattern: 'HHL-HMH-MMH-HHM-LHH' },
+  { code: 'THIN-K', pattern: 'HHL-HMH-MLH-MHM-LHH' },
+  { code: 'SHIT',   pattern: 'HHL-HLH-LMM-HHM-LHH' },
+  { code: 'ZZZZ',   pattern: 'MHL-MLH-LML-MML-LHM' },
+  { code: 'POOR',   pattern: 'HHL-MLH-LMH-HHH-LHL' },
+  { code: 'MONK',   pattern: 'HHL-LLH-LLM-MML-LHM' },
+  { code: 'IMSB',   pattern: 'LLM-LMM-LLL-LLL-MLM' },
+  { code: 'SOLO',   pattern: 'LML-LLH-LHL-LML-LHM' },
+  { code: 'FUCK',   pattern: 'MLL-LHL-LLM-MLL-HLH' },
+  { code: 'DEAD',   pattern: 'LLL-LLM-LML-LLL-LHM' },
+  { code: 'IMFW',   pattern: 'LLH-LHL-LML-LLL-MLL' },
+];
+
+function parsePattern(pattern: string): string[] {
+  return pattern.replace(/-/g, '').split('');
 }
 
-// 主匹配函数：找到最匹配的人格
+// 匹配结果类型
+export interface MatchResult {
+  personality: PersonalityType;
+  matchScore: number;        // 相似度百分比 (0-1)
+  similarity: number;        // 相似度百分比整数 (0-100)
+  exactCount: number;        // 精准命中维度数
+  distance: number;          // 距离值
+  ranked: RankedType[];      // Top排名
+  modeKicker: string;        // 结果标签
+  badge: string;             // 匹配度徽章
+  sub: string;               // 副标题
+  isSpecial: boolean;        // 是否特殊结果
+}
+
+export interface RankedType {
+  personality: PersonalityType;
+  similarity: number;
+  exactCount: number;
+  distance: number;
+}
+
+// 主匹配函数：原版距离算法
 export function matchPersonality(
   dimensionLevels: Record<string, DimensionLevel>,
   isDrunk: boolean
-): { personality: PersonalityType; matchScore: number } {
-  // 特殊规则：白酒当水喝 → 直接返回酒鬼
-  if (isDrunk) {
-    const drunk = personalities.find(p => p.id === 'drunk')!;
-    return { personality: drunk, matchScore: 1.0 };
-  }
+): MatchResult {
+  const userVector = dimensionOrder.map(dim => levelNum(dimensionLevels[dim]));
 
-  // 计算每个人格的距离
-  let bestMatch = personalities[0];
-  let bestDistance = Infinity;
-
-  for (const p of personalities) {
-    if (p.id === 'drunk' || p.id === 'hhhh') continue; // 特殊人格只能通过条件触发
-    if (Object.keys(p.dimensions).length === 0) continue; // 跳过无维度的人格
-
-    const dist = calculateDistance(dimensionLevels, p.dimensions);
-    if (dist < bestDistance) {
-      bestDistance = dist;
-      bestMatch = p;
+  // 计算所有标准人格的距离
+  const ranked: RankedType[] = NORMAL_TYPES.map(type => {
+    const vector = parsePattern(type.pattern).map(c => c === 'H' ? 3 : c === 'M' ? 2 : 1);
+    let distance = 0;
+    let exact = 0;
+    for (let i = 0; i < vector.length; i++) {
+      const diff = Math.abs(userVector[i] - vector[i]);
+      distance += diff;
+      if (diff === 0) exact += 1;
     }
+    const similarity = Math.max(0, Math.round((1 - distance / 30) * 100));
+    const p = personalities.find(p => {
+      // 匹配 code（注意 WOC! 有感叹号）
+      const typeCode = type.code.replace('!', '');
+      return p.code.replace('!', '').toUpperCase() === typeCode.toUpperCase() ||
+             p.code === type.code;
+    }) || personalities[0];
+    return { personality: p, similarity, exactCount: exact, distance };
+  }).sort((a, b) => {
+    if (a.distance !== b.distance) return a.distance - b.distance;
+    if (b.exactCount !== a.exactCount) return b.exactCount - a.exactCount;
+    return b.similarity - a.similarity;
+  });
+
+  const best = ranked[0];
+  const drunkType = personalities.find(p => p.id === 'drunk')!;
+  const hhhhType = personalities.find(p => p.id === 'hhhh')!;
+
+  // 白酒当水喝 → 酒鬼
+  if (isDrunk) {
+    return {
+      personality: drunkType, matchScore: 1.0, similarity: 100,
+      exactCount: 15, distance: 0, ranked,
+      modeKicker: '隐藏人格已激活',
+      badge: '匹配度 100% · 酒精异常因子已接管',
+      sub: '乙醇亲和性过强，系统已直接跳过常规人格审判。',
+      isSpecial: true,
+    };
   }
 
-  // 原版相似度公式：max(0, (1 - 距离/30) × 100)
-  const similarity = Math.max(0, (1 - bestDistance / 30));
-
-  // 如果最高匹配度 < 60%，返回傻乐者（兜底人格）
-  if (similarity < 0.6) {
-    const hhhh = personalities.find(p => p.id === 'hhhh')!;
-    return { personality: hhhh, matchScore: similarity };
+  // 匹配度 < 60% → 傻乐者兜底
+  if (best.similarity < 60) {
+    return {
+      personality: hhhhType, matchScore: best.similarity / 100, similarity: best.similarity,
+      exactCount: best.exactCount, distance: best.distance, ranked,
+      modeKicker: '系统强制兜底',
+      badge: `标准人格库最高匹配仅 ${best.similarity}%`,
+      sub: '标准人格库对你的脑回路集体罢工了，于是系统把你强制分配给了 HHHH。',
+      isSpecial: true,
+    };
   }
 
-  return { personality: bestMatch, matchScore: similarity };
+  return {
+    personality: best.personality,
+    matchScore: best.similarity / 100,
+    similarity: best.similarity,
+    exactCount: best.exactCount,
+    distance: best.distance,
+    ranked,
+    modeKicker: '你的主类型',
+    badge: `匹配度 ${best.similarity}% · 精准命中 ${best.exactCount}/15 维`,
+    sub: '维度命中度较高，当前结果可视为你的第一人格画像。',
+    isSpecial: false,
+  };
 }
 
 // ===== 原版头像映射 =====

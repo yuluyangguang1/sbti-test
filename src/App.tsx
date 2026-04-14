@@ -8,7 +8,7 @@ import { AboutPage } from './components/AboutPage';
 import { RankingsPage } from './components/RankingsPage';
 import { Navbar } from './components/Navbar';
 import { AvatarStyleProvider } from './components/AvatarStyleContext';
-import { type DimensionLevel } from './data';
+import { type DimensionLevel, type MatchResult } from './data';
 
 export type Page = 'landing' | 'quiz' | 'result' | 'gallery' | 'faq' | 'about' | 'rankings';
 
@@ -16,7 +16,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState<Page>('landing');
   const [resultId, setResultId] = useState<string>('');
   const [dimensionLevels, setDimensionLevels] = useState<Record<string, DimensionLevel>>({});
-  const [matchScore, setMatchScore] = useState<number>(0);
+  const [matchResult, setMatchResult] = useState<MatchResult | null>(null);
   const [quizResetKey, setQuizResetKey] = useState(0);
 
   // 页面切换时滚动到顶部
@@ -56,10 +56,10 @@ function App() {
     navigateTo('quiz');
   };
 
-  const handleFinishQuiz = (personalityId: string, dims: Record<string, DimensionLevel>, score: number) => {
+  const handleFinishQuiz = (personalityId: string, dims: Record<string, DimensionLevel>, result: MatchResult) => {
     setResultId(personalityId);
     setDimensionLevels(dims);
-    setMatchScore(score);
+    setMatchResult(result);
     setCurrentPage('result');
     window.location.hash = `type/${personalityId}`;
     // 记录到排行榜 localStorage
@@ -108,11 +108,11 @@ function App() {
       {currentPage === 'quiz' && (
         <QuizPage key={quizResetKey} onFinish={handleFinishQuiz} onBackHome={handleBackHome} />
       )}
-      {currentPage === 'result' && (
+      {currentPage === 'result' && matchResult && (
         <ResultPage
           personalityId={resultId}
           dimensionLevels={dimensionLevels}
-          matchScore={matchScore}
+          matchResult={matchResult}
           onBackHome={handleBackHome}
           onViewGallery={handleViewGallery}
           onRetake={handleStartQuiz}
