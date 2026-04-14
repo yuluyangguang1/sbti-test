@@ -8,7 +8,7 @@ import { AboutPage } from './components/AboutPage';
 import { RankingsPage } from './components/RankingsPage';
 import { Navbar } from './components/Navbar';
 import { AvatarStyleProvider } from './components/AvatarStyleContext';
-import { type DimensionLevel, type MatchResult } from './data';
+import { type DimensionLevel, type MatchResult, personalities } from './data';
 
 export type Page = 'landing' | 'quiz' | 'result' | 'gallery' | 'faq' | 'about' | 'rankings';
 
@@ -74,7 +74,24 @@ function App() {
   const handleBackHome = () => navigateTo('landing');
 
   const handleViewPersonality = (personalityId: string) => {
-    setResultId(personalityId);
+    const p = personalities.find(x => x.id === personalityId);
+    if (p) {
+      setResultId(personalityId);
+      setDimensionLevels(p.dimensions);
+      // 从图鉴进入时创建模拟匹配结果
+      setMatchResult({
+        personality: p,
+        matchScore: 1,
+        similarity: 100,
+        exactCount: 15,
+        distance: 0,
+        ranked: [],
+        modeKicker: '人格图鉴',
+        badge: `${p.code} · ${p.name}`,
+        sub: p.slogan,
+        isSpecial: false,
+      });
+    }
     setCurrentPage('result');
     window.location.hash = `type/${personalityId}`;
   };

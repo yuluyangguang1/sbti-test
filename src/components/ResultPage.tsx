@@ -36,11 +36,6 @@ export function ResultPage({ personalityId, dimensionLevels, matchResult, onBack
   return (
     <div className="min-h-screen px-8 sm:px-12 md:px-16 py-20 sm:py-24 md:py-28 relative">
       {/* 液态背景装饰 */}
-      <div className="liquid-bg">
-        <div className="liquid-blob" style={{ background: `linear-gradient(135deg, ${personality.color}, ${personality.color}cc)` }} />
-        <div className="liquid-blob" style={{ background: `linear-gradient(135deg, ${personality.color}80, #6c5ce7)` }} />
-        <div className="liquid-blob" style={{ background: 'linear-gradient(135deg, #6c5ce7, #fd79a8)' }} />
-      </div>
 
       <div className="max-w-3xl mx-auto relative z-10">
         {/* Back button */}
@@ -154,7 +149,7 @@ export function ResultPage({ personalityId, dimensionLevels, matchResult, onBack
           </div>
 
           {/* 分享操作按钮 */}
-          <div className="flex gap-5 mt-8 animate-card-enter" style={{ animationDelay: '0.2s' }}>
+          <div className="flex gap-5 mt-8">
             <button
               onClick={async () => {
                 try {
@@ -200,22 +195,22 @@ export function ResultPage({ personalityId, dimensionLevels, matchResult, onBack
         </div>
 
         {/* Dimension Fingerprint */}
-        <div className="animate-slide-up mt-32 sm:mt-36" style={{ animationDelay: '0.3s' }}>
+        <div className="animate-slide-up mt-32 sm:mt-36">
           <DimensionFingerprint personality={personality} userDimensionLevels={dimensionLevels} />
         </div>
 
         {/* SBTI × MBTI Comparison */}
-        <div className="animate-slide-up mt-32 sm:mt-36" style={{ animationDelay: '0.4s' }}>
+        <div className="animate-slide-up mt-32 sm:mt-36">
           <MbtiComparison personality={personality} />
         </div>
 
         {/* Similar Personalities */}
-        <div className="animate-slide-up mt-32 sm:mt-36" style={{ animationDelay: '0.5s' }}>
+        <div className="animate-slide-up mt-32 sm:mt-36">
           <SimilarPersonalities personality={personality} onViewPersonality={handleViewPersonality} avatarStyle={avatarStyle} />
         </div>
 
         {/* Score Ranking — 维度匹配排行 */}
-        <div className="animate-card-enter mt-36 sm:mt-40 md:mt-48" style={{ animationDelay: '0.6s' }}>
+        <div className="animate-card-enter mt-36 sm:mt-40 md:mt-48">
           <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-6 sm:mb-8" style={{ letterSpacing: '-0.03em' }}>
             你的维度匹配度排行
           </h3>
@@ -258,7 +253,7 @@ export function ResultPage({ personalityId, dimensionLevels, matchResult, onBack
         </div>
 
         {/* Actions */}
-        <div className="animate-slide-up mt-32 sm:mt-36 flex flex-col gap-6" style={{ animationDelay: '0.7s' }}>
+        <div className="animate-slide-up mt-32 sm:mt-36 flex flex-col gap-6">
           <button
             onClick={onViewGallery}
             className="btn-primary w-full py-5 sm:py-6 text-lg sm:text-xl"

@@ -858,3 +858,32 @@ body {
     height: 220px;
   }
 }
+
+/* ===== 精简动画：去除多余过渡效果 ===== */
+.animate-card-enter,
+.animate-slide-up,
+.animate-bounce-in,
+.animate-fade-in,
+.animate-slide-right {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.animate-gentle-float,
+.animate-float,
+.animate-liquid-float,
+.animate-pulse-glow,
+.animate-shimmer,
+.animate-refract {
+  animation: none !important;
+}
+
+.liquid-blob {
+  animation: none !important;
+  opacity: 0 !important;
+}
+
+.liquid-bg {
+  display: none !important;
+}

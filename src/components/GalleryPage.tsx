@@ -59,11 +59,6 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
   return (
     <div className="min-h-screen px-8 sm:px-12 md:px-16 py-20 sm:py-24 relative">
       {/* 液态背景装饰 */}
-      <div className="liquid-bg">
-        <div className="liquid-blob" />
-        <div className="liquid-blob" />
-        <div className="liquid-blob" />
-      </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Header */}
@@ -188,7 +183,7 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
               <div className="flex-1 overflow-y-auto min-h-0">
                 <div className="p-5 sm:p-8 space-y-6 sm:space-y-8">
                   {/* 头像区 */}
-                  <div className="text-center pt-2 pb-2">
+                  <div className="text-center pt-8 sm:pt-2 pb-1 sm:pb-2">
                     <PersonalityAvatar
                       emoji={displayPersonality.emoji}
                       name={displayPersonality.name}
@@ -196,11 +191,12 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
                       avatar={displayPersonality.avatar}
                       personalityId={displayPersonality.id}
                       avatarStyle={avatarStyle}
-                      size="lg"
+                      size="sm"
+                      noAnimation
                     />
-                    <div className="text-sm font-mono text-black/20 mt-4 mb-2" style={{ letterSpacing: '0.08em' }}>{displayPersonality.code}</div>
-                    <h3 className="text-3xl sm:text-4xl font-black text-black/75 mb-3" style={{ letterSpacing: '-0.03em' }}>{displayPersonality.name}</h3>
-                    <p className="text-base sm:text-lg text-black/40 italic" style={{ letterSpacing: '0.01em' }}>"{displayPersonality.slogan}"</p>
+                    <div className="text-xs sm:text-sm font-mono text-black/20 mt-2 sm:mt-4 mb-1 sm:mb-2" style={{ letterSpacing: '0.08em' }}>{displayPersonality.code}</div>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-black/75 mb-2 sm:mb-3" style={{ letterSpacing: '-0.03em' }}>{displayPersonality.name}</h3>
+                    <p className="text-sm sm:text-base md:text-lg text-black/40 italic" style={{ letterSpacing: '0.01em' }}>&ldquo;{displayPersonality.slogan}&rdquo;</p>
                   </div>
 
                   {/* Description */}
