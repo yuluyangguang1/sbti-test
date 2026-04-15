@@ -27,12 +27,15 @@ export async function drawShareCard(personality: PersonalityType): Promise<Blob 
   ctx.roundRect(0, 0, W, H, 32);
   ctx.fill();
 
+  // 中文字体
+  const CN = '-apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif';
+
   // 顶部标识
-  ctx.font = 'bold 18px -apple-system, sans-serif';
+  ctx.font = `bold 18px ${CN}`;
   ctx.fillStyle = color;
   ctx.textAlign = 'left';
   ctx.fillText('SBTI', 40, 52);
-  ctx.font = '12px -apple-system, sans-serif';
+  ctx.font = `12px ${CN}`;
   ctx.fillStyle = '#9ca3af';
   ctx.textAlign = 'right';
   ctx.fillText('Silly Big Personality Test', W - 40, 52);
@@ -54,7 +57,7 @@ export async function drawShareCard(personality: PersonalityType): Promise<Blob 
   ctx.fillText(personality.emoji, W / 2, avatarY);
 
   // 名称
-  ctx.font = 'bold 42px -apple-system, sans-serif';
+  ctx.font = `bold 42px ${CN}`;
   ctx.fillStyle = '#1f2937';
   ctx.textBaseline = 'alphabetic';
   ctx.fillText(personality.name, W / 2, avatarY + 110);
@@ -65,14 +68,14 @@ export async function drawShareCard(personality: PersonalityType): Promise<Blob 
   ctx.fillText(personality.code, W / 2, avatarY + 140);
 
   // Slogan
-  ctx.font = 'italic 18px -apple-system, sans-serif';
+  ctx.font = `italic 18px ${CN}`;
   ctx.fillStyle = '#6b7280';
   ctx.fillText(`"${personality.slogan}"`, W / 2, avatarY + 175);
 
   // 特征标签
   let tagX = 40;
   let tagY = avatarY + 220;
-  ctx.font = '13px -apple-system, sans-serif';
+  ctx.font = `13px ${CN}`;
   for (const trait of personality.traits) {
     const tw = ctx.measureText(trait).width + 24;
     if (tagX + tw > W - 40) { tagX = 40; tagY += 32; }
@@ -102,13 +105,13 @@ export async function drawShareCard(personality: PersonalityType): Promise<Blob 
     ctx.beginPath();
     ctx.roundRect(x, dimY, barW, barW, 4);
     ctx.fill();
-    ctx.font = '9px -apple-system, sans-serif';
+    ctx.font = `9px ${CN}`;
     ctx.fillStyle = '#9ca3af';
     ctx.fillText(key, x + barW / 2, dimY + barW + 14);
   });
 
   // 底部
-  ctx.font = '11px -apple-system, sans-serif';
+  ctx.font = `11px ${CN}`;
   ctx.fillStyle = '#9ca3af';
   ctx.textAlign = 'left';
   ctx.fillText('测测你的 → sbti.dev', 40, H - 30);
