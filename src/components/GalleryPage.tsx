@@ -107,20 +107,22 @@ export function GalleryPage({ onBackHome, onViewPersonality }: GalleryPageProps)
           {personalities.map((p, i) => (
             <div
               key={p.id}
-              className="glass-card glass-card-hover"
+              className={avatarStyle === 'original' ? 'gallery-card-original relative overflow-hidden p-6 sm:p-8' : 'glass-card glass-card-hover'}
             >
               <div className="relative z-10">
                 <div className="flex flex-col items-center text-center">
-                  <PersonalityAvatar
-                    emoji={p.emoji}
-                    name={p.name}
-                    color={p.color}
-                    avatar={p.avatar}
-                    personalityId={p.id}
-                    avatarStyle={avatarStyle}
-                    size="lg"
-                    noAnimation
-                  />
+                  <div className={avatarStyle === 'original' ? 'avatar-3d-wrapper' : ''}>
+                    <PersonalityAvatar
+                      emoji={p.emoji}
+                      name={p.name}
+                      color={p.color}
+                      avatar={p.avatar}
+                      personalityId={p.id}
+                      avatarStyle={avatarStyle}
+                      size="lg"
+                      noAnimation
+                    />
+                  </div>
                   <div className="mt-3 sm:mt-4">
                     <div className="flex items-center justify-center gap-2 mb-1">
                       <span className="font-bold text-base sm:text-lg text-black/75" style={{ letterSpacing: '-0.01em' }}>{p.name}</span>

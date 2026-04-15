@@ -25,7 +25,7 @@ export function PersonalityAvatar({ emoji, name, color, avatar, personalityId, a
   const s = sizeMap[size];
   const isLarge = size === 'lg' || size === 'xl';
 
-  // 根据图鉴风格计算实际头像路径
+    // 根据图鉴风格计算实际头像路径
   const resolvedAvatar = useMemo(() => {
     if (avatarStyle === 'original' && personalityId) {
       const origPath = getAvatarPath(personalityId, 'original');
@@ -33,6 +33,8 @@ export function PersonalityAvatar({ emoji, name, color, avatar, personalityId, a
     }
     return avatar;
   }, [avatarStyle, personalityId, avatar]);
+
+  const is3D = avatarStyle === 'original';
 
   // 液态玻璃头像框样式
   const glassStyle = {
@@ -62,7 +64,7 @@ export function PersonalityAvatar({ emoji, name, color, avatar, personalityId, a
 
         {/* 头像图片 — 直接展示，无玻璃框 */}
         <div
-          className={`relative w-full h-full overflow-hidden ${isLarge ? 'liquid-avatar' : ''}`}
+          className={`relative w-full h-full overflow-hidden ${isLarge ? 'liquid-avatar' : ''} ${is3D ? 'avatar-original-3d' : ''}`}
           style={{ borderRadius: '50%' }}
         >
           <img

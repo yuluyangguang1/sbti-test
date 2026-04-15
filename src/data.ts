@@ -796,7 +796,7 @@ export function matchPersonality(
 export const originalAvatarMap: Record<string, string> = {
   ctrl:  'CTRL.png',
   atmer: 'ATM-er.png',
-  diors: 'Dior-s.jpg',
+  diors: 'Dior-s.png',
   boss:  'BOSS.png',
   thank: 'THAN-K.png',
   ohno:  'OH-NO.png',
@@ -807,7 +807,7 @@ export const originalAvatarMap: Record<string, string> = {
   fake:  'FAKE.png',
   ojbk:  'OJBK.png',
   malo:  'MALO.png',
-  joker: 'JOKE-R.jpg',
+  joker: 'JOKE-R.png',
   woc:   'WOC.png',
   think: 'THIN-K.png',
   shit:  'SHIT.png',
