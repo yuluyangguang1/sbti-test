@@ -327,7 +327,7 @@ p, span:not(button span), h1, h2, h3, h4 {
   position: absolute;
   inset: -8px;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  animation: liquidMorph 10s ease-in-out infinite reverse;
+  animation: none;
   border: 2px solid rgba(255, 255, 255, 0.15);
   pointer-events: none;
 }
@@ -336,7 +336,7 @@ p, span:not(button span), h1, h2, h3, h4 {
   position: absolute;
   inset: -16px;
   border-radius: 40% 60% 70% 30% / 50% 40% 60% 50%;
-  animation: liquidMorph 12s ease-in-out infinite;
+  animation: none;
   border: 1px solid rgba(255, 255, 255, 0.08);
   pointer-events: none;
 }
