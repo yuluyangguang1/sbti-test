@@ -1,5 +1,6 @@
 import { personalities, modelDescriptions, dimensionDefs } from '../data';
 import { PersonalityAvatar } from './PersonalityAvatar';
+import { useAvatarStyle } from './AvatarStyleContext';
 import type { Page } from '../App';
 
 interface LandingPageProps {
@@ -25,6 +26,7 @@ const modelMeta: { key: string; icon: string; color: string; accent: string; gra
 ];
 
 export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout, onViewRankings }: LandingPageProps) {
+  const { style: avatarStyle } = useAvatarStyle();
   const randomPersonalities = [...personalities]
     .sort(() => Math.random() - 0.5)
     .slice(0, 6);
@@ -112,6 +114,8 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
                     name={sp.name}
                     color={sp.color}
                     avatar={sp.avatar}
+                    personalityId={sp.id}
+                    avatarStyle={avatarStyle}
                     size="md"
                     className="mx-auto mb-5"
                   />
@@ -140,6 +144,8 @@ export function LandingPage({ onStartQuiz, onViewGallery, onViewFaq, onViewAbout
                     name={p.name}
                     color={p.color}
                     avatar={p.avatar}
+                    personalityId={p.id}
+                    avatarStyle={avatarStyle}
                     size="sm"
                     className="mx-auto mb-4"
                   />

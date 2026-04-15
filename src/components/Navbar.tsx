@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useAvatarStyle } from './AvatarStyleContext';
 import type { Page } from '../App';
 
 interface NavbarProps {
@@ -9,6 +10,7 @@ interface NavbarProps {
 
 export function Navbar({ currentPage, onNavigate, onStartQuiz }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { style: avatarStyle, toggle: toggleAvatarStyle } = useAvatarStyle();
 
   const navItems: { key: Page; label: string }[] = [
     { key: 'landing', label: '首页' },
@@ -59,6 +61,18 @@ export function Navbar({ currentPage, onNavigate, onStartQuiz }: NavbarProps) {
         </div>
 
         {/* Start quiz button (desktop) */}
+        <button
+          onClick={toggleAvatarStyle}
+          className="hidden md:flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full transition-all duration-300 hover:scale-105 active:scale-95 font-medium"
+          style={{
+            backgroundColor: avatarStyle === 'original' ? 'rgba(255,107,107,0.12)' : 'rgba(108,92,231,0.12)',
+            color: avatarStyle === 'original' ? '#ff6b6bcc' : '#6c5ce7cc',
+            border: avatarStyle === 'original' ? '1px solid rgba(255,107,107,0.25)' : '1px solid rgba(108,92,231,0.25)',
+          }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: avatarStyle === 'original' ? '#ff6b6b' : '#6c5ce7' }} />
+          {avatarStyle === 'original' ? '原版' : '重制'}
+        </button>
         <button
           onClick={onStartQuiz}
           className="hidden md:block btn-primary !py-2 !px-5 !text-sm"
@@ -111,6 +125,21 @@ export function Navbar({ currentPage, onNavigate, onStartQuiz }: NavbarProps) {
                 {item.label}
               </button>
             ))}
+
+            {/* 图鉴风格切换 */}
+            <button
+              onClick={() => { toggleAvatarStyle(); }}
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-medium transition-all"
+              style={{
+                backgroundColor: avatarStyle === 'original' ? 'rgba(255,107,107,0.12)' : 'rgba(108,92,231,0.12)',
+                color: avatarStyle === 'original' ? '#ff6b6bcc' : '#6c5ce7cc',
+                border: avatarStyle === 'original' ? '1px solid rgba(255,107,107,0.25)' : '1px solid rgba(108,92,231,0.25)',
+              }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: avatarStyle === 'original' ? '#ff6b6b' : '#6c5ce7' }} />
+              {avatarStyle === 'original' ? '原版图鉴' : '重制图鉴'} · 切换
+            </button>
+
             <button
               onClick={() => { onStartQuiz(); setMenuOpen(false); }}
               className="btn-primary w-full !py-3 !text-sm mt-2"
