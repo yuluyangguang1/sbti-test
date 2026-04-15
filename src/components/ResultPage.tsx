@@ -153,25 +153,20 @@ export function ResultPage({ personalityId, dimensionLevels, matchResult, onBack
             <button
               onClick={async () => {
                 try {
-                  const html2canvas = (await import('html2canvas')).default;
-                  const cardEl = document.getElementById('share-card-area');
-                  if (!cardEl) return;
-                  const canvas = await html2canvas(cardEl, {
-                    backgroundColor: '#ffffff',
-                    scale: 2,
-                    useCORS: true,
-                    logging: true,
-                  });
-                  const dataUrl = canvas.toDataURL('image/png');
-                  const link = document.createElement('a');
-                  link.download = `SBTI_${personality.name}_${personality.code}.png`;
-                  link.href = dataUrl;
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                } catch (err) {
-                  console.error('截图失败:', err);
-                  alert('截图生成失败，请尝试复制文案分享');
+                  const { drawShareCard } = await import('./ShareCard');
+                  const blob = await drawShareCard(personality);
+                  if (!blob) throw new Error('Canvas failed');
+                  const file = new File([blob], `SBTI_${personality.code}.png`, { type: 'image/png' });
+                  const url = URL.createObjectURL(blob);
+                  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({ files: [file], title: `SBTI ${personality.name}` });
+                  } else {
+                    const a = document.createElement('a');
+                    a.href = url; a.download = `SBTI_${personality.code}.png`; a.click();
+                  }
+                  URL.revokeObjectURL(url);
+                } catch (err: any) {
+                  if (err?.name !== 'AbortError') alert('保存失败，请截图');
                 }
               }}
               className="flex-1 py-3.5 sm:py-4 btn-glass text-sm sm:text-base"
