@@ -283,7 +283,7 @@ p, span:not(button span), h1, h2, h3, h4 {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.70), transparent);
   pointer-events: none;
   z-index: 0;
-  animation: refractGlow 4s ease-in-out infinite;
+  animation: none;
 }
 
 /* 液态玻璃内部径向光斑 — 模拟折射 */
@@ -320,7 +320,7 @@ p, span:not(button span), h1, h2, h3, h4 {
 
 /* ========== 液态头像 ========== */
 .liquid-avatar {
-  animation: liquidMorph 8s ease-in-out infinite, liquidFloat 4s ease-in-out infinite;
+  animation: none;
 }
 
 .liquid-avatar-ring {
