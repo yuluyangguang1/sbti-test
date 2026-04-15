@@ -48,44 +48,44 @@ export function PersonalityAvatar({ emoji, name, color, avatar, personalityId, a
 
   // 如果有头像图片
   if (resolvedAvatar) {
-    return (
-      <div className={`relative inline-flex items-center justify-center ${s.container} ${className}`}>
-        {/* 大头像的液态光晕 */}
-        {isLarge && (
-          <>
-            <div
-              className={`absolute -inset-6 rounded-full opacity-40 blur-2xl ${noAnimation ? '' : 'animate-liquid-float'}`}
-              style={{ backgroundColor: color, animationDuration: '5s' }}
-            />
-            <div className="liquid-avatar-ring-2" style={{ borderColor: `${color}15` }} />
-            <div className="liquid-avatar-ring" style={{ borderColor: `${color}25` }} />
-          </>
-        )}
-
-        {/* 头像图片 — 直接展示，无玻璃框 */}
-        <div
-          className={`relative w-full h-full overflow-hidden ${isLarge ? 'liquid-avatar' : ''} ${is3D ? 'avatar-original-3d' : ''}`}
-          style={{ borderRadius: '50%' }}
-        >
-          <img
-            src={resolvedAvatar}
-            alt={name}
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    );
-  }
-
-  // Emoji fallback — 液态玻璃头像
   return (
     <div className={`relative inline-flex items-center justify-center ${s.container} ${className}`}>
       {/* 大头像的液态光晕 */}
       {isLarge && (
         <>
           <div
-            className={`absolute -inset-8 rounded-full opacity-30 blur-2xl ${noAnimation ? '' : 'animate-liquid-float'}`}
+            className="absolute -inset-6 rounded-full opacity-40 blur-2xl"
+            style={{ backgroundColor: color, animationDuration: '5s' }}
+          />
+          <div className="liquid-avatar-ring-2" style={{ borderColor: `${color}15` }} />
+          <div className="liquid-avatar-ring" style={{ borderColor: `${color}25` }} />
+        </>
+      )}
+
+      {/* 头像图片 — 直接展示，无玻璃框 */}
+      <div
+        className={`relative w-full h-full overflow-hidden ${isLarge ? 'liquid-avatar' : ''} ${is3D ? 'avatar-original-3d' : ''}`}
+        style={{ borderRadius: '50%' }}
+      >
+        <img
+          src={resolvedAvatar}
+          alt={name}
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  );
+}
+
+// Emoji fallback — 液态玻璃头像
+return (
+    <div className={`relative inline-flex items-center justify-center ${s.container} ${className}`}>
+      {/* 大头像的液态光晕 */}
+      {isLarge && (
+        <>
+          <div
+            className="absolute -inset-8 rounded-full opacity-30 blur-2xl"
             style={{ backgroundColor: color, animationDuration: '6s' }}
           />
           <div className="liquid-avatar-ring-2" style={{ borderColor: `${color}12` }} />
@@ -133,7 +133,7 @@ export function PersonalityAvatar({ emoji, name, color, avatar, personalityId, a
         />
 
         {/* Emoji */}
-        <span className={`relative z-10 ${s.emoji} drop-shadow-lg ${noAnimation ? '' : 'animate-gentle-float'}`}>
+        <span className={`relative z-10 ${s.emoji} drop-shadow-lg`}>
           {emoji}
         </span>
       </div>
